@@ -13,29 +13,14 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "@/atoms": [
-        "components/atoms"
-      ],
-      "@/molecules": [
-        "components/molecules"
-      ],
-      "@/organisms": [
-        "components/organisms"
-      ],
       "@/templates": [
-        "components/templates"
+        "/templates"
       ],
       "@/pages": [
-        "components/pages"
-      ],
-      "@/md": [
-        "components/md"
+        "/pages"
       ],
       "@/libs": [
         "libs"
-      ],
-      "@/styles": [
-        "styles"
       ],
       "@/stores": [
         "stores"
