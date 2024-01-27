@@ -13,11 +13,14 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
+      "@/components": [
+        "components"
+      ],
       "@/templates": [
-        "/templates"
+        "templates"
       ],
       "@/pages": [
-        "/pages"
+        "pages"
       ],
       "@/libs": [
         "libs"
