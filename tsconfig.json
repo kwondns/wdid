@@ -5,21 +5,70 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
+    "baseUrl": "./src",
+    "paths": {
+      "@/atoms": [
+        "components/atoms"
+      ],
+      "@/molecules": [
+        "components/molecules"
+      ],
+      "@/organisms": [
+        "components/organisms"
+      ],
+      "@/templates": [
+        "components/templates"
+      ],
+      "@/pages": [
+        "components/pages"
+      ],
+      "@/md": [
+        "components/md"
+      ],
+      "@/libs": [
+        "libs"
+      ],
+      "@/styles": [
+        "styles"
+      ],
+      "@/stores": [
+        "stores"
+      ],
+      "@/hooks": [
+        "hooks"
+      ],
+      "@/types": [
+        "types"
+      ],
+      "@/constants": [
+        "constants"
+      ],
+      "@/apis": [
+        "apis"
+      ]
+    },
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src",
+    ".eslintrc.cjs",
+    "vite.config.ts",
+    "tailwind.config.ts",
+    "postcss.config.js"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
