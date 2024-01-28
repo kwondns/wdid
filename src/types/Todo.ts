@@ -14,3 +14,7 @@ export type TodoBoxType = {
   created_at: string;
   updated_at: string;
 };
+
+export type TodoViewType = TodoBoxType & {
+  todos: TodoType[];
+};
