@@ -3,7 +3,7 @@ export default {
     {
       id: '1e947d10-4484-456c-9d46-9296024ccd38',
       box_id: 'cbb01249-7a66-4af8-8516-a0fb4faa76ca',
-      check: true,
+      checked: true,
       content: '법률로써 또는 증거인멸의 무상으로 도피.',
       created_at: '2024-01-25T19:40:37.306Z',
       updated_at: '2024-01-25T19:40:37.306Z',
@@ -11,7 +11,7 @@ export default {
     {
       id: '7f9078d9-afd1-4eca-a2f0-00b0829efd7e',
       box_id: 'cbb01249-7a66-4af8-8516-a0fb4faa76ca',
-      check: false,
+      checked: false,
       content: '창달에 사항은 다만, 침해받지.',
       created_at: '2024-01-28T00:34:23.709Z',
       updated_at: '2024-01-28T00:34:23.709Z',
@@ -19,7 +19,7 @@ export default {
     {
       id: '745b4250-efeb-4e9d-b6fa-b9decc8df233',
       box_id: 'cbb01249-7a66-4af8-8516-a0fb4faa76ca',
-      check: false,
+      checked: false,
       content: '국내법과 염려가 보호할.',
       created_at: '2024-01-27T18:22:37.543Z',
       updated_at: '2024-01-27T18:22:37.543Z',
@@ -27,7 +27,7 @@ export default {
     {
       id: 'df448f52-e472-42e1-9fe0-3bcf3beb9d11',
       box_id: 'd0a7a5cf-46b8-487a-abc9-29c86ef0cbbb',
-      check: true,
+      checked: true,
       content: '보장하기 기능을 처벌받지 이상의 소추되지.',
       created_at: '2024-01-26T14:27:28.768Z',
       updated_at: '2024-01-26T14:27:28.768Z',
@@ -35,7 +35,7 @@ export default {
     {
       id: 'e55fd3ae-aee5-4b87-84e4-fc56aa300fda',
       box_id: 'd0a7a5cf-46b8-487a-abc9-29c86ef0cbbb',
-      check: true,
+      checked: true,
       content: '사항은 평생교육을 무상으로 사후에.',
       created_at: '2024-01-27T11:10:36.563Z',
       updated_at: '2024-01-27T11:10:36.563Z',
@@ -43,7 +43,7 @@ export default {
     {
       id: '171619fa-c73e-4b18-bcf1-3d6f635e08f8',
       box_id: 'd0a7a5cf-46b8-487a-abc9-29c86ef0cbbb',
-      check: true,
+      checked: true,
       content: '법률이 사후에 기능을 행위시의 계승·발전과.',
       created_at: '2024-01-25T17:57:23.497Z',
       updated_at: '2024-01-25T17:57:23.497Z',
@@ -51,7 +51,7 @@ export default {
     {
       id: '38c9831d-6576-422a-8040-2e1b549317a8',
       box_id: 'fae2af1c-8b56-4db2-9dc3-35baf4589fef',
-      check: true,
+      checked: true,
       content: '국민은 거듭 해당하는.',
       created_at: '2024-01-28T06:15:15.406Z',
       updated_at: '2024-01-28T06:15:15.406Z',
@@ -59,7 +59,7 @@ export default {
     {
       id: '01bed5b1-4440-4435-819b-a2fe0232f610',
       box_id: 'fae2af1c-8b56-4db2-9dc3-35baf4589fef',
-      check: false,
+      checked: false,
       content: '평생교육을 노력하여야 법률에 체결·공포된 증거인멸의.',
       created_at: '2024-01-25T18:10:10.605Z',
       updated_at: '2024-01-25T18:10:10.605Z',
@@ -67,7 +67,7 @@ export default {
     {
       id: '00890acd-20a8-4355-918e-e67ef285ce28',
       box_id: 'fae2af1c-8b56-4db2-9dc3-35baf4589fef',
-      check: true,
+      checked: true,
       content: '추정된다. 형사피고인은 증거인멸의 범죄에.',
       created_at: '2024-01-27T15:54:38.979Z',
       updated_at: '2024-01-27T15:54:38.979Z',
@@ -75,7 +75,7 @@ export default {
     {
       id: '473a86ef-b5c8-4def-ae65-21ac89e12bff',
       box_id: '781c3cf4-16e9-4a80-882b-7cd0dff14e30',
-      check: true,
+      checked: true,
       content: '조약과 무죄로 유죄의 동일한 저작자·발명가·과학기술자와.',
       created_at: '2024-01-26T10:55:23.520Z',
       updated_at: '2024-01-26T10:55:23.520Z',
@@ -83,7 +83,7 @@ export default {
     {
       id: '6fa03bfc-8713-4a30-abe9-401689699fdf',
       box_id: '781c3cf4-16e9-4a80-882b-7cd0dff14e30',
-      check: false,
+      checked: false,
       content: '의무를 확정될 재외국민을 창달에 해당하는.',
       created_at: '2024-01-27T18:27:09.866Z',
       updated_at: '2024-01-27T18:27:09.866Z',
@@ -91,7 +91,7 @@ export default {
     {
       id: '1c71163b-b52c-4b9d-b32b-1fc30ce076f9',
       box_id: '781c3cf4-16e9-4a80-882b-7cd0dff14e30',
-      check: true,
+      checked: true,
       content: '진흥하여야 전통문화의 아니하며, 국제법규는.',
       created_at: '2024-01-26T08:17:20.248Z',
       updated_at: '2024-01-26T08:17:20.248Z',
@@ -99,7 +99,7 @@ export default {
     {
       id: 'af203167-633c-481d-8e24-33dd27a5f2ce',
       box_id: '0324c50a-a249-4e1c-92cc-bc4237e97396',
-      check: false,
+      checked: false,
       content: '행위로 3년 모든 동일한.',
       created_at: '2024-01-27T17:13:27.323Z',
       updated_at: '2024-01-27T17:13:27.323Z',
@@ -107,7 +107,7 @@ export default {
     {
       id: '4c7975c4-21cd-4585-92e6-5d5a6625b141',
       box_id: '0324c50a-a249-4e1c-92cc-bc4237e97396',
-      check: true,
+      checked: true,
       content: '보장하기 대하여 때까지는 전통문화의.',
       created_at: '2024-01-27T00:57:46.957Z',
       updated_at: '2024-01-27T00:57:46.957Z',
@@ -115,7 +115,7 @@ export default {
     {
       id: '9107d3c9-a5f1-4012-8904-8c9fcfe9c77f',
       box_id: '0324c50a-a249-4e1c-92cc-bc4237e97396',
-      check: true,
+      checked: true,
       content: '법률에 해당하는 보호할 위하여 다만,.',
       created_at: '2024-01-26T07:08:56.224Z',
       updated_at: '2024-01-26T07:08:56.224Z',
@@ -123,7 +123,7 @@ export default {
     {
       id: 'dde85eb8-d81c-4280-ba79-33aa31844443',
       box_id: '048a1aa3-af85-4c95-a143-681b8370db02',
-      check: true,
+      checked: true,
       content: '전통문화의 모든 정하는 형사피고인은 재외국민을.',
       created_at: '2024-01-27T18:13:12.850Z',
       updated_at: '2024-01-27T18:13:12.850Z',
@@ -131,7 +131,7 @@ export default {
     {
       id: '932446b8-7134-40da-bb6d-f63be6eb7176',
       box_id: '048a1aa3-af85-4c95-a143-681b8370db02',
-      check: true,
+      checked: true,
       content: '예술가의 정하는 3년 사후에 거듭.',
       created_at: '2024-01-28T02:05:48.581Z',
       updated_at: '2024-01-28T02:05:48.581Z',
@@ -139,7 +139,7 @@ export default {
     {
       id: '26cf1e5c-bbe8-4782-907d-bf22645edafb',
       box_id: '048a1aa3-af85-4c95-a143-681b8370db02',
-      check: true,
+      checked: true,
       content: '이상의 재외국민을 정하는 법률로 사항은.',
       created_at: '2024-01-27T07:11:48.187Z',
       updated_at: '2024-01-27T07:11:48.187Z',
@@ -147,7 +147,7 @@ export default {
     {
       id: 'c2ebcaf6-4409-4d7e-8815-21a6c65211d3',
       box_id: '0df02688-335d-4500-ad31-143508ba4a39',
-      check: true,
+      checked: true,
       content: '국가는 창달에 의무를 비밀과.',
       created_at: '2024-01-25T14:06:13.303Z',
       updated_at: '2024-01-25T14:06:13.303Z',
@@ -155,7 +155,7 @@ export default {
     {
       id: '3dfa7dd7-149b-4258-811e-552861548be9',
       box_id: '0df02688-335d-4500-ad31-143508ba4a39',
-      check: false,
+      checked: false,
       content: '보호한다. 해당하는 예술가의 유죄의 일반적으로.',
       created_at: '2024-01-26T05:34:30.580Z',
       updated_at: '2024-01-26T05:34:30.580Z',
@@ -163,7 +163,7 @@ export default {
     {
       id: '734ee5d1-9fec-4ef9-a0e2-d5aabb919edc',
       box_id: '0df02688-335d-4500-ad31-143508ba4a39',
-      check: true,
+      checked: true,
       content: '조약과 의하여 무죄로.',
       created_at: '2024-01-26T02:16:47.948Z',
       updated_at: '2024-01-26T02:16:47.948Z',
@@ -171,7 +171,7 @@ export default {
     {
       id: '011f3377-90c7-48d9-be4f-850cac1f05ec',
       box_id: '9d2d34dd-4809-4d1a-b913-83f6718300c3',
-      check: true,
+      checked: true,
       content: '국제법규는 증거인멸의 보호한다. 법률이.',
       created_at: '2024-01-27T14:00:19.139Z',
       updated_at: '2024-01-27T14:00:19.139Z',
@@ -179,7 +179,7 @@ export default {
     {
       id: '7d733dec-8a80-4e9a-809f-9e3aeec3a3f2',
       box_id: '9d2d34dd-4809-4d1a-b913-83f6718300c3',
-      check: false,
+      checked: false,
       content: '사후에 조약과 의하여 법률로 장기.',
       created_at: '2024-01-27T05:13:23.488Z',
       updated_at: '2024-01-27T05:13:23.488Z',
@@ -187,7 +187,7 @@ export default {
     {
       id: 'cd866295-7351-4134-9d3d-7ea0f8077eac',
       box_id: '9d2d34dd-4809-4d1a-b913-83f6718300c3',
-      check: false,
+      checked: false,
       content: '청구할 계승·발전과 아니한다. 장기.',
       created_at: '2024-01-26T23:26:53.452Z',
       updated_at: '2024-01-26T23:26:53.452Z',
@@ -195,7 +195,7 @@ export default {
     {
       id: 'fcff8b90-0002-404b-97b0-9ab70d81d08f',
       box_id: 'd116fd03-4c62-43b4-bfd1-1365e61f6713',
-      check: false,
+      checked: false,
       content: '판결이 염려가 다만,.',
       created_at: '2024-01-25T22:21:52.802Z',
       updated_at: '2024-01-25T22:21:52.802Z',
@@ -203,7 +203,7 @@ export default {
     {
       id: 'a253c85f-6164-49f5-a9fa-b45df1c6435f',
       box_id: 'd116fd03-4c62-43b4-bfd1-1365e61f6713',
-      check: false,
+      checked: false,
       content: '국민은 아니하며, 창달에 확정될 모성의.',
       created_at: '2024-01-27T01:01:05.304Z',
       updated_at: '2024-01-27T01:01:05.304Z',
@@ -211,7 +211,7 @@ export default {
     {
       id: '108d0fe3-df04-4668-b43b-26c51efbc281',
       box_id: 'd116fd03-4c62-43b4-bfd1-1365e61f6713',
-      check: true,
+      checked: true,
       content: '무상으로 영장을 법률이.',
       created_at: '2024-01-28T08:37:33.848Z',
       updated_at: '2024-01-28T08:37:33.848Z',
@@ -219,7 +219,7 @@ export default {
     {
       id: 'c42f0b1a-c21b-446c-a07b-63ef369c551d',
       box_id: '359b8a4b-94e3-450c-ae1d-bd1c37d753f6',
-      check: true,
+      checked: true,
       content: '국민은 경우와 승인된 추정된다..',
       created_at: '2024-01-26T16:03:11.237Z',
       updated_at: '2024-01-26T16:03:11.237Z',
@@ -227,7 +227,7 @@ export default {
     {
       id: 'a7dc5c7d-a6b8-4acb-b51d-9f99510b647b',
       box_id: '359b8a4b-94e3-450c-ae1d-bd1c37d753f6',
-      check: false,
+      checked: false,
       content: '신문의 확정될 형사피고인은 수.',
       created_at: '2024-01-27T02:38:21.971Z',
       updated_at: '2024-01-27T02:38:21.971Z',
@@ -235,7 +235,7 @@ export default {
     {
       id: '9ea9028f-aa4b-477b-98fa-3afb32b6e296',
       box_id: '359b8a4b-94e3-450c-ae1d-bd1c37d753f6',
-      check: true,
+      checked: true,
       content: '보장하기 노력하여야 형사피고인은 국제법규는 3년.',
       created_at: '2024-01-28T01:20:09.480Z',
       updated_at: '2024-01-28T01:20:09.480Z',
@@ -243,7 +243,7 @@ export default {
     {
       id: '6efd347d-add1-4dd3-9309-a6daf963d37b',
       box_id: '8be51f91-62c9-45be-aec1-cda2f4a43b23',
-      check: true,
+      checked: true,
       content: '신문의 죄를 의무교육은 이상의.',
       created_at: '2024-01-27T19:28:33.835Z',
       updated_at: '2024-01-27T19:28:33.835Z',
@@ -251,7 +251,7 @@ export default {
     {
       id: '2ab394a9-7892-4601-94ae-ce554eec1de5',
       box_id: '8be51f91-62c9-45be-aec1-cda2f4a43b23',
-      check: false,
+      checked: false,
       content: '때까지는 가진다. 필요한.',
       created_at: '2024-01-28T12:04:12.108Z',
       updated_at: '2024-01-28T12:04:12.108Z',
@@ -259,7 +259,7 @@ export default {
     {
       id: 'fc5948cc-5915-4e48-97a3-c56826565ed5',
       box_id: '8be51f91-62c9-45be-aec1-cda2f4a43b23',
-      check: true,
+      checked: true,
       content: '수 시설기준과 필요한 바에 효력을.',
       created_at: '2024-01-26T19:04:24.524Z',
       updated_at: '2024-01-26T19:04:24.524Z',
@@ -267,7 +267,7 @@ export default {
     {
       id: '5c31a2a5-8e0b-4312-b23b-2c6ac1bd152c',
       box_id: 'dd49acb7-4c2a-4493-aaae-1661c362e0a7',
-      check: true,
+      checked: true,
       content: '저작자·발명가·과학기술자와 비밀과 체결·공포된 신체의 형에.',
       created_at: '2024-01-27T14:34:07.565Z',
       updated_at: '2024-01-27T14:34:07.565Z',
@@ -275,7 +275,7 @@ export default {
     {
       id: '1328616b-9d5e-4f4d-a348-3ada92a274b7',
       box_id: 'dd49acb7-4c2a-4493-aaae-1661c362e0a7',
-      check: false,
+      checked: false,
       content: '보호할 보호를 때까지는.',
       created_at: '2024-01-26T03:16:33.246Z',
       updated_at: '2024-01-26T03:16:33.246Z',
@@ -283,7 +283,7 @@ export default {
     {
       id: 'a50ede1a-1169-412a-9ee5-f07e1b2d2db0',
       box_id: 'dd49acb7-4c2a-4493-aaae-1661c362e0a7',
-      check: true,
+      checked: true,
       content: '정하는 사후에 3년 있을.',
       created_at: '2024-01-27T19:47:50.703Z',
       updated_at: '2024-01-27T19:47:50.703Z',
@@ -291,7 +291,7 @@ export default {
     {
       id: '5466b77f-a308-4c67-a4eb-30ab40ce8bbb',
       box_id: '5c6bde31-1ed9-4450-baaf-98e4c98b8853',
-      check: true,
+      checked: true,
       content: '보호한다. 무죄로 추정된다..',
       created_at: '2024-01-27T20:35:18.076Z',
       updated_at: '2024-01-27T20:35:18.076Z',
@@ -299,7 +299,7 @@ export default {
     {
       id: '6bebc351-8aa4-4196-8249-2291fef8d854',
       box_id: '5c6bde31-1ed9-4450-baaf-98e4c98b8853',
-      check: false,
+      checked: false,
       content: '법률로 유죄의 의무교육은 보호를.',
       created_at: '2024-01-26T12:11:04.291Z',
       updated_at: '2024-01-26T12:11:04.291Z',
@@ -307,7 +307,7 @@ export default {
     {
       id: 'bd51fc90-7e1b-47d2-b378-c55d30a06e18',
       box_id: '5c6bde31-1ed9-4450-baaf-98e4c98b8853',
-      check: true,
+      checked: true,
       content: '대하여 조약과 신문의 확정될 동일한.',
       created_at: '2024-01-26T07:02:36.356Z',
       updated_at: '2024-01-26T07:02:36.356Z',
@@ -315,7 +315,7 @@ export default {
     {
       id: '78ba5658-ef0f-4422-a13a-ed1891397b50',
       box_id: '2b235f2a-f658-4b38-84d5-dbac3325752a',
-      check: false,
+      checked: false,
       content: '진다. 현행범인인 범하고.',
       created_at: '2024-01-27T14:10:13.718Z',
       updated_at: '2024-01-27T14:10:13.718Z',
@@ -323,7 +323,7 @@ export default {
     {
       id: 'c4903866-a449-45c3-bb87-dd237d92a657',
       box_id: '2b235f2a-f658-4b38-84d5-dbac3325752a',
-      check: false,
+      checked: false,
       content: '보호할 수 또는 저작자·발명가·과학기술자와 헌법에.',
       created_at: '2024-01-28T00:12:18.668Z',
       updated_at: '2024-01-28T00:12:18.668Z',
@@ -331,7 +331,7 @@ export default {
     {
       id: '4190eb50-8ce3-46ee-9ece-dfcd4d4ad2f3',
       box_id: '2b235f2a-f658-4b38-84d5-dbac3325752a',
-      check: true,
+      checked: true,
       content: '예술가의 범하고 수 범죄를 법률로.',
       created_at: '2024-01-28T00:57:25.931Z',
       updated_at: '2024-01-28T00:57:25.931Z',
@@ -339,7 +339,7 @@ export default {
     {
       id: 'bc797d31-d021-4e7f-b5e1-51f20406aeb6',
       box_id: 'cad275dc-de3c-4db7-85b7-b96e199f85cd',
-      check: false,
+      checked: false,
       content: '처벌받지 정한다. 저작자·발명가·과학기술자와 영장을.',
       created_at: '2024-01-27T19:15:20.691Z',
       updated_at: '2024-01-27T19:15:20.691Z',
@@ -347,7 +347,7 @@ export default {
     {
       id: 'b8f7c0da-e816-48ad-8acb-134556a35a32',
       box_id: 'cad275dc-de3c-4db7-85b7-b96e199f85cd',
-      check: false,
+      checked: false,
       content: '동일한 때에는 유죄의.',
       created_at: '2024-01-27T13:20:15.528Z',
       updated_at: '2024-01-27T13:20:15.528Z',
@@ -355,7 +355,7 @@ export default {
     {
       id: '6b1de30a-c255-4e43-861d-53a07c699556',
       box_id: 'cad275dc-de3c-4db7-85b7-b96e199f85cd',
-      check: false,
+      checked: false,
       content: '보호한다. 때까지는 승인된.',
       created_at: '2024-01-27T14:39:48.515Z',
       updated_at: '2024-01-27T14:39:48.515Z',
@@ -363,7 +363,7 @@ export default {
     {
       id: 'dced544b-124c-47fa-af1f-91ea951b96c2',
       box_id: 'deeb8b90-cc3a-4bdd-9974-3ce2f1fbe656',
-      check: true,
+      checked: true,
       content: '도피 저작자·발명가·과학기술자와 바에.',
       created_at: '2024-01-26T09:49:27.690Z',
       updated_at: '2024-01-26T09:49:27.690Z',
@@ -371,7 +371,7 @@ export default {
     {
       id: '14da4535-cc65-4c73-bf04-5d01f2e2b517',
       box_id: 'deeb8b90-cc3a-4bdd-9974-3ce2f1fbe656',
-      check: false,
+      checked: false,
       content: '무죄로 정한다. 진흥하여야 재외국민을 계승·발전과.',
       created_at: '2024-01-26T22:39:55.815Z',
       updated_at: '2024-01-26T22:39:55.815Z',
@@ -379,7 +379,7 @@ export default {
     {
       id: 'e9798c1e-a753-406c-ac31-9daa4b0a1fce',
       box_id: 'deeb8b90-cc3a-4bdd-9974-3ce2f1fbe656',
-      check: true,
+      checked: true,
       content: '염려가 있다. 도피 추정된다. 자유를.',
       created_at: '2024-01-25T19:28:33.083Z',
       updated_at: '2024-01-25T19:28:33.083Z',
@@ -387,7 +387,7 @@ export default {
     {
       id: '001e4b64-209f-4b27-aed8-7c85dec5694a',
       box_id: '91534613-acb7-43ca-960d-1be3c9f96c28',
-      check: false,
+      checked: false,
       content: '염려가 형에 바에 구성하지 한다..',
       created_at: '2024-01-25T19:20:43.656Z',
       updated_at: '2024-01-25T19:20:43.656Z',
@@ -395,7 +395,7 @@ export default {
     {
       id: 'f6583ca1-2df3-4015-a9e9-4aaec7e45c9e',
       box_id: '91534613-acb7-43ca-960d-1be3c9f96c28',
-      check: true,
+      checked: true,
       content: '국내법과 통신·방송의 정하는 모든 위하여.',
       created_at: '2024-01-28T02:59:21.018Z',
       updated_at: '2024-01-28T02:59:21.018Z',
@@ -403,7 +403,7 @@ export default {
     {
       id: '9d66db77-ff70-4e63-9a3d-9b4955114d44',
       box_id: '91534613-acb7-43ca-960d-1be3c9f96c28',
-      check: true,
+      checked: true,
       content: '거듭 유죄의 죄를 정하는 국민은.',
       created_at: '2024-01-28T10:46:20.833Z',
       updated_at: '2024-01-28T10:46:20.833Z',
@@ -411,7 +411,7 @@ export default {
     {
       id: 'd0c52897-7d79-4934-a6de-5db37c151fb3',
       box_id: '5a1ab5f9-65ff-42ee-b51a-466715102103',
-      check: true,
+      checked: true,
       content: '보호할 국민은 같은 범죄에 행위로.',
       created_at: '2024-01-28T11:44:50.406Z',
       updated_at: '2024-01-28T11:44:50.406Z',
@@ -419,7 +419,7 @@ export default {
     {
       id: 'acbeb29b-5062-42b4-a143-6c0494296a7f',
       box_id: '5a1ab5f9-65ff-42ee-b51a-466715102103',
-      check: false,
+      checked: false,
       content: '국민은 시설기준과 법률로.',
       created_at: '2024-01-26T06:20:18.846Z',
       updated_at: '2024-01-26T06:20:18.846Z',
@@ -427,7 +427,7 @@ export default {
     {
       id: '100462ea-07d8-4407-97b7-bb02da726d52',
       box_id: '5a1ab5f9-65ff-42ee-b51a-466715102103',
-      check: false,
+      checked: false,
       content: '자유를 경우와 행위시의 위하여 해당하는.',
       created_at: '2024-01-26T12:00:37.224Z',
       updated_at: '2024-01-26T12:00:37.224Z',
@@ -435,7 +435,7 @@ export default {
     {
       id: '2060f845-67c6-4992-8902-0197cd7800a5',
       box_id: 'c0d08caf-e4c8-4429-8d67-8d7dba083aec',
-      check: true,
+      checked: true,
       content: '아니하며, 있다. 저작자·발명가·과학기술자와 구성하지.',
       created_at: '2024-01-26T17:22:41.522Z',
       updated_at: '2024-01-26T17:22:41.522Z',
@@ -443,7 +443,7 @@ export default {
     {
       id: '8c124411-4a71-43d5-b6a7-8ef5db87c15c',
       box_id: 'c0d08caf-e4c8-4429-8d67-8d7dba083aec',
-      check: true,
+      checked: true,
       content: '무상으로 국내법과 법률에 국민은.',
       created_at: '2024-01-26T12:27:13.844Z',
       updated_at: '2024-01-26T12:27:13.844Z',
@@ -451,7 +451,7 @@ export default {
     {
       id: 'c4cd559e-e263-415c-8633-15cb0c1d8cfe',
       box_id: 'c0d08caf-e4c8-4429-8d67-8d7dba083aec',
-      check: true,
+      checked: true,
       content: '거듭 권리는 국내법과.',
       created_at: '2024-01-25T22:31:55.234Z',
       updated_at: '2024-01-25T22:31:55.234Z',
@@ -459,7 +459,7 @@ export default {
     {
       id: '16e97810-afcb-4b46-8c47-33d95cea1327',
       box_id: 'dae5bce6-4229-462d-acfb-6c4c7fcb7519',
-      check: true,
+      checked: true,
       content: '일반적으로 법률로써 도피 조약과.',
       created_at: '2024-01-26T23:23:17.374Z',
       updated_at: '2024-01-26T23:23:17.374Z',
@@ -467,7 +467,7 @@ export default {
     {
       id: '3a6d8c46-d329-4ac7-8450-c0a671e165f0',
       box_id: 'dae5bce6-4229-462d-acfb-6c4c7fcb7519',
-      check: false,
+      checked: false,
       content: '구성하지 3년 법률로써 도피 사생활의.',
       created_at: '2024-01-26T23:40:41.878Z',
       updated_at: '2024-01-26T23:40:41.878Z',
@@ -475,7 +475,7 @@ export default {
     {
       id: '41d80350-7737-4660-8d53-b3d55a8f0451',
       box_id: 'dae5bce6-4229-462d-acfb-6c4c7fcb7519',
-      check: false,
+      checked: false,
       content: '현행범인인 법률로써 아니하는 유죄의.',
       created_at: '2024-01-28T09:58:39.877Z',
       updated_at: '2024-01-28T09:58:39.877Z',
@@ -483,7 +483,7 @@ export default {
     {
       id: 'c11501af-307c-4ab0-98dd-c4e92e969dff',
       box_id: '05f877f0-fc18-4dfc-b18a-d1f9711e05aa',
-      check: false,
+      checked: false,
       content: '장기 거듭 도피 비밀과.',
       created_at: '2024-01-26T04:16:23.150Z',
       updated_at: '2024-01-26T04:16:23.150Z',
@@ -491,7 +491,7 @@ export default {
     {
       id: 'fa676b6b-2aba-4b81-b943-9c89f56de296',
       box_id: '05f877f0-fc18-4dfc-b18a-d1f9711e05aa',
-      check: false,
+      checked: false,
       content: '있을 노력하여야 기능을 침해받지.',
       created_at: '2024-01-28T07:48:02.510Z',
       updated_at: '2024-01-28T07:48:02.510Z',
@@ -499,7 +499,7 @@ export default {
     {
       id: '7cdd8024-6065-4391-b942-fb32869cd736',
       box_id: '05f877f0-fc18-4dfc-b18a-d1f9711e05aa',
-      check: false,
+      checked: false,
       content: '재외국민을 비밀과 통신·방송의 민족문화의.',
       created_at: '2024-01-26T10:15:40.412Z',
       updated_at: '2024-01-26T10:15:40.412Z',
@@ -507,7 +507,7 @@ export default {
     {
       id: 'daaece36-c8fe-4dbe-9f45-74c8aa1b4a65',
       box_id: '35456b48-07e0-4972-a1f8-a63ea8076d21',
-      check: false,
+      checked: false,
       content: '일반적으로 장기 계승·발전과.',
       created_at: '2024-01-27T11:58:05.031Z',
       updated_at: '2024-01-27T11:58:05.031Z',
@@ -515,7 +515,7 @@ export default {
     {
       id: 'cc89426e-7df0-43b4-8a60-d20785af27c5',
       box_id: '35456b48-07e0-4972-a1f8-a63ea8076d21',
-      check: true,
+      checked: true,
       content: '증거인멸의 모성의 위하여 장기 현행범인인.',
       created_at: '2024-01-25T21:00:25.974Z',
       updated_at: '2024-01-25T21:00:25.974Z',
@@ -523,7 +523,7 @@ export default {
     {
       id: 'fc605291-7020-4714-8bb4-9a4cd7904b3e',
       box_id: '35456b48-07e0-4972-a1f8-a63ea8076d21',
-      check: true,
+      checked: true,
       content: '법률로써 경우와 3년 의하여.',
       created_at: '2024-01-26T15:24:14.017Z',
       updated_at: '2024-01-26T15:24:14.017Z',
@@ -531,7 +531,7 @@ export default {
     {
       id: 'ba8378cc-2ed5-4323-80ff-df177417f8ac',
       box_id: '7dce86e2-6627-450f-82fc-c0442705bf8f',
-      check: true,
+      checked: true,
       content: '침해받지 재외국민을 국민은.',
       created_at: '2024-01-26T04:48:39.644Z',
       updated_at: '2024-01-26T04:48:39.644Z',
@@ -539,7 +539,7 @@ export default {
     {
       id: 'e5cf3fbc-b403-4dc1-91ea-c4f71e3e93fb',
       box_id: '7dce86e2-6627-450f-82fc-c0442705bf8f',
-      check: false,
+      checked: false,
       content: '동일한 유죄의 체결·공포된 민족문화의.',
       created_at: '2024-01-27T01:07:59.279Z',
       updated_at: '2024-01-27T01:07:59.279Z',
@@ -547,7 +547,7 @@ export default {
     {
       id: 'e435d52f-dfcb-4848-887a-5c3e3847e095',
       box_id: '7dce86e2-6627-450f-82fc-c0442705bf8f',
-      check: false,
+      checked: false,
       content: '일반적으로 정하는 증거인멸의 또는 계승·발전과.',
       created_at: '2024-01-27T01:18:04.566Z',
       updated_at: '2024-01-27T01:18:04.566Z',
@@ -555,7 +555,7 @@ export default {
     {
       id: '7e025624-e6e9-4e2e-8a8b-2230734070dd',
       box_id: '8cde8a84-f6a9-4957-b08f-08fce33e5d85',
-      check: false,
+      checked: false,
       content: '동일한 모성의 있을 창달에 의하여.',
       created_at: '2024-01-28T03:30:48.865Z',
       updated_at: '2024-01-28T03:30:48.865Z',
@@ -563,7 +563,7 @@ export default {
     {
       id: '1eacaeae-af07-40fb-a11c-38f49caf788b',
       box_id: '8cde8a84-f6a9-4957-b08f-08fce33e5d85',
-      check: true,
+      checked: true,
       content: '보호한다. 처벌받지 아니한다..',
       created_at: '2024-01-27T17:01:19.237Z',
       updated_at: '2024-01-27T17:01:19.237Z',
@@ -571,7 +571,7 @@ export default {
     {
       id: '315d0c2e-b1d7-4c8f-832a-d22ee6ec7fde',
       box_id: '8cde8a84-f6a9-4957-b08f-08fce33e5d85',
-      check: false,
+      checked: false,
       content: '신체의 행위로 한다. 계승·발전과 행위로.',
       created_at: '2024-01-27T02:31:29.584Z',
       updated_at: '2024-01-27T02:31:29.584Z',
@@ -579,7 +579,7 @@ export default {
     {
       id: '9689eaf6-5597-4a49-b622-3ff57d5111d5',
       box_id: '3929986e-fde8-45b0-8f30-fff18f49dc1c',
-      check: false,
+      checked: false,
       content: '위하여 노력하여야 권리는 장기 행위시의.',
       created_at: '2024-01-28T04:11:49.137Z',
       updated_at: '2024-01-28T04:11:49.137Z',
@@ -587,7 +587,7 @@ export default {
     {
       id: '63420546-d6ef-43b1-8a29-f1cbfafc3516',
       box_id: '3929986e-fde8-45b0-8f30-fff18f49dc1c',
-      check: true,
+      checked: true,
       content: '증거인멸의 위하여 국가는.',
       created_at: '2024-01-28T07:37:35.379Z',
       updated_at: '2024-01-28T07:37:35.379Z',
@@ -595,7 +595,7 @@ export default {
     {
       id: 'd9107f24-eec2-43bc-a941-13b2b0c60160',
       box_id: '3929986e-fde8-45b0-8f30-fff18f49dc1c',
-      check: true,
+      checked: true,
       content: '법률이 장기 민족문화의.',
       created_at: '2024-01-27T21:33:09.626Z',
       updated_at: '2024-01-27T21:33:09.626Z',
@@ -789,7 +789,7 @@ export default {
         {
           id: '1e947d10-4484-456c-9d46-9296024ccd38',
           box_id: 'cbb01249-7a66-4af8-8516-a0fb4faa76ca',
-          check: true,
+          checked: true,
           content: '법률로써 또는 증거인멸의 무상으로 도피.',
           created_at: '2024-01-25T19:40:37.306Z',
           updated_at: '2024-01-25T19:40:37.306Z',
@@ -797,7 +797,7 @@ export default {
         {
           id: '7f9078d9-afd1-4eca-a2f0-00b0829efd7e',
           box_id: 'cbb01249-7a66-4af8-8516-a0fb4faa76ca',
-          check: false,
+          checked: false,
           content: '창달에 사항은 다만, 침해받지.',
           created_at: '2024-01-28T00:34:23.709Z',
           updated_at: '2024-01-28T00:34:23.709Z',
@@ -805,7 +805,7 @@ export default {
         {
           id: '745b4250-efeb-4e9d-b6fa-b9decc8df233',
           box_id: 'cbb01249-7a66-4af8-8516-a0fb4faa76ca',
-          check: false,
+          checked: false,
           content: '국내법과 염려가 보호할.',
           created_at: '2024-01-27T18:22:37.543Z',
           updated_at: '2024-01-27T18:22:37.543Z',
@@ -822,7 +822,7 @@ export default {
         {
           id: 'df448f52-e472-42e1-9fe0-3bcf3beb9d11',
           box_id: 'd0a7a5cf-46b8-487a-abc9-29c86ef0cbbb',
-          check: true,
+          checked: true,
           content: '보장하기 기능을 처벌받지 이상의 소추되지.',
           created_at: '2024-01-26T14:27:28.768Z',
           updated_at: '2024-01-26T14:27:28.768Z',
@@ -830,7 +830,7 @@ export default {
         {
           id: 'e55fd3ae-aee5-4b87-84e4-fc56aa300fda',
           box_id: 'd0a7a5cf-46b8-487a-abc9-29c86ef0cbbb',
-          check: true,
+          checked: true,
           content: '사항은 평생교육을 무상으로 사후에.',
           created_at: '2024-01-27T11:10:36.563Z',
           updated_at: '2024-01-27T11:10:36.563Z',
@@ -838,7 +838,7 @@ export default {
         {
           id: '171619fa-c73e-4b18-bcf1-3d6f635e08f8',
           box_id: 'd0a7a5cf-46b8-487a-abc9-29c86ef0cbbb',
-          check: true,
+          checked: true,
           content: '법률이 사후에 기능을 행위시의 계승·발전과.',
           created_at: '2024-01-25T17:57:23.497Z',
           updated_at: '2024-01-25T17:57:23.497Z',
@@ -855,7 +855,7 @@ export default {
         {
           id: '38c9831d-6576-422a-8040-2e1b549317a8',
           box_id: 'fae2af1c-8b56-4db2-9dc3-35baf4589fef',
-          check: true,
+          checked: true,
           content: '국민은 거듭 해당하는.',
           created_at: '2024-01-28T06:15:15.406Z',
           updated_at: '2024-01-28T06:15:15.406Z',
@@ -863,7 +863,7 @@ export default {
         {
           id: '01bed5b1-4440-4435-819b-a2fe0232f610',
           box_id: 'fae2af1c-8b56-4db2-9dc3-35baf4589fef',
-          check: false,
+          checked: false,
           content: '평생교육을 노력하여야 법률에 체결·공포된 증거인멸의.',
           created_at: '2024-01-25T18:10:10.605Z',
           updated_at: '2024-01-25T18:10:10.605Z',
@@ -871,7 +871,7 @@ export default {
         {
           id: '00890acd-20a8-4355-918e-e67ef285ce28',
           box_id: 'fae2af1c-8b56-4db2-9dc3-35baf4589fef',
-          check: true,
+          checked: true,
           content: '추정된다. 형사피고인은 증거인멸의 범죄에.',
           created_at: '2024-01-27T15:54:38.979Z',
           updated_at: '2024-01-27T15:54:38.979Z',
@@ -888,7 +888,7 @@ export default {
         {
           id: '473a86ef-b5c8-4def-ae65-21ac89e12bff',
           box_id: '781c3cf4-16e9-4a80-882b-7cd0dff14e30',
-          check: true,
+          checked: true,
           content: '조약과 무죄로 유죄의 동일한 저작자·발명가·과학기술자와.',
           created_at: '2024-01-26T10:55:23.520Z',
           updated_at: '2024-01-26T10:55:23.520Z',
@@ -896,7 +896,7 @@ export default {
         {
           id: '6fa03bfc-8713-4a30-abe9-401689699fdf',
           box_id: '781c3cf4-16e9-4a80-882b-7cd0dff14e30',
-          check: false,
+          checked: false,
           content: '의무를 확정될 재외국민을 창달에 해당하는.',
           created_at: '2024-01-27T18:27:09.866Z',
           updated_at: '2024-01-27T18:27:09.866Z',
@@ -904,7 +904,7 @@ export default {
         {
           id: '1c71163b-b52c-4b9d-b32b-1fc30ce076f9',
           box_id: '781c3cf4-16e9-4a80-882b-7cd0dff14e30',
-          check: true,
+          checked: true,
           content: '진흥하여야 전통문화의 아니하며, 국제법규는.',
           created_at: '2024-01-26T08:17:20.248Z',
           updated_at: '2024-01-26T08:17:20.248Z',
@@ -921,7 +921,7 @@ export default {
         {
           id: 'af203167-633c-481d-8e24-33dd27a5f2ce',
           box_id: '0324c50a-a249-4e1c-92cc-bc4237e97396',
-          check: false,
+          checked: false,
           content: '행위로 3년 모든 동일한.',
           created_at: '2024-01-27T17:13:27.323Z',
           updated_at: '2024-01-27T17:13:27.323Z',
@@ -929,7 +929,7 @@ export default {
         {
           id: '4c7975c4-21cd-4585-92e6-5d5a6625b141',
           box_id: '0324c50a-a249-4e1c-92cc-bc4237e97396',
-          check: true,
+          checked: true,
           content: '보장하기 대하여 때까지는 전통문화의.',
           created_at: '2024-01-27T00:57:46.957Z',
           updated_at: '2024-01-27T00:57:46.957Z',
@@ -937,7 +937,7 @@ export default {
         {
           id: '9107d3c9-a5f1-4012-8904-8c9fcfe9c77f',
           box_id: '0324c50a-a249-4e1c-92cc-bc4237e97396',
-          check: true,
+          checked: true,
           content: '법률에 해당하는 보호할 위하여 다만,.',
           created_at: '2024-01-26T07:08:56.224Z',
           updated_at: '2024-01-26T07:08:56.224Z',
@@ -954,7 +954,7 @@ export default {
         {
           id: 'dde85eb8-d81c-4280-ba79-33aa31844443',
           box_id: '048a1aa3-af85-4c95-a143-681b8370db02',
-          check: true,
+          checked: true,
           content: '전통문화의 모든 정하는 형사피고인은 재외국민을.',
           created_at: '2024-01-27T18:13:12.850Z',
           updated_at: '2024-01-27T18:13:12.850Z',
@@ -962,7 +962,7 @@ export default {
         {
           id: '932446b8-7134-40da-bb6d-f63be6eb7176',
           box_id: '048a1aa3-af85-4c95-a143-681b8370db02',
-          check: true,
+          checked: true,
           content: '예술가의 정하는 3년 사후에 거듭.',
           created_at: '2024-01-28T02:05:48.581Z',
           updated_at: '2024-01-28T02:05:48.581Z',
@@ -970,7 +970,7 @@ export default {
         {
           id: '26cf1e5c-bbe8-4782-907d-bf22645edafb',
           box_id: '048a1aa3-af85-4c95-a143-681b8370db02',
-          check: true,
+          checked: true,
           content: '이상의 재외국민을 정하는 법률로 사항은.',
           created_at: '2024-01-27T07:11:48.187Z',
           updated_at: '2024-01-27T07:11:48.187Z',
@@ -987,7 +987,7 @@ export default {
         {
           id: 'c2ebcaf6-4409-4d7e-8815-21a6c65211d3',
           box_id: '0df02688-335d-4500-ad31-143508ba4a39',
-          check: true,
+          checked: true,
           content: '국가는 창달에 의무를 비밀과.',
           created_at: '2024-01-25T14:06:13.303Z',
           updated_at: '2024-01-25T14:06:13.303Z',
@@ -995,7 +995,7 @@ export default {
         {
           id: '3dfa7dd7-149b-4258-811e-552861548be9',
           box_id: '0df02688-335d-4500-ad31-143508ba4a39',
-          check: false,
+          checked: false,
           content: '보호한다. 해당하는 예술가의 유죄의 일반적으로.',
           created_at: '2024-01-26T05:34:30.580Z',
           updated_at: '2024-01-26T05:34:30.580Z',
@@ -1003,7 +1003,7 @@ export default {
         {
           id: '734ee5d1-9fec-4ef9-a0e2-d5aabb919edc',
           box_id: '0df02688-335d-4500-ad31-143508ba4a39',
-          check: true,
+          checked: true,
           content: '조약과 의하여 무죄로.',
           created_at: '2024-01-26T02:16:47.948Z',
           updated_at: '2024-01-26T02:16:47.948Z',
@@ -1020,7 +1020,7 @@ export default {
         {
           id: '011f3377-90c7-48d9-be4f-850cac1f05ec',
           box_id: '9d2d34dd-4809-4d1a-b913-83f6718300c3',
-          check: true,
+          checked: true,
           content: '국제법규는 증거인멸의 보호한다. 법률이.',
           created_at: '2024-01-27T14:00:19.139Z',
           updated_at: '2024-01-27T14:00:19.139Z',
@@ -1028,7 +1028,7 @@ export default {
         {
           id: '7d733dec-8a80-4e9a-809f-9e3aeec3a3f2',
           box_id: '9d2d34dd-4809-4d1a-b913-83f6718300c3',
-          check: false,
+          checked: false,
           content: '사후에 조약과 의하여 법률로 장기.',
           created_at: '2024-01-27T05:13:23.488Z',
           updated_at: '2024-01-27T05:13:23.488Z',
@@ -1036,7 +1036,7 @@ export default {
         {
           id: 'cd866295-7351-4134-9d3d-7ea0f8077eac',
           box_id: '9d2d34dd-4809-4d1a-b913-83f6718300c3',
-          check: false,
+          checked: false,
           content: '청구할 계승·발전과 아니한다. 장기.',
           created_at: '2024-01-26T23:26:53.452Z',
           updated_at: '2024-01-26T23:26:53.452Z',
@@ -1053,7 +1053,7 @@ export default {
         {
           id: 'fcff8b90-0002-404b-97b0-9ab70d81d08f',
           box_id: 'd116fd03-4c62-43b4-bfd1-1365e61f6713',
-          check: false,
+          checked: false,
           content: '판결이 염려가 다만,.',
           created_at: '2024-01-25T22:21:52.802Z',
           updated_at: '2024-01-25T22:21:52.802Z',
@@ -1061,7 +1061,7 @@ export default {
         {
           id: 'a253c85f-6164-49f5-a9fa-b45df1c6435f',
           box_id: 'd116fd03-4c62-43b4-bfd1-1365e61f6713',
-          check: false,
+          checked: false,
           content: '국민은 아니하며, 창달에 확정될 모성의.',
           created_at: '2024-01-27T01:01:05.304Z',
           updated_at: '2024-01-27T01:01:05.304Z',
@@ -1069,7 +1069,7 @@ export default {
         {
           id: '108d0fe3-df04-4668-b43b-26c51efbc281',
           box_id: 'd116fd03-4c62-43b4-bfd1-1365e61f6713',
-          check: true,
+          checked: true,
           content: '무상으로 영장을 법률이.',
           created_at: '2024-01-28T08:37:33.848Z',
           updated_at: '2024-01-28T08:37:33.848Z',
@@ -1086,7 +1086,7 @@ export default {
         {
           id: 'c42f0b1a-c21b-446c-a07b-63ef369c551d',
           box_id: '359b8a4b-94e3-450c-ae1d-bd1c37d753f6',
-          check: true,
+          checked: true,
           content: '국민은 경우와 승인된 추정된다..',
           created_at: '2024-01-26T16:03:11.237Z',
           updated_at: '2024-01-26T16:03:11.237Z',
@@ -1094,7 +1094,7 @@ export default {
         {
           id: 'a7dc5c7d-a6b8-4acb-b51d-9f99510b647b',
           box_id: '359b8a4b-94e3-450c-ae1d-bd1c37d753f6',
-          check: false,
+          checked: false,
           content: '신문의 확정될 형사피고인은 수.',
           created_at: '2024-01-27T02:38:21.971Z',
           updated_at: '2024-01-27T02:38:21.971Z',
@@ -1102,7 +1102,7 @@ export default {
         {
           id: '9ea9028f-aa4b-477b-98fa-3afb32b6e296',
           box_id: '359b8a4b-94e3-450c-ae1d-bd1c37d753f6',
-          check: true,
+          checked: true,
           content: '보장하기 노력하여야 형사피고인은 국제법규는 3년.',
           created_at: '2024-01-28T01:20:09.480Z',
           updated_at: '2024-01-28T01:20:09.480Z',
@@ -1119,7 +1119,7 @@ export default {
         {
           id: '6efd347d-add1-4dd3-9309-a6daf963d37b',
           box_id: '8be51f91-62c9-45be-aec1-cda2f4a43b23',
-          check: true,
+          checked: true,
           content: '신문의 죄를 의무교육은 이상의.',
           created_at: '2024-01-27T19:28:33.835Z',
           updated_at: '2024-01-27T19:28:33.835Z',
@@ -1127,7 +1127,7 @@ export default {
         {
           id: '2ab394a9-7892-4601-94ae-ce554eec1de5',
           box_id: '8be51f91-62c9-45be-aec1-cda2f4a43b23',
-          check: false,
+          checked: false,
           content: '때까지는 가진다. 필요한.',
           created_at: '2024-01-28T12:04:12.108Z',
           updated_at: '2024-01-28T12:04:12.108Z',
@@ -1135,7 +1135,7 @@ export default {
         {
           id: 'fc5948cc-5915-4e48-97a3-c56826565ed5',
           box_id: '8be51f91-62c9-45be-aec1-cda2f4a43b23',
-          check: true,
+          checked: true,
           content: '수 시설기준과 필요한 바에 효력을.',
           created_at: '2024-01-26T19:04:24.524Z',
           updated_at: '2024-01-26T19:04:24.524Z',
@@ -1152,7 +1152,7 @@ export default {
         {
           id: '5c31a2a5-8e0b-4312-b23b-2c6ac1bd152c',
           box_id: 'dd49acb7-4c2a-4493-aaae-1661c362e0a7',
-          check: true,
+          checked: true,
           content: '저작자·발명가·과학기술자와 비밀과 체결·공포된 신체의 형에.',
           created_at: '2024-01-27T14:34:07.565Z',
           updated_at: '2024-01-27T14:34:07.565Z',
@@ -1160,7 +1160,7 @@ export default {
         {
           id: '1328616b-9d5e-4f4d-a348-3ada92a274b7',
           box_id: 'dd49acb7-4c2a-4493-aaae-1661c362e0a7',
-          check: false,
+          checked: false,
           content: '보호할 보호를 때까지는.',
           created_at: '2024-01-26T03:16:33.246Z',
           updated_at: '2024-01-26T03:16:33.246Z',
@@ -1168,7 +1168,7 @@ export default {
         {
           id: 'a50ede1a-1169-412a-9ee5-f07e1b2d2db0',
           box_id: 'dd49acb7-4c2a-4493-aaae-1661c362e0a7',
-          check: true,
+          checked: true,
           content: '정하는 사후에 3년 있을.',
           created_at: '2024-01-27T19:47:50.703Z',
           updated_at: '2024-01-27T19:47:50.703Z',
@@ -1185,7 +1185,7 @@ export default {
         {
           id: '5466b77f-a308-4c67-a4eb-30ab40ce8bbb',
           box_id: '5c6bde31-1ed9-4450-baaf-98e4c98b8853',
-          check: true,
+          checked: true,
           content: '보호한다. 무죄로 추정된다..',
           created_at: '2024-01-27T20:35:18.076Z',
           updated_at: '2024-01-27T20:35:18.076Z',
@@ -1193,7 +1193,7 @@ export default {
         {
           id: '6bebc351-8aa4-4196-8249-2291fef8d854',
           box_id: '5c6bde31-1ed9-4450-baaf-98e4c98b8853',
-          check: false,
+          checked: false,
           content: '법률로 유죄의 의무교육은 보호를.',
           created_at: '2024-01-26T12:11:04.291Z',
           updated_at: '2024-01-26T12:11:04.291Z',
@@ -1201,7 +1201,7 @@ export default {
         {
           id: 'bd51fc90-7e1b-47d2-b378-c55d30a06e18',
           box_id: '5c6bde31-1ed9-4450-baaf-98e4c98b8853',
-          check: true,
+          checked: true,
           content: '대하여 조약과 신문의 확정될 동일한.',
           created_at: '2024-01-26T07:02:36.356Z',
           updated_at: '2024-01-26T07:02:36.356Z',
@@ -1218,7 +1218,7 @@ export default {
         {
           id: '78ba5658-ef0f-4422-a13a-ed1891397b50',
           box_id: '2b235f2a-f658-4b38-84d5-dbac3325752a',
-          check: false,
+          checked: false,
           content: '진다. 현행범인인 범하고.',
           created_at: '2024-01-27T14:10:13.718Z',
           updated_at: '2024-01-27T14:10:13.718Z',
@@ -1226,7 +1226,7 @@ export default {
         {
           id: 'c4903866-a449-45c3-bb87-dd237d92a657',
           box_id: '2b235f2a-f658-4b38-84d5-dbac3325752a',
-          check: false,
+          checked: false,
           content: '보호할 수 또는 저작자·발명가·과학기술자와 헌법에.',
           created_at: '2024-01-28T00:12:18.668Z',
           updated_at: '2024-01-28T00:12:18.668Z',
@@ -1234,7 +1234,7 @@ export default {
         {
           id: '4190eb50-8ce3-46ee-9ece-dfcd4d4ad2f3',
           box_id: '2b235f2a-f658-4b38-84d5-dbac3325752a',
-          check: true,
+          checked: true,
           content: '예술가의 범하고 수 범죄를 법률로.',
           created_at: '2024-01-28T00:57:25.931Z',
           updated_at: '2024-01-28T00:57:25.931Z',
@@ -1251,7 +1251,7 @@ export default {
         {
           id: 'bc797d31-d021-4e7f-b5e1-51f20406aeb6',
           box_id: 'cad275dc-de3c-4db7-85b7-b96e199f85cd',
-          check: false,
+          checked: false,
           content: '처벌받지 정한다. 저작자·발명가·과학기술자와 영장을.',
           created_at: '2024-01-27T19:15:20.691Z',
           updated_at: '2024-01-27T19:15:20.691Z',
@@ -1259,7 +1259,7 @@ export default {
         {
           id: 'b8f7c0da-e816-48ad-8acb-134556a35a32',
           box_id: 'cad275dc-de3c-4db7-85b7-b96e199f85cd',
-          check: false,
+          checked: false,
           content: '동일한 때에는 유죄의.',
           created_at: '2024-01-27T13:20:15.528Z',
           updated_at: '2024-01-27T13:20:15.528Z',
@@ -1267,7 +1267,7 @@ export default {
         {
           id: '6b1de30a-c255-4e43-861d-53a07c699556',
           box_id: 'cad275dc-de3c-4db7-85b7-b96e199f85cd',
-          check: false,
+          checked: false,
           content: '보호한다. 때까지는 승인된.',
           created_at: '2024-01-27T14:39:48.515Z',
           updated_at: '2024-01-27T14:39:48.515Z',
@@ -1284,7 +1284,7 @@ export default {
         {
           id: 'dced544b-124c-47fa-af1f-91ea951b96c2',
           box_id: 'deeb8b90-cc3a-4bdd-9974-3ce2f1fbe656',
-          check: true,
+          checked: true,
           content: '도피 저작자·발명가·과학기술자와 바에.',
           created_at: '2024-01-26T09:49:27.690Z',
           updated_at: '2024-01-26T09:49:27.690Z',
@@ -1292,7 +1292,7 @@ export default {
         {
           id: '14da4535-cc65-4c73-bf04-5d01f2e2b517',
           box_id: 'deeb8b90-cc3a-4bdd-9974-3ce2f1fbe656',
-          check: false,
+          checked: false,
           content: '무죄로 정한다. 진흥하여야 재외국민을 계승·발전과.',
           created_at: '2024-01-26T22:39:55.815Z',
           updated_at: '2024-01-26T22:39:55.815Z',
@@ -1300,7 +1300,7 @@ export default {
         {
           id: 'e9798c1e-a753-406c-ac31-9daa4b0a1fce',
           box_id: 'deeb8b90-cc3a-4bdd-9974-3ce2f1fbe656',
-          check: true,
+          checked: true,
           content: '염려가 있다. 도피 추정된다. 자유를.',
           created_at: '2024-01-25T19:28:33.083Z',
           updated_at: '2024-01-25T19:28:33.083Z',
@@ -1317,7 +1317,7 @@ export default {
         {
           id: '001e4b64-209f-4b27-aed8-7c85dec5694a',
           box_id: '91534613-acb7-43ca-960d-1be3c9f96c28',
-          check: false,
+          checked: false,
           content: '염려가 형에 바에 구성하지 한다..',
           created_at: '2024-01-25T19:20:43.656Z',
           updated_at: '2024-01-25T19:20:43.656Z',
@@ -1325,7 +1325,7 @@ export default {
         {
           id: 'f6583ca1-2df3-4015-a9e9-4aaec7e45c9e',
           box_id: '91534613-acb7-43ca-960d-1be3c9f96c28',
-          check: true,
+          checked: true,
           content: '국내법과 통신·방송의 정하는 모든 위하여.',
           created_at: '2024-01-28T02:59:21.018Z',
           updated_at: '2024-01-28T02:59:21.018Z',
@@ -1333,7 +1333,7 @@ export default {
         {
           id: '9d66db77-ff70-4e63-9a3d-9b4955114d44',
           box_id: '91534613-acb7-43ca-960d-1be3c9f96c28',
-          check: true,
+          checked: true,
           content: '거듭 유죄의 죄를 정하는 국민은.',
           created_at: '2024-01-28T10:46:20.833Z',
           updated_at: '2024-01-28T10:46:20.833Z',
@@ -1350,7 +1350,7 @@ export default {
         {
           id: 'd0c52897-7d79-4934-a6de-5db37c151fb3',
           box_id: '5a1ab5f9-65ff-42ee-b51a-466715102103',
-          check: true,
+          checked: true,
           content: '보호할 국민은 같은 범죄에 행위로.',
           created_at: '2024-01-28T11:44:50.406Z',
           updated_at: '2024-01-28T11:44:50.406Z',
@@ -1358,7 +1358,7 @@ export default {
         {
           id: 'acbeb29b-5062-42b4-a143-6c0494296a7f',
           box_id: '5a1ab5f9-65ff-42ee-b51a-466715102103',
-          check: false,
+          checked: false,
           content: '국민은 시설기준과 법률로.',
           created_at: '2024-01-26T06:20:18.846Z',
           updated_at: '2024-01-26T06:20:18.846Z',
@@ -1366,7 +1366,7 @@ export default {
         {
           id: '100462ea-07d8-4407-97b7-bb02da726d52',
           box_id: '5a1ab5f9-65ff-42ee-b51a-466715102103',
-          check: false,
+          checked: false,
           content: '자유를 경우와 행위시의 위하여 해당하는.',
           created_at: '2024-01-26T12:00:37.224Z',
           updated_at: '2024-01-26T12:00:37.224Z',
@@ -1383,7 +1383,7 @@ export default {
         {
           id: '2060f845-67c6-4992-8902-0197cd7800a5',
           box_id: 'c0d08caf-e4c8-4429-8d67-8d7dba083aec',
-          check: true,
+          checked: true,
           content: '아니하며, 있다. 저작자·발명가·과학기술자와 구성하지.',
           created_at: '2024-01-26T17:22:41.522Z',
           updated_at: '2024-01-26T17:22:41.522Z',
@@ -1391,7 +1391,7 @@ export default {
         {
           id: '8c124411-4a71-43d5-b6a7-8ef5db87c15c',
           box_id: 'c0d08caf-e4c8-4429-8d67-8d7dba083aec',
-          check: true,
+          checked: true,
           content: '무상으로 국내법과 법률에 국민은.',
           created_at: '2024-01-26T12:27:13.844Z',
           updated_at: '2024-01-26T12:27:13.844Z',
@@ -1399,7 +1399,7 @@ export default {
         {
           id: 'c4cd559e-e263-415c-8633-15cb0c1d8cfe',
           box_id: 'c0d08caf-e4c8-4429-8d67-8d7dba083aec',
-          check: true,
+          checked: true,
           content: '거듭 권리는 국내법과.',
           created_at: '2024-01-25T22:31:55.234Z',
           updated_at: '2024-01-25T22:31:55.234Z',
@@ -1416,7 +1416,7 @@ export default {
         {
           id: '16e97810-afcb-4b46-8c47-33d95cea1327',
           box_id: 'dae5bce6-4229-462d-acfb-6c4c7fcb7519',
-          check: true,
+          checked: true,
           content: '일반적으로 법률로써 도피 조약과.',
           created_at: '2024-01-26T23:23:17.374Z',
           updated_at: '2024-01-26T23:23:17.374Z',
@@ -1424,7 +1424,7 @@ export default {
         {
           id: '3a6d8c46-d329-4ac7-8450-c0a671e165f0',
           box_id: 'dae5bce6-4229-462d-acfb-6c4c7fcb7519',
-          check: false,
+          checked: false,
           content: '구성하지 3년 법률로써 도피 사생활의.',
           created_at: '2024-01-26T23:40:41.878Z',
           updated_at: '2024-01-26T23:40:41.878Z',
@@ -1432,7 +1432,7 @@ export default {
         {
           id: '41d80350-7737-4660-8d53-b3d55a8f0451',
           box_id: 'dae5bce6-4229-462d-acfb-6c4c7fcb7519',
-          check: false,
+          checked: false,
           content: '현행범인인 법률로써 아니하는 유죄의.',
           created_at: '2024-01-28T09:58:39.877Z',
           updated_at: '2024-01-28T09:58:39.877Z',
@@ -1449,7 +1449,7 @@ export default {
         {
           id: 'c11501af-307c-4ab0-98dd-c4e92e969dff',
           box_id: '05f877f0-fc18-4dfc-b18a-d1f9711e05aa',
-          check: false,
+          checked: false,
           content: '장기 거듭 도피 비밀과.',
           created_at: '2024-01-26T04:16:23.150Z',
           updated_at: '2024-01-26T04:16:23.150Z',
@@ -1457,7 +1457,7 @@ export default {
         {
           id: 'fa676b6b-2aba-4b81-b943-9c89f56de296',
           box_id: '05f877f0-fc18-4dfc-b18a-d1f9711e05aa',
-          check: false,
+          checked: false,
           content: '있을 노력하여야 기능을 침해받지.',
           created_at: '2024-01-28T07:48:02.510Z',
           updated_at: '2024-01-28T07:48:02.510Z',
@@ -1465,7 +1465,7 @@ export default {
         {
           id: '7cdd8024-6065-4391-b942-fb32869cd736',
           box_id: '05f877f0-fc18-4dfc-b18a-d1f9711e05aa',
-          check: false,
+          checked: false,
           content: '재외국민을 비밀과 통신·방송의 민족문화의.',
           created_at: '2024-01-26T10:15:40.412Z',
           updated_at: '2024-01-26T10:15:40.412Z',
@@ -1482,7 +1482,7 @@ export default {
         {
           id: 'daaece36-c8fe-4dbe-9f45-74c8aa1b4a65',
           box_id: '35456b48-07e0-4972-a1f8-a63ea8076d21',
-          check: false,
+          checked: false,
           content: '일반적으로 장기 계승·발전과.',
           created_at: '2024-01-27T11:58:05.031Z',
           updated_at: '2024-01-27T11:58:05.031Z',
@@ -1490,7 +1490,7 @@ export default {
         {
           id: 'cc89426e-7df0-43b4-8a60-d20785af27c5',
           box_id: '35456b48-07e0-4972-a1f8-a63ea8076d21',
-          check: true,
+          checked: true,
           content: '증거인멸의 모성의 위하여 장기 현행범인인.',
           created_at: '2024-01-25T21:00:25.974Z',
           updated_at: '2024-01-25T21:00:25.974Z',
@@ -1498,7 +1498,7 @@ export default {
         {
           id: 'fc605291-7020-4714-8bb4-9a4cd7904b3e',
           box_id: '35456b48-07e0-4972-a1f8-a63ea8076d21',
-          check: true,
+          checked: true,
           content: '법률로써 경우와 3년 의하여.',
           created_at: '2024-01-26T15:24:14.017Z',
           updated_at: '2024-01-26T15:24:14.017Z',
@@ -1515,7 +1515,7 @@ export default {
         {
           id: 'ba8378cc-2ed5-4323-80ff-df177417f8ac',
           box_id: '7dce86e2-6627-450f-82fc-c0442705bf8f',
-          check: true,
+          checked: true,
           content: '침해받지 재외국민을 국민은.',
           created_at: '2024-01-26T04:48:39.644Z',
           updated_at: '2024-01-26T04:48:39.644Z',
@@ -1523,7 +1523,7 @@ export default {
         {
           id: 'e5cf3fbc-b403-4dc1-91ea-c4f71e3e93fb',
           box_id: '7dce86e2-6627-450f-82fc-c0442705bf8f',
-          check: false,
+          checked: false,
           content: '동일한 유죄의 체결·공포된 민족문화의.',
           created_at: '2024-01-27T01:07:59.279Z',
           updated_at: '2024-01-27T01:07:59.279Z',
@@ -1531,7 +1531,7 @@ export default {
         {
           id: 'e435d52f-dfcb-4848-887a-5c3e3847e095',
           box_id: '7dce86e2-6627-450f-82fc-c0442705bf8f',
-          check: false,
+          checked: false,
           content: '일반적으로 정하는 증거인멸의 또는 계승·발전과.',
           created_at: '2024-01-27T01:18:04.566Z',
           updated_at: '2024-01-27T01:18:04.566Z',
@@ -1548,7 +1548,7 @@ export default {
         {
           id: '7e025624-e6e9-4e2e-8a8b-2230734070dd',
           box_id: '8cde8a84-f6a9-4957-b08f-08fce33e5d85',
-          check: false,
+          checked: false,
           content: '동일한 모성의 있을 창달에 의하여.',
           created_at: '2024-01-28T03:30:48.865Z',
           updated_at: '2024-01-28T03:30:48.865Z',
@@ -1556,7 +1556,7 @@ export default {
         {
           id: '1eacaeae-af07-40fb-a11c-38f49caf788b',
           box_id: '8cde8a84-f6a9-4957-b08f-08fce33e5d85',
-          check: true,
+          checked: true,
           content: '보호한다. 처벌받지 아니한다..',
           created_at: '2024-01-27T17:01:19.237Z',
           updated_at: '2024-01-27T17:01:19.237Z',
@@ -1564,7 +1564,7 @@ export default {
         {
           id: '315d0c2e-b1d7-4c8f-832a-d22ee6ec7fde',
           box_id: '8cde8a84-f6a9-4957-b08f-08fce33e5d85',
-          check: false,
+          checked: false,
           content: '신체의 행위로 한다. 계승·발전과 행위로.',
           created_at: '2024-01-27T02:31:29.584Z',
           updated_at: '2024-01-27T02:31:29.584Z',
@@ -1581,7 +1581,7 @@ export default {
         {
           id: '9689eaf6-5597-4a49-b622-3ff57d5111d5',
           box_id: '3929986e-fde8-45b0-8f30-fff18f49dc1c',
-          check: false,
+          checked: false,
           content: '위하여 노력하여야 권리는 장기 행위시의.',
           created_at: '2024-01-28T04:11:49.137Z',
           updated_at: '2024-01-28T04:11:49.137Z',
@@ -1589,7 +1589,7 @@ export default {
         {
           id: '63420546-d6ef-43b1-8a29-f1cbfafc3516',
           box_id: '3929986e-fde8-45b0-8f30-fff18f49dc1c',
-          check: true,
+          checked: true,
           content: '증거인멸의 위하여 국가는.',
           created_at: '2024-01-28T07:37:35.379Z',
           updated_at: '2024-01-28T07:37:35.379Z',
@@ -1597,7 +1597,7 @@ export default {
         {
           id: 'd9107f24-eec2-43bc-a941-13b2b0c60160',
           box_id: '3929986e-fde8-45b0-8f30-fff18f49dc1c',
-          check: true,
+          checked: true,
           content: '법률이 장기 민족문화의.',
           created_at: '2024-01-27T21:33:09.626Z',
           updated_at: '2024-01-27T21:33:09.626Z',

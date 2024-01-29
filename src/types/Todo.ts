@@ -1,20 +1,27 @@
+import { TodoBoxType } from '@/types';
+
 export type TodoType = {
   id: string;
   box_id: string;
-  check: boolean;
+  checked: boolean;
   content: string;
   created_at: string;
   updated_at: string;
 };
 
-export type TodoBoxType = {
+export type TodoViewType = [
+  TodoBoxType.TodoBoxType & {
+    todos: TodoType[];
+  },
+];
+
+export type TodoPatchType = {
   id: string;
-  priority: 1 | 2 | 3;
-  title: string;
-  created_at: string;
-  updated_at: string;
+  checked?: boolean;
+  content?: string;
 };
 
-export type TodoViewType = TodoBoxType & {
-  todos: TodoType[];
+export type TodoCreateType = {
+  box_id: string;
+  content: string;
 };
