@@ -1,7 +1,7 @@
 import { http, HttpHandler, HttpResponse } from 'msw';
 import { uuid } from '@supabase/supabase-js/dist/main/lib/helpers';
 
-import Mock from './mock';
+import Mock from './TodoMock';
 
 type NewTodoType = {
   box_id: string;
