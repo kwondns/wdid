@@ -18,6 +18,7 @@ export const indexLoader = (queryClient: QueryClient) => async (): Promise<TodoT
       return;
     }
     const { worker } = await import('../mocks/browser');
+    // eslint-disable-next-line consistent-return
     return worker.start();
   }
   return enableMocking().then(async () => {
