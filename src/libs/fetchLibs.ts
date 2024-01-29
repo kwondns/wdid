@@ -15,7 +15,7 @@ export const fetchGet = async <T>(url: string): Promise<T> => {
   return response.json();
 };
 
-export const fetchPatch = async (url: string, body: Object) => {
+export const fetchPatch = async (url: string, body: object) => {
   const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/${url}`, {
     method: 'PATCH',
     body: JSON.stringify(body),
@@ -23,7 +23,7 @@ export const fetchPatch = async (url: string, body: Object) => {
   checkStatus(response);
 };
 
-export const fetchPost = async (url: string, body: Object) => {
+export const fetchPost = async (url: string, body: object) => {
   const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/${url}`, {
     method: 'POST',
     body: JSON.stringify(body),
