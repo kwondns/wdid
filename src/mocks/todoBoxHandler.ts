@@ -39,7 +39,6 @@ todoBoxHandler.push(
 todoBoxHandler.push(
   http.patch<{ todoBoxId: string }, PatchTodoBoxType>('/todobox/:todoBoxId', async ({ params, request }) => {
     const { todoBoxId } = params;
-    console.log(todoBoxId);
     const { title } = await request.json();
     const targetIndex = Mock.TodoBox.findIndex((todoBox) => todoBox.id === todoBoxId);
     const targetViewIndex = Mock.TodoView.findIndex((view) => view.id === todoBoxId);
