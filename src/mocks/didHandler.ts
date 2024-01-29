@@ -10,9 +10,8 @@ didHandler.push(
   http.get<{ date: string }>('/did/:date', ({ params }) => {
     const { WhatDidIDo } = Mock;
     const { date } = params;
-
-    WhatDidIDo.filter((v) => new Date(v.startTime).getDate() === new Date(date).getDate());
-    return HttpResponse.json(WhatDidIDo);
+    const result = WhatDidIDo.filter((v) => new Date(v.startTime).getDate() === new Date(date).getDate());
+    return HttpResponse.json(result);
   }),
 );
 export default didHandler;
