@@ -11,8 +11,12 @@ const howHandler: HttpHandler[] = [];
 howHandler.push(
   http.get('/howmany', () => {
     const { HowManyTimes } = Mock;
-    HowManyTimes.sort((a, b) => DateLib.parseDateStr(a.date).getTime() - DateLib.parseDateStr(b.date).getTime());
-    return HttpResponse.json(HowManyTimes);
+    const result = HowManyTimes.sort(
+      (a, b) => DateLib.parseDateStr(a.date).getTime() - DateLib.parseDateStr(b.date).getTime(),
+    )
+      .slice(0, 30)
+      .reverse();
+    return HttpResponse.json(result);
   }),
 );
 
