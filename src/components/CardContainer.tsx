@@ -13,7 +13,9 @@ export default function CardContainer(props: CardContainerProps) {
   const onClickCreateBox = () => setIsAddBox(true);
   const closeCreateBox = () => setIsAddBox(false);
   return (
-    <div className="flex max-h-[500px] min-h-[500px] max-w-fit flex-1 overflow-x-auto overflow-y-clip p-20">
+    <div
+      className={`flex max-h-[500px] min-h-[500px] max-w-fit flex-1 overflow-x-auto overflow-y-clip p-20 ${priority === 3 && 'mb-14'}`}
+    >
       {children}
       {isAddBox ? (
         <Card priority={priority} index={index} title="" todos={[]} closeCreateBox={closeCreateBox} />
