@@ -9,7 +9,7 @@ export default function HowManyTemplate() {
   const { HowMany: initialData } = useLoaderData() as Awaited<ReturnType<ReturnType<typeof indexLoader>>>;
   const { data } = useQuery({ ...useHowMany.useHowManyAll(), initialData });
   return (
-    <div className="p-1">
+    <div className="row-start-2 row-end-3 self-center p-1">
       <ActivityCalendar activities={data} />
     </div>
   );
