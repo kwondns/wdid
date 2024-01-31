@@ -1,10 +1,14 @@
 import { QueryClient } from '@tanstack/react-query';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useLocation } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
 
 import { useHowMany, useTodos, useWhatDid } from '@/hooks';
-import { TodoTemplate, HowManyTemplate, WhatDidTemplate } from '@/templates';
+import { Layout, TodoTemplate, HowManyTemplate, WhatDidTemplate } from '@/templates';
 import { TodoType, HowManyType, WhatDidType } from '@/types';
-import { ActivityStore } from '@/stores';
+import { ActivityStore, LayoutStore } from '@/stores';
+import { FullContainer } from '@/components';
+import { LayoutTransition } from '@/constants';
 
 type LoaderType = {
   Todo: TodoType.TodoViewType[];
@@ -13,17 +17,28 @@ type LoaderType = {
 };
 export default function Index() {
   const activityDate = useRecoilValue(ActivityStore.ActivityDateAtom);
+  const location = useLocation().pathname.slice(1) as 'past' | 'present' | 'future';
+  const setLayout = useSetRecoilState(LayoutStore.LayoutAtom);
+
+  useLayoutEffect(() => {
+    setLayout(LayoutTransition[location]);
+  }, [location]);
+
   return (
-    <div className="grid h-screen grid-cols-[55%_45%] grid-rows-[auto_30%_70%]">
-      <div className="col-start-1 col-end-2 row-start-2 row-end-4 flex h-full flex-col gap-y-2 p-2">
-        <HowManyTemplate />
-        <div className="flex w-full flex-col border-opacity-50">
-          <div className="divider">{activityDate}</div>
+    <Layout>
+      <FullContainer>
+        <div className="flex w-full flex-col gap-y-2 p-2">
+          <HowManyTemplate />
+          <div className="flex w-full flex-col border-opacity-50">
+            <div className="divider">{activityDate}</div>
+          </div>
+          <WhatDidTemplate />
         </div>
-        <WhatDidTemplate />
-      </div>
-      <TodoTemplate />
-    </div>
+      </FullContainer>
+      <FullContainer>
+        <TodoTemplate />
+      </FullContainer>
+    </Layout>
   );
 }
 

@@ -12,7 +12,6 @@ export default function Header() {
             <img className="size-[50px] p-2" src="/assets/past.svg" alt="past" />
           </Link>
         </div>
-
         <div className="tooltip tooltip-bottom" data-tip="Present">
           <Link className="btn btn-ghost" to="/present">
             <img className="size-[50px] p-2" src="/assets/present.svg" alt="present" />

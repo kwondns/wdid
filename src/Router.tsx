@@ -10,7 +10,18 @@ const queryClient = new QueryClient({
     },
   },
 });
-const router = createBrowserRouter([{ path: '/', element: <Index />, loader: indexLoader(queryClient) }]);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Index />,
+    loader: indexLoader(queryClient),
+    children: [
+      { path: 'past', element: null },
+      { path: 'present', element: null },
+      { path: 'future', element: null },
+    ],
+  },
+]);
 
 export default function Router() {
   return (

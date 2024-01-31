@@ -19,6 +19,9 @@ export default {
     'z-[8]',
     'z-[9]',
     'z-[10]',
+    '-translate-x-[0vw]',
+    '-translate-x-[100vw]',
+    '-translate-x-[200vw]',
     { pattern: /-left-*/ },
   ],
 };
