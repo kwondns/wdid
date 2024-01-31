@@ -5,7 +5,7 @@ import { useTodos } from 'hooks';
 import { CardSet } from '@/components';
 import { indexLoader } from '@/pages';
 
-export default function TodoTemplate() {
+export default function FutureTemplate() {
   const { Todo: initialData } = useLoaderData() as Awaited<ReturnType<ReturnType<typeof indexLoader>>>;
   const { data: todoView } = useQuery({ ...useTodos.useTodosAll(), initialData });
   return (
