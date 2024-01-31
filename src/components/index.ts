@@ -6,3 +6,5 @@ export { default as TodoInput } from './TodoInput';
 export { default as Activity } from './Activity';
 export { default as ActivityCalendar } from './ActivityCalendar';
 export { default as ActivityDocument } from './ActivityDocument';
+export { default as Timer } from './Timer';
+export { default as Header } from './Header';
