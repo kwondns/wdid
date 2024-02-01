@@ -1,8 +1,8 @@
 import { Activity } from '@/components';
-import { HowManyType } from '@/types';
+import { PastCountType } from '@/types';
 
 type ActivityCalendarProps = {
-  activities: HowManyType.HowManyType[];
+  activities: PastCountType.PastCountType[];
 };
 
 export default function ActivityCalendar(props: ActivityCalendarProps) {

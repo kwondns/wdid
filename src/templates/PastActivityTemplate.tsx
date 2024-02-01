@@ -3,15 +3,15 @@ import { useQuery } from '@tanstack/react-query';
 import { useRecoilValue } from 'recoil';
 
 import { indexLoader } from '@/pages';
-import { useWhatDid } from '@/hooks';
+import { usePast } from '@/hooks';
 import { ActivityDocument } from '@/components';
-import { ActivityStore } from '@/stores';
+import { PastStore } from '@/stores';
 
-export default function WhatDidTemplate() {
+export default function PastActivityTemplate() {
   const { WhatDid: initialData } = useLoaderData() as Awaited<ReturnType<ReturnType<typeof indexLoader>>>;
-  const activityDate = useRecoilValue(ActivityStore.ActivityDateAtom);
+  const activityDate = useRecoilValue(PastStore.PastDateAtom);
   const { data } = useQuery({
-    ...useWhatDid.useWhatDid(activityDate),
+    ...usePast.usePast(activityDate),
     initialData: activityDate === new Date().toLocaleDateString() ? initialData : undefined,
   });
   return (

@@ -1,11 +1,11 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { TodoType } from '@/types';
-import { useTodos } from '@/hooks';
+import { FutureType } from '@/types';
+import { useFutures } from '@/hooks';
 
 type TodoContentProps = {
-  todo: TodoType.TodoType;
+  todo: FutureType.FutureType;
   checkColor: string;
 };
 type FormInputType = {
@@ -14,7 +14,7 @@ type FormInputType = {
 export default function TodoContent(props: TodoContentProps) {
   const { todo, checkColor } = props;
   const { id, content, checked } = todo;
-  const { patchTodo, isPatching } = useTodos.useTodoPatch();
+  const { patchTodo, isPatching } = useFutures.useTodoPatch();
   const {
     handleSubmit,
     register,

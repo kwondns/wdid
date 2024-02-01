@@ -1,7 +1,7 @@
 import { useSetRecoilState } from 'recoil';
 import { MouseEvent } from 'react';
 
-import { ActivityStore } from '@/stores';
+import { PastStore } from '@/stores';
 
 type ActivityProps = {
   date: string;
@@ -9,8 +9,8 @@ type ActivityProps = {
 };
 export default function Activity(props: ActivityProps) {
   const { date, count } = props;
-  const setActivityDate = useSetRecoilState(ActivityStore.ActivityDateAtom);
-  const setAccordion = useSetRecoilState(ActivityStore.AccordionAtom);
+  const setActivityDate = useSetRecoilState(PastStore.PastDateAtom);
+  const setAccordion = useSetRecoilState(PastStore.AccordionAtom);
   const onClickButton = (event: MouseEvent<HTMLButtonElement>) => {
     const { id } = event.currentTarget;
     setActivityDate(id);

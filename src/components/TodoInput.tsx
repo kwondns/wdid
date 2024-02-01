@@ -1,7 +1,7 @@
 import { KeyboardEvent, MouseEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { useTodos } from '@/hooks';
+import { useFutures } from '@/hooks';
 
 type TodoInputProps = {
   id: string;
@@ -21,7 +21,7 @@ export default function TodoInput(props: TodoInputProps) {
     reset,
   } = useForm<FormInputType>();
 
-  const { createTodo, isCreating } = useTodos.useTodoCreate();
+  const { createTodo, isCreating } = useFutures.useTodoCreate();
   const onClickOpenInput = (event: MouseEvent<HTMLButtonElement>) => {
     if (!input) {
       event.preventDefault();

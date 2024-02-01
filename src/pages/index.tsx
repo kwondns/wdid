@@ -1,22 +1,21 @@
 import { QueryClient } from '@tanstack/react-query';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { useLocation } from 'react-router-dom';
 import { useLayoutEffect } from 'react';
 
-import { useHowMany, useTodos, useWhatDid } from '@/hooks';
-import { Layout, TodoTemplate, HowManyTemplate, WhatDidTemplate } from '@/templates';
-import { TodoType, HowManyType, WhatDidType } from '@/types';
-import { ActivityStore, LayoutStore } from '@/stores';
+import { usePastCount, useFutures, usePast } from '@/hooks';
+import { Layout, PastTemplate, PresentTemplate, FutureTemplate } from '@/templates';
+import { FutureType, PastCountType, PastType } from '@/types';
+import { LayoutStore } from '@/stores';
 import { FullContainer } from '@/components';
 import { LayoutTransition } from '@/constants';
 
 type LoaderType = {
-  Todo: TodoType.TodoViewType[];
-  HowMany: HowManyType.HowManyType[];
-  WhatDid: WhatDidType.WhatDidType[];
+  Todo: FutureType.TodoViewType[];
+  HowMany: PastCountType.PastCountType[];
+  WhatDid: PastType.PastType[];
 };
 export default function Index() {
-  const activityDate = useRecoilValue(ActivityStore.ActivityDateAtom);
   const location = useLocation().pathname.slice(1) as 'past' | 'present' | 'future';
   const setLayout = useSetRecoilState(LayoutStore.LayoutAtom);
 
@@ -27,16 +26,13 @@ export default function Index() {
   return (
     <Layout>
       <FullContainer>
-        <div className="flex w-full flex-col gap-y-2 p-2">
-          <HowManyTemplate />
-          <div className="flex w-full flex-col border-opacity-50">
-            <div className="divider">{activityDate}</div>
-          </div>
-          <WhatDidTemplate />
-        </div>
+        <PastTemplate />
       </FullContainer>
       <FullContainer>
-        <TodoTemplate />
+        <PresentTemplate />
+      </FullContainer>
+      <FullContainer>
+        <FutureTemplate />
       </FullContainer>
     </Layout>
   );
@@ -52,9 +48,9 @@ export const indexLoader = (queryClient: QueryClient) => async (): Promise<Loade
     return worker.start();
   }
   return enableMocking().then(async () => {
-    const queryTodo = useTodos.useTodosAll();
-    const queryHowMany = useHowMany.useHowManyAll();
-    const queryWhatDid = useWhatDid.useWhatDid(new Date().toLocaleDateString());
+    const queryTodo = useFutures.useTodosAll();
+    const queryHowMany = usePastCount.useHowManyAll();
+    const queryWhatDid = usePast.usePast(new Date().toLocaleDateString());
     return {
       Todo: queryClient.getQueryData(queryTodo.queryKey) ?? (await queryClient.fetchQuery(queryTodo)),
       HowMany: queryClient.getQueryData(queryHowMany.queryKey) ?? (await queryClient.fetchQuery(queryHowMany)),

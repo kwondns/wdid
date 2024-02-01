@@ -2,9 +2,9 @@ import { KeyboardEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { PriorityColor } from '@/constants';
-import { TodoType } from '@/types';
+import { FutureType } from '@/types';
 import { TodoInput, TodoContent } from '@/components';
-import { useTodoBox } from '@/hooks';
+import { useFutureBox } from '@/hooks';
 
 type CardProps = {
   // eslint-disable-next-line react/require-default-props
@@ -12,7 +12,7 @@ type CardProps = {
   priority: 1 | 2 | 3;
   index: number;
   title: string;
-  todos: TodoType.TodoType[];
+  todos: FutureType.FutureType[];
   closeCreateBox?: () => void;
 };
 
@@ -22,8 +22,8 @@ type FormInputType = {
 
 export default function Card(props: CardProps) {
   const { priority, id, index, title, todos, closeCreateBox } = props;
-  const { patchTodoBox, isPatchingBox } = useTodoBox.useTodoBoxPatch();
-  const { createTodoBox, isCreatingBox } = useTodoBox.useTodoBoxCreate();
+  const { patchTodoBox, isPatchingBox } = useFutureBox.useTodoBoxPatch();
+  const { createTodoBox, isCreatingBox } = useFutureBox.useTodoBoxCreate();
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const cardBaseStyle =
     'card min-w-[400px] shadow-md shadow-slate-800 hover:shadow-lg has-[:focus]:shadow-lg focus:shadow-lg  hover:shadow-slate-600 has-[:focus]:shadow-slate-600 focus:shadow-slate-600  text-white transition-all overflow-hidden h-[380px] hover:scale-110 has-[:focus]:scale-110 focus:scale-125  hover:z-10 has-[:focus]:z-10 focus:z-10 border-b-[6px] border-l-2 border-r-[6px] border-t-2 border-slate-900';
