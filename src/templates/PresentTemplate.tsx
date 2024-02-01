@@ -5,7 +5,7 @@ import { useLoaderData } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
-import { DateLib } from '@/libs';
+import { DateLib, MarkdownLib } from '@/libs';
 import { PresentStore } from '@/stores';
 import { usePast, usePresent } from '@/hooks';
 import { indexLoader } from '@/pages';
@@ -76,7 +76,6 @@ export default function PresentTemplate() {
             type="text"
             placeholder="제목 입력"
             {...register('title', { required: true, onChange: onChangeTitle })}
-            // onChange={onChangeTitle}
           />
           <input type="hidden" {...register('startTime', { required: true })} />
           <input type="hidden" {...register('endTime', { required: true })} />
@@ -104,8 +103,21 @@ export default function PresentTemplate() {
           </button>
         </div>
         <div className="max-h-[90vw] flex-1 p-4">
-          {/* @ts-ignore */}
-          <MDEditor value={content} onChange={setContent} />
+          <MDEditor
+            value={content}
+            onChange={(value) => {
+              setContent(value as string);
+            }}
+            onPaste={async (event) => {
+              await MarkdownLib.onImagePasted(event.clipboardData, setContent);
+            }}
+            onDrop={async (event) => {
+              await MarkdownLib.onImagePasted(event.dataTransfer, setContent);
+            }}
+            textareaProps={{
+              placeholder: '꾸준히 작성하자',
+            }}
+          />
         </div>
       </form>
     </div>
