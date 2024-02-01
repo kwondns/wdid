@@ -7,6 +7,11 @@ export const MarkdownAtom = atom({
   default: '',
 });
 
+export const TitleAtom = atom({
+  key: 'titleAtom',
+  default: '',
+});
+
 const CurrentTimeEffect =
   (): AtomEffect<Date> =>
   ({ setSelf }) => {
@@ -37,11 +42,27 @@ export const StartTimeAtom = atom<Date | null>({
   default: null,
 });
 
+export const StartTimeSelector = selector({
+  key: 'startTimeSelector',
+  get: ({ get }) => {
+    const startTime = get(StartTimeAtom);
+    if (startTime) return startTime.toString();
+    return '';
+  },
+});
+
 export const EndTimeAtom = atom<Date | null>({
   key: 'endTimeAtom',
   default: null,
 });
-
+export const EndTimeSelector = selector({
+  key: 'endTimeSelector',
+  get: ({ get }) => {
+    const endTime = get(EndTimeAtom);
+    if (endTime) return endTime.toString();
+    return '';
+  },
+});
 export const DiffTimeAtom = atom<string | null>({
   key: 'diffTimeAtom',
   default: null,
