@@ -9,7 +9,7 @@ export type FutureType = {
   updated_at: string;
 };
 
-export type TodoViewType = [
+export type FutureViewType = [
   FutureBoxType.FutureBoxType & {
     futures: FutureType[];
   },
