@@ -1,9 +1,9 @@
 import { KeyboardEvent, MouseEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { useTodos } from '@/hooks';
+import { useFutures } from '@/hooks';
 
-type TodoInputProps = {
+type FutureInputProps = {
   id: string;
   buttonColor: string;
 };
@@ -11,7 +11,7 @@ type TodoInputProps = {
 type FormInputType = {
   content: string;
 };
-export default function TodoInput(props: TodoInputProps) {
+export default function FutureInput(props: FutureInputProps) {
   const { id, buttonColor } = props;
   const [input, setInput] = useState(false);
   const {
@@ -21,7 +21,7 @@ export default function TodoInput(props: TodoInputProps) {
     reset,
   } = useForm<FormInputType>();
 
-  const { createTodo, isCreating } = useTodos.useTodoCreate();
+  const { createFuture, isCreating } = useFutures.useFutureCreate();
   const onClickOpenInput = (event: MouseEvent<HTMLButtonElement>) => {
     if (!input) {
       event.preventDefault();
@@ -38,7 +38,7 @@ export default function TodoInput(props: TodoInputProps) {
     }
   }, [isSubmitSuccessful, reset]);
   const onSubmitCreate = (data: FormInputType) => {
-    createTodo({ box_id: id, content: data.content });
+    createFuture({ box_id: id, content: data.content });
   };
   return (
     <form onSubmit={handleSubmit(onSubmitCreate)} className="relative col-start-1 col-end-3 px-2 pb-2">

@@ -1,16 +1,17 @@
 import { useRecoilState } from 'recoil';
+import MDEditor from '@uiw/react-md-editor';
 
 import { DateLib } from '@/libs';
-import { WhatDidType } from '@/types';
-import { ActivityStore } from '@/stores';
+import { PastType } from '@/types';
+import { PastStore } from '@/stores';
 
 type ActivityDocumentProps = {
-  activity: WhatDidType.WhatDidType;
+  activity: PastType.PastType;
   index: number;
 };
 export default function ActivityDocument(props: ActivityDocumentProps) {
   const { activity, index } = props;
-  const [accordion, setAccordion] = useRecoilState(ActivityStore.AccordionAtom);
+  const [accordion, setAccordion] = useRecoilState(PastStore.AccordionAtom);
   const onClickAccordion = () => {
     if (accordion === index) {
       setAccordion(-1);
@@ -24,7 +25,7 @@ export default function ActivityDocument(props: ActivityDocumentProps) {
         <span className="text-sm">{DateLib.dateFormat(activity.startTime, activity.endTime)}</span>
       </div>
       <div className="collapse-content overflow-y-auto">
-        <p>{activity.content}</p>
+        <MDEditor.Markdown source={activity.content} />
       </div>
     </div>
   );

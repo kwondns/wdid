@@ -1,6 +1,7 @@
-import * as useTodos from './useTodos';
-import * as useTodoBox from './useTodoBox';
-import * as useHowMany from './useHowMany';
-import * as useWhatDid from './useWhatDid';
+import * as useFutures from './useFutures';
+import * as useFutureBox from './useFutureBox';
+import * as usePastCount from './usePastCount';
+import * as usePast from './usePast';
+import * as usePresent from './usePresent';
 
-export { useTodos, useTodoBox, useHowMany, useWhatDid };
+export { useFutures, useFutureBox, usePastCount, usePast, usePresent };

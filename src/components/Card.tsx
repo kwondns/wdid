@@ -2,9 +2,9 @@ import { KeyboardEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { PriorityColor } from '@/constants';
-import { TodoType } from '@/types';
-import { TodoInput, TodoContent } from '@/components';
-import { useTodoBox } from '@/hooks';
+import { FutureType } from '@/types';
+import { FutureInput, FutureContent } from '@/components';
+import { useFutureBox } from '@/hooks';
 
 type CardProps = {
   // eslint-disable-next-line react/require-default-props
@@ -12,7 +12,7 @@ type CardProps = {
   priority: 1 | 2 | 3;
   index: number;
   title: string;
-  todos: TodoType.TodoType[];
+  futures: FutureType.FutureType[];
   closeCreateBox?: () => void;
 };
 
@@ -21,9 +21,9 @@ type FormInputType = {
 };
 
 export default function Card(props: CardProps) {
-  const { priority, id, index, title, todos, closeCreateBox } = props;
-  const { patchTodoBox, isPatchingBox } = useTodoBox.useTodoBoxPatch();
-  const { createTodoBox, isCreatingBox } = useTodoBox.useTodoBoxCreate();
+  const { priority, id, index, title, futures, closeCreateBox } = props;
+  const { patchFutureBox, isPatchingBox } = useFutureBox.useFutureBoxPatch();
+  const { createFutureBox, isCreatingBox } = useFutureBox.useFutureBoxCreate();
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const cardBaseStyle =
     'card min-w-[400px] shadow-md shadow-slate-800 hover:shadow-lg has-[:focus]:shadow-lg focus:shadow-lg  hover:shadow-slate-600 has-[:focus]:shadow-slate-600 focus:shadow-slate-600  text-white transition-all overflow-hidden h-[380px] hover:scale-110 has-[:focus]:scale-110 focus:scale-125  hover:z-10 has-[:focus]:z-10 focus:z-10 border-b-[6px] border-l-2 border-r-[6px] border-t-2 border-slate-900';
@@ -48,10 +48,10 @@ export default function Card(props: CardProps) {
   const onSubmitTitle = (data: FormInputType) => {
     if (id) {
       const payload = { id, title: data.title };
-      patchTodoBox(payload);
+      patchFutureBox(payload);
     } else {
       const payload = { title: data.title, priority };
-      createTodoBox(payload);
+      createFutureBox(payload);
       if (closeCreateBox) {
         closeCreateBox();
       }
@@ -91,12 +91,12 @@ export default function Card(props: CardProps) {
           />
         </div>
         <div className="col-start-1 col-end-3 flex flex-col gap-y-2 overflow-y-auto px-2 pb-4">
-          {todos.map((todo) => {
-            if (!isVisible && todo.checked) return null;
-            return <TodoContent key={todo.id} todo={todo} checkColor={PriorityColor[priority].checkbox} />;
+          {futures.map((future) => {
+            if (!isVisible && future.checked) return null;
+            return <FutureContent key={future.id} future={future} checkColor={PriorityColor[priority].checkbox} />;
           })}
         </div>
-        {id && <TodoInput id={id} buttonColor={PriorityColor[priority].btn} />}
+        {id && <FutureInput id={id} buttonColor={PriorityColor[priority].btn} />}
       </div>
     </div>
   );

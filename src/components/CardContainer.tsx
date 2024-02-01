@@ -18,7 +18,7 @@ export default function CardContainer(props: CardContainerProps) {
     >
       {children}
       {isAddBox ? (
-        <Card priority={priority} index={index} title="" todos={[]} closeCreateBox={closeCreateBox} />
+        <Card priority={priority} index={index} title="" futures={[]} closeCreateBox={closeCreateBox} />
       ) : (
         <button
           type="button"

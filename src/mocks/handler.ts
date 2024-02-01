@@ -1,6 +1,7 @@
-import TodoHandler from './todoHandler';
-import TodoBoxHandler from './todoBoxHandler';
-import HowHandler from './howHandler';
-import didHandler from './didHandler';
+import FutureHandler from './futureHandler';
+import FutureBoxHandler from './futureBoxHandler';
+import PastCountHandler from './pastCountHandler';
+import PastHandler from './pastHandler';
+import presentHandler from './presentHandler';
 
-export const handlers = [...TodoBoxHandler, ...TodoHandler, ...HowHandler, ...didHandler];
+export const handlers = [...FutureBoxHandler, ...FutureHandler, ...PastCountHandler, ...PastHandler, ...presentHandler];

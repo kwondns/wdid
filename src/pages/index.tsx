@@ -1,42 +1,38 @@
 import { QueryClient } from '@tanstack/react-query';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { useLocation } from 'react-router-dom';
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 
-import { useHowMany, useTodos, useWhatDid } from '@/hooks';
-import { Layout, TodoTemplate, HowManyTemplate, WhatDidTemplate } from '@/templates';
-import { TodoType, HowManyType, WhatDidType } from '@/types';
-import { ActivityStore, LayoutStore } from '@/stores';
+import { usePastCount, useFutures, usePast, usePresent } from '@/hooks';
+import { Layout, PastTemplate, PresentTemplate, FutureTemplate } from '@/templates';
+import { FutureType, PastCountType, PastType, PresentType } from '@/types';
+import { LayoutStore } from '@/stores';
 import { FullContainer } from '@/components';
 import { LayoutTransition } from '@/constants';
 
 type LoaderType = {
-  Todo: TodoType.TodoViewType[];
-  HowMany: HowManyType.HowManyType[];
-  WhatDid: WhatDidType.WhatDidType[];
+  Future: FutureType.FutureViewType[];
+  PastCount: PastCountType.PastCountType[];
+  Past: PastType.PastType[];
+  Present: PresentType.PresentType;
 };
 export default function Index() {
-  const activityDate = useRecoilValue(ActivityStore.ActivityDateAtom);
   const location = useLocation().pathname.slice(1) as 'past' | 'present' | 'future';
   const setLayout = useSetRecoilState(LayoutStore.LayoutAtom);
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     setLayout(LayoutTransition[location]);
   }, [location]);
 
   return (
     <Layout>
       <FullContainer>
-        <div className="flex w-full flex-col gap-y-2 p-2">
-          <HowManyTemplate />
-          <div className="flex w-full flex-col border-opacity-50">
-            <div className="divider">{activityDate}</div>
-          </div>
-          <WhatDidTemplate />
-        </div>
+        <PastTemplate />
       </FullContainer>
       <FullContainer>
-        <TodoTemplate />
+        <PresentTemplate />
+      </FullContainer>
+      <FullContainer>
+        <FutureTemplate />
       </FullContainer>
     </Layout>
   );
@@ -52,13 +48,15 @@ export const indexLoader = (queryClient: QueryClient) => async (): Promise<Loade
     return worker.start();
   }
   return enableMocking().then(async () => {
-    const queryTodo = useTodos.useTodosAll();
-    const queryHowMany = useHowMany.useHowManyAll();
-    const queryWhatDid = useWhatDid.useWhatDid(new Date().toLocaleDateString());
+    const queryFuture = useFutures.useFuturesAll();
+    const queryPastCount = usePastCount.usePastCountAll();
+    const queryPast = usePast.usePast(new Date().toLocaleDateString());
+    const queryPreset = usePresent.usePresent();
     return {
-      Todo: queryClient.getQueryData(queryTodo.queryKey) ?? (await queryClient.fetchQuery(queryTodo)),
-      HowMany: queryClient.getQueryData(queryHowMany.queryKey) ?? (await queryClient.fetchQuery(queryHowMany)),
-      WhatDid: queryClient.getQueryData(queryWhatDid.queryKey) ?? (await queryClient.fetchQuery(queryWhatDid)),
+      Future: queryClient.getQueryData(queryFuture.queryKey) ?? (await queryClient.fetchQuery(queryFuture)),
+      PastCount: queryClient.getQueryData(queryPastCount.queryKey) ?? (await queryClient.fetchQuery(queryPastCount)),
+      Past: queryClient.getQueryData(queryPast.queryKey) ?? (await queryClient.fetchQuery(queryPast)),
+      Present: queryClient.getQueryData(queryPreset.queryKey) ?? (await queryClient.fetchQuery(queryPreset)),
     };
   });
 };

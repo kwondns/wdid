@@ -1,6 +1,7 @@
-import * as apiTodos from './apiTodos';
-import * as apiTodoBox from './apiTodoBox';
-import * as apiHowMany from './apiHowMany';
-import * as apiWhatDid from './apiWhatDid';
+import * as apiFutures from './apiFutures';
+import * as apiFutureBox from './apiFutureBox';
+import * as apiPastCount from './apiPastCount';
+import * as apiPast from './apiPast';
+import * as apiPresent from './apiPresent';
 
-export { apiTodos, apiTodoBox, apiHowMany, apiWhatDid };
+export { apiFutures, apiFutureBox, apiPastCount, apiPast, apiPresent };
