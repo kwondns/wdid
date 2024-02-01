@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
-export const ActivityDateAtom = atom({
-  key: 'activityDateAtom',
+export const PastDateAtom = atom({
+  key: 'pastDateAtom',
   default: new Date().toLocaleDateString(),
 });
 

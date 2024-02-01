@@ -1,4 +1,5 @@
-import * as ActivityStore from './Activity';
+import * as PastStore from './Past';
 import * as LayoutStore from './Layout';
+import * as PresentStore from './Present';
 
-export { ActivityStore, LayoutStore };
+export { PastStore, LayoutStore, PresentStore };

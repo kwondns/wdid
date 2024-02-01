@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { apiTodos } from '@/apis';
-import { TodoType } from '@/types';
+import { apiFutures } from '@/apis';
+import { FutureType } from '@/types';
 
-export const useTodosAll = () => ({ queryKey: ['todos', 'all'], queryFn: apiTodos.getTodosAll });
+export const useTodosAll = () => ({ queryKey: ['todos', 'all'], queryFn: apiFutures.getFuturesAll });
 
 export const useTodoPatch = () => {
   const queryClient = useQueryClient();
   const { mutate: patchTodo, isPending: isPatching } = useMutation({
-    mutationFn: (payload: TodoType.TodoPatchType) => apiTodos.patchTodo(payload),
+    mutationFn: (payload: FutureType.FuturePatchType) => apiFutures.patchFuture(payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos', 'all'] });
     },
@@ -20,7 +20,7 @@ export const useTodoPatch = () => {
 export const useTodoCreate = () => {
   const queryClient = useQueryClient();
   const { mutate: createTodo, isPending: isCreating } = useMutation({
-    mutationFn: (payload: TodoType.TodoCreateType) => apiTodos.createTodo(payload),
+    mutationFn: (payload: FutureType.FutureCreateType) => apiFutures.createFuture(payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos', 'all'] });
     },

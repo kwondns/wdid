@@ -1,17 +1,17 @@
 import { http, HttpHandler, HttpResponse } from 'msw';
 
-import Mock from './WDIDMock';
+import PastMock from './PastMock';
 import { DateLib } from '@/libs';
 
-const howHandler: HttpHandler[] = [];
+const pastCountHandler: HttpHandler[] = [];
 /**
  *  HowManyTimes 목록 가져오기
  *  Return HowManyTimes 목록
  */
-howHandler.push(
-  http.get('/howmany', () => {
-    const { HowManyTimes } = Mock;
-    const result = HowManyTimes.sort(
+pastCountHandler.push(
+  http.get('/pastcount', () => {
+    const { PastCount } = PastMock;
+    const result = PastCount.sort(
       (a, b) => DateLib.parseDateStr(a.date).getTime() - DateLib.parseDateStr(b.date).getTime(),
     )
       .slice(0, 30)
@@ -20,4 +20,4 @@ howHandler.push(
   }),
 );
 
-export default howHandler;
+export default pastCountHandler;

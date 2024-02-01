@@ -1,4 +1,4 @@
-export type WhatDidType = {
+export type PastType = {
   id: string;
   title: string;
   content: string;

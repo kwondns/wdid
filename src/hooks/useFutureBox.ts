@@ -1,12 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { apiTodoBox } from '@/apis';
-import { TodoBoxType } from '@/types';
+import { apiFutureBox } from '@/apis';
+import { FutureBoxType } from '@/types';
 
 export const useTodoBoxPatch = () => {
   const queryClient = useQueryClient();
   const { mutate: patchTodoBox, isPending: isPatchingBox } = useMutation({
-    mutationFn: (payload: TodoBoxType.TodoBoxPatchType) => apiTodoBox.patchTodoBox(payload),
+    mutationFn: (payload: FutureBoxType.FutureBoxPatchType) => apiFutureBox.patchFutureBox(payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos', 'all'] });
     },
@@ -18,7 +18,7 @@ export const useTodoBoxPatch = () => {
 export const useTodoBoxCreate = () => {
   const queryClient = useQueryClient();
   const { mutate: createTodoBox, isPending: isCreatingBox } = useMutation({
-    mutationFn: (payload: TodoBoxType.TodoBoxCreateType) => apiTodoBox.createTodoBox(payload),
+    mutationFn: (payload: FutureBoxType.FutureBoxCreateType) => apiFutureBox.createFutureBox(payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos', 'all'] });
     },

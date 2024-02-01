@@ -1,6 +1,6 @@
-import { TodoBoxType } from '@/types';
+import { FutureBoxType } from '@/types';
 
-export type TodoType = {
+export type FutureType = {
   id: string;
   box_id: string;
   checked: boolean;
@@ -10,18 +10,18 @@ export type TodoType = {
 };
 
 export type TodoViewType = [
-  TodoBoxType.TodoBoxType & {
-    todos: TodoType[];
+  FutureBoxType.FutureBoxType & {
+    futures: FutureType[];
   },
 ];
 
-export type TodoPatchType = {
+export type FuturePatchType = {
   id: string;
   checked?: boolean;
   content?: string;
 };
 
-export type TodoCreateType = {
+export type FutureCreateType = {
   box_id: string;
   content: string;
 };

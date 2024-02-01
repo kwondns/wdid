@@ -1,4 +1,4 @@
-export type TodoBoxType = {
+export type FutureBoxType = {
   id: string;
   priority: 1 | 2 | 3;
   title: string;
@@ -6,12 +6,12 @@ export type TodoBoxType = {
   updated_at: string;
 };
 
-export type TodoBoxPatchType = {
+export type FutureBoxPatchType = {
   id: string;
   title: string;
 };
 
-export type TodoBoxCreateType = {
+export type FutureBoxCreateType = {
   priority: 1 | 2 | 3;
   title: string;
 };

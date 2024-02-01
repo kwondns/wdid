@@ -1,6 +1,6 @@
-import { apiHowMany } from '@/apis';
+import { apiPastCount } from '@/apis';
 
 export const useHowManyAll = () => ({
   queryKey: ['how', 'many', 'times'],
-  queryFn: apiHowMany.getHowManyAll,
+  queryFn: apiPastCount.getPastCountAll,
 });

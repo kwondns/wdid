@@ -1,6 +1,6 @@
-import * as TodoType from './Todo';
-import * as TodoBoxType from './TodoBox';
-import * as HowManyType from './HowMany';
-import * as WhatDidType from './WhatDid';
+import * as FutureType from './Future';
+import * as FutureBoxType from './FutureBox';
+import * as PastCountType from './PastCount';
+import * as PastType from './Past';
 
-export { TodoType, TodoBoxType, HowManyType, WhatDidType };
+export { FutureType, FutureBoxType, PastCountType, PastType };
