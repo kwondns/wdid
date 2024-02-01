@@ -11,9 +11,9 @@ import { FullContainer } from '@/components';
 import { LayoutTransition } from '@/constants';
 
 type LoaderType = {
-  Todo: FutureType.TodoViewType[];
-  HowMany: PastCountType.PastCountType[];
-  WhatDid: PastType.PastType[];
+  Future: FutureType.FutureViewType[];
+  PastCount: PastCountType.PastCountType[];
+  Past: PastType.PastType[];
 };
 export default function Index() {
   const location = useLocation().pathname.slice(1) as 'past' | 'present' | 'future';
@@ -48,13 +48,13 @@ export const indexLoader = (queryClient: QueryClient) => async (): Promise<Loade
     return worker.start();
   }
   return enableMocking().then(async () => {
-    const queryTodo = useFutures.useTodosAll();
-    const queryHowMany = usePastCount.useHowManyAll();
-    const queryWhatDid = usePast.usePast(new Date().toLocaleDateString());
+    const queryFuture = useFutures.useFuturesAll();
+    const queryPastCount = usePastCount.usePastCountAll();
+    const queryPast = usePast.usePast(new Date().toLocaleDateString());
     return {
-      Todo: queryClient.getQueryData(queryTodo.queryKey) ?? (await queryClient.fetchQuery(queryTodo)),
-      HowMany: queryClient.getQueryData(queryHowMany.queryKey) ?? (await queryClient.fetchQuery(queryHowMany)),
-      WhatDid: queryClient.getQueryData(queryWhatDid.queryKey) ?? (await queryClient.fetchQuery(queryWhatDid)),
+      Future: queryClient.getQueryData(queryFuture.queryKey) ?? (await queryClient.fetchQuery(queryFuture)),
+      PastCount: queryClient.getQueryData(queryPastCount.queryKey) ?? (await queryClient.fetchQuery(queryPastCount)),
+      Past: queryClient.getQueryData(queryPast.queryKey) ?? (await queryClient.fetchQuery(queryPast)),
     };
   });
 };

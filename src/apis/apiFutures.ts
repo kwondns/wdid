@@ -1,7 +1,7 @@
 import { FetchLib } from '@/libs';
 import { FutureType } from '@/types';
 
-export const getFuturesAll = async () => FetchLib.fetchGet<FutureType.TodoViewType[]>('futures');
+export const getFuturesAll = async () => FetchLib.fetchGet<FutureType.FutureViewType[]>('futures');
 
 export const patchFuture = async (payload: FutureType.FuturePatchType) => {
   const { id, ...others } = payload;

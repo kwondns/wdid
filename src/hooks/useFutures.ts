@@ -3,27 +3,27 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiFutures } from '@/apis';
 import { FutureType } from '@/types';
 
-export const useTodosAll = () => ({ queryKey: ['todos', 'all'], queryFn: apiFutures.getFuturesAll });
+export const useFuturesAll = () => ({ queryKey: ['futures', 'all'], queryFn: apiFutures.getFuturesAll });
 
-export const useTodoPatch = () => {
+export const useFuturePatch = () => {
   const queryClient = useQueryClient();
-  const { mutate: patchTodo, isPending: isPatching } = useMutation({
+  const { mutate: patchFuture, isPending: isPatching } = useMutation({
     mutationFn: (payload: FutureType.FuturePatchType) => apiFutures.patchFuture(payload),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['todos', 'all'] });
+      queryClient.invalidateQueries({ queryKey: ['futures', 'all'] });
     },
     onError: () => {}, // toast error
   });
-  return { patchTodo, isPatching };
+  return { patchFuture, isPatching };
 };
 
-export const useTodoCreate = () => {
+export const useFutureCreate = () => {
   const queryClient = useQueryClient();
-  const { mutate: createTodo, isPending: isCreating } = useMutation({
+  const { mutate: createFuture, isPending: isCreating } = useMutation({
     mutationFn: (payload: FutureType.FutureCreateType) => apiFutures.createFuture(payload),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['todos', 'all'] });
+      queryClient.invalidateQueries({ queryKey: ['futures', 'all'] });
     },
   });
-  return { createTodo, isCreating };
+  return { createFuture, isCreating };
 };

@@ -4,17 +4,17 @@ import { useForm } from 'react-hook-form';
 import { FutureType } from '@/types';
 import { useFutures } from '@/hooks';
 
-type TodoContentProps = {
-  todo: FutureType.FutureType;
+type FutureContentProps = {
+  future: FutureType.FutureType;
   checkColor: string;
 };
 type FormInputType = {
   content: string;
 };
-export default function TodoContent(props: TodoContentProps) {
-  const { todo, checkColor } = props;
-  const { id, content, checked } = todo;
-  const { patchTodo, isPatching } = useFutures.useTodoPatch();
+export default function FutureContent(props: FutureContentProps) {
+  const { future, checkColor } = props;
+  const { id, content, checked } = future;
+  const { patchFuture, isPatching } = useFutures.useFuturePatch();
   const {
     handleSubmit,
     register,
@@ -24,7 +24,7 @@ export default function TodoContent(props: TodoContentProps) {
   const onChangeCheck = (event: ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = event.currentTarget;
     const payload = { id, checked };
-    patchTodo(payload);
+    patchFuture(payload);
   };
   const [isInput, setIsInput] = useState<boolean>(false);
   const onDoubleClick = () => setIsInput(true);
@@ -37,7 +37,7 @@ export default function TodoContent(props: TodoContentProps) {
   const onSubmitContent = (data: FormInputType) => {
     setIsInput(false);
     const payload = { id, content: data.content };
-    patchTodo(payload);
+    patchFuture(payload);
   };
   return (
     <div key={id} className="grid grid-cols-[auto_1fr_auto]">

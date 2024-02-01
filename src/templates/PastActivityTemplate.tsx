@@ -8,7 +8,7 @@ import { ActivityDocument } from '@/components';
 import { PastStore } from '@/stores';
 
 export default function PastActivityTemplate() {
-  const { WhatDid: initialData } = useLoaderData() as Awaited<ReturnType<ReturnType<typeof indexLoader>>>;
+  const { Past: initialData } = useLoaderData() as Awaited<ReturnType<ReturnType<typeof indexLoader>>>;
   const activityDate = useRecoilValue(PastStore.PastDateAtom);
   const { data } = useQuery({
     ...usePast.usePast(activityDate),

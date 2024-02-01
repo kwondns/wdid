@@ -3,25 +3,25 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiFutureBox } from '@/apis';
 import { FutureBoxType } from '@/types';
 
-export const useTodoBoxPatch = () => {
+export const useFutureBoxPatch = () => {
   const queryClient = useQueryClient();
-  const { mutate: patchTodoBox, isPending: isPatchingBox } = useMutation({
+  const { mutate: patchFutureBox, isPending: isPatchingBox } = useMutation({
     mutationFn: (payload: FutureBoxType.FutureBoxPatchType) => apiFutureBox.patchFutureBox(payload),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['todos', 'all'] });
+      queryClient.invalidateQueries({ queryKey: ['future', 'all'] });
     },
     onError: () => {}, // toast error
   });
-  return { patchTodoBox, isPatchingBox };
+  return { patchFutureBox, isPatchingBox };
 };
 
-export const useTodoBoxCreate = () => {
+export const useFutureBoxCreate = () => {
   const queryClient = useQueryClient();
-  const { mutate: createTodoBox, isPending: isCreatingBox } = useMutation({
+  const { mutate: createFutureBox, isPending: isCreatingBox } = useMutation({
     mutationFn: (payload: FutureBoxType.FutureBoxCreateType) => apiFutureBox.createFutureBox(payload),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['todos', 'all'] });
+      queryClient.invalidateQueries({ queryKey: ['future', 'all'] });
     },
   });
-  return { createTodoBox, isCreatingBox };
+  return { createFutureBox, isCreatingBox };
 };
