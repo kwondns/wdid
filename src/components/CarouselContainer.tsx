@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { LayoutStore } from '@/stores';
 
@@ -8,6 +8,7 @@ type CarouselContainerProps = {
 };
 export default function CarouselContainer(props: CarouselContainerProps) {
   const { children } = props;
+  const [loading, setLoading] = useState(true);
   const divRef = useRef<HTMLDivElement | null>(null);
   const transition = useRecoilValue(LayoutStore.LayoutAtom);
   useEffect(() => {
@@ -23,8 +24,11 @@ export default function CarouselContainer(props: CarouselContainerProps) {
     window.addEventListener('resize', preventTransitionWhileResize);
     return () => window.removeEventListener('resize', preventTransitionWhileResize);
   }, [divRef]);
+  useEffect(() => {
+    setLoading(false);
+  }, []);
   return (
-    <div className={`flex h-full w-screen ${transition} transition`} ref={divRef}>
+    <div className={`flex h-full w-screen ${transition} transition ${loading ? 'hidden' : 'visible'}`} ref={divRef}>
       {children}
     </div>
   );
