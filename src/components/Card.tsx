@@ -47,7 +47,7 @@ export default function Card(props: CardProps) {
   };
   const onSubmitTitle = (data: FormInputType) => {
     if (id) {
-      const payload = { id, title: data.title };
+      const payload = { id, title: data.title, priority };
       patchFutureBox(payload);
     } else {
       const payload = { title: data.title, priority };
@@ -96,7 +96,7 @@ export default function Card(props: CardProps) {
             return <FutureContent key={future.id} future={future} checkColor={PriorityColor[priority].checkbox} />;
           })}
         </div>
-        {id && <FutureInput id={id} buttonColor={PriorityColor[priority].btn} />}
+        {id && <FutureInput id={id} priority={priority} />}
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ type FormInputType = {
   content: string;
 };
 export default function FutureContent(props: FutureContentProps) {
-  const { future, checkColor } = props;
+  const { future, priority } = props;
   const { id, content, checked } = future;
   const { patchFuture, isPatching } = useFutures.useFuturePatch();
   const {
@@ -23,7 +23,7 @@ export default function FutureContent(props: FutureContentProps) {
 
   const onChangeCheck = (event: ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = event.currentTarget;
-    const payload = { id, checked };
+    const payload = { id, checked, priority };
     patchFuture(payload);
   };
   const [isInput, setIsInput] = useState<boolean>(false);
@@ -36,7 +36,7 @@ export default function FutureContent(props: FutureContentProps) {
 
   const onSubmitContent = (data: FormInputType) => {
     setIsInput(false);
-    const payload = { id, content: data.content };
+    const payload = { id, content: data.content, priority };
     patchFuture(payload);
   };
   return (

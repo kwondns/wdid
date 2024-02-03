@@ -14,7 +14,7 @@ type FormInputType = {
   content: string;
 };
 export default function FutureInput(props: FutureInputProps) {
-  const { id, buttonColor } = props;
+  const { id, priority } = props;
   const [input, setInput] = useState(false);
   const {
     handleSubmit,
@@ -40,7 +40,7 @@ export default function FutureInput(props: FutureInputProps) {
     }
   }, [isSubmitSuccessful, reset]);
   const onSubmitCreate = (data: FormInputType) => {
-    createFuture({ box_id: id, content: data.content });
+    createFuture({ box_id: id, content: data.content, priority });
   };
   return (
     <form onSubmit={handleSubmit(onSubmitCreate)} className="relative col-start-1 col-end-3 px-2 pb-2">

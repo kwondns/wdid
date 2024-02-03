@@ -6,9 +6,9 @@ type CardSetProps = {
   priority: FutureType.PriorityType;
 };
 export default function CardSet(props: CardSetProps) {
-  const { futureBoxes } = props;
+  const { futureBoxes, priority } = props;
   return (
-    <CardContainer priority={futureBoxes[0].priority} index={futureBoxes.length}>
+    <CardContainer priority={priority} index={futureBoxes.length}>
       {futureBoxes.map((box, index) => (
         <Card key={box.id} id={box.id} title={box.title} futures={box.futures} priority={box.priority} index={index} />
       ))}
