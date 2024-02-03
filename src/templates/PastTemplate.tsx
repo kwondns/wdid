@@ -6,7 +6,7 @@ import { PastStore } from '@/stores';
 const calcCount = (count: number) => {
   if (count < 60) return `${count}분`;
   if (count % 60 === 0) return `${count / 60}시간`;
-  return `${count / 60}시간 ${count % 60}분`;
+  return `${Math.floor(count / 60)}시간 ${count % 60}분`;
 };
 export default function PastTemplate() {
   const activityDate = useRecoilValue(PastStore.PastDateAtom);
