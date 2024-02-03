@@ -1,5 +1,5 @@
 import { useSetRecoilState } from 'recoil';
-import { MouseEvent } from 'react';
+import { MouseEvent, useEffect } from 'react';
 
 import { PastStore } from '@/stores';
 
@@ -10,12 +10,17 @@ type ActivityProps = {
 export default function Activity(props: ActivityProps) {
   const { date, count } = props;
   const setActivityDate = useSetRecoilState(PastStore.PastDateAtom);
+  const setPastDateCount = useSetRecoilState(PastStore.PastDateCountAtom);
   const setAccordion = useSetRecoilState(PastStore.AccordionAtom);
   const onClickButton = (event: MouseEvent<HTMLButtonElement>) => {
     const { id } = event.currentTarget;
     setActivityDate(id);
+    setPastDateCount(count);
     setAccordion(0);
   };
+  useEffect(() => {
+    setPastDateCount(count);
+  }, []);
   let color: string;
   if (count === 0) {
     color = 'bg-gray-400';
