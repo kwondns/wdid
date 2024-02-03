@@ -32,8 +32,8 @@ export default function PresentTemplate() {
   };
 
   useEffect(() => {
-    if (data?.startTime) setStartTime(data.startTime);
-    if (data?.endTime) setEndTime(data.endTime);
+    if (data?.startTime) setStartTime(new Date(data.startTime));
+    if (data?.endTime) setEndTime(new Date(data.endTime));
     if (data?.title) setTitle(data.title);
     if (data?.content) setContent(data.content);
   }, []);
