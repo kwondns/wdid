@@ -12,13 +12,13 @@ export default function Header() {
   const onClickStart = () => {
     if (startTime) return;
     const now = new Date();
-    patchPresent({ startTime: now });
+    patchPresent({ startTime: now.toISOString() });
     setStartTime(now);
   };
   const onClickEnd = () => {
     if (endTime) return;
     const now = new Date();
-    patchPresent({ endTime: now });
+    patchPresent({ endTime: now.toISOString() });
     setEndTime(now);
   };
   return (
