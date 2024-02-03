@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
 import Card from './Card';
+import { FutureType } from '@/types';
 
 type CardContainerProps = {
   children: React.ReactNode;
-  priority: 1 | 2 | 3;
+  priority: FutureType.PriorityType;
   index: number;
 };
 export default function CardContainer(props: CardContainerProps) {

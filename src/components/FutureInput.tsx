@@ -2,10 +2,12 @@ import { KeyboardEvent, MouseEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useFutures } from '@/hooks';
+import { PriorityColor } from '@/constants';
+import { FutureType } from '@/types';
 
 type FutureInputProps = {
   id: string;
-  buttonColor: string;
+  priority: FutureType.PriorityType;
 };
 
 type FormInputType = {

@@ -6,7 +6,7 @@ import { useFutures } from '@/hooks';
 
 type FutureContentProps = {
   future: FutureType.FutureType;
-  checkColor: string;
+  priority: FutureType.PriorityType;
 };
 type FormInputType = {
   content: string;

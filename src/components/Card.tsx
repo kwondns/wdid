@@ -9,7 +9,7 @@ import { useFutureBox } from '@/hooks';
 type CardProps = {
   // eslint-disable-next-line react/require-default-props
   id?: string;
-  priority: 1 | 2 | 3;
+  priority: FutureType.PriorityType;
   index: number;
   title: string;
   futures: FutureType.FutureType[];

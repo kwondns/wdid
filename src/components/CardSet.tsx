@@ -1,8 +1,9 @@
 import { Card, CardContainer } from '@/components';
-import { FutureType } from '@/types';
+import { FutureBoxType, FutureType } from '@/types';
 
 type CardSetProps = {
-  futureBoxes: FutureType.FutureViewType;
+  futureBoxes: FutureBoxType.FutureBoxType[];
+  priority: FutureType.PriorityType;
 };
 export default function CardSet(props: CardSetProps) {
   const { futureBoxes } = props;
