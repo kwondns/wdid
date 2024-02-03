@@ -1,4 +1,5 @@
 import { createClient, PostgrestError } from '@supabase/supabase-js';
+import { StorageError } from '@supabase/storage-js';
 
 import { SupabaseType } from '@/types';
 
@@ -8,6 +9,6 @@ export const supabase = createClient<SupabaseType.Database>(
   { db: { schema: 'timeline' } },
 );
 
-export const errorCheck = (error: PostgrestError | null) => {
+export const errorCheck = (error: PostgrestError | StorageError | null) => {
   if (error) throw new Error(error.message);
 };

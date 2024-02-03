@@ -1,3 +1,13 @@
+import { Supabase } from '@/libs';
+
+async function fileUpload(startTime: string, file: File) {
+  const filePath = `${startTime}/${new Date().toISOString()}_${file.name}`;
+  const { data, error } = await Supabase.supabase.storage
+    .from(import.meta.env.VITE_SUPABASE_BUCKET_URL)
+    .upload(filePath, file);
+  Supabase.errorCheck(error);
+  return data?.path;
+}
 const insertToTextArea = (intsertString: string) => {
   const textarea = document.querySelector('textarea');
   if (!textarea) {
@@ -20,7 +30,11 @@ const insertToTextArea = (intsertString: string) => {
   return sentence;
 };
 
-export const onImagePasted = async (dataTransfer: DataTransfer, setMarkdown: (value: string) => void) => {
+export const onImagePasted = async (
+  dataTransfer: DataTransfer,
+  setMarkdown: (value: string) => void,
+  startTime: string,
+) => {
   const files: File[] = [];
   for (let index = 0; index < dataTransfer.items.length; index += 1) {
     const file = dataTransfer.files.item(index);
@@ -29,13 +43,12 @@ export const onImagePasted = async (dataTransfer: DataTransfer, setMarkdown: (va
       files.push(file);
     }
   }
-
   await Promise.all(
     files.map(async (file) => {
-      console.log(file);
-      // const url = await fileUpload(file);
-      const url = 'test';
-      const insertedMarkdown = insertToTextArea(`![](${url})`);
+      const url = await fileUpload(startTime, file);
+      const insertedMarkdown = insertToTextArea(
+        `![](${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/${import.meta.env.VITE_SUPABASE_BUCKET_URL}/${url})`,
+      );
       if (!insertedMarkdown) {
         return;
       }
