@@ -6,9 +6,9 @@ type LayoutProps = {
 export default function Layout(props: LayoutProps) {
   const { children } = props;
   return (
-    <div className="grid max-h-screen grid-rows-[auto_1fr] overflow-hidden">
+    <div className="flex max-h-screen flex-col overflow-hidden">
       <Header />
-      <main className="row-start-2 max-h-full">
+      <main className="h-[calc(100vh-64px)]">
         <CarouselContainer>{children}</CarouselContainer>
       </main>
     </div>
