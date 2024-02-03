@@ -2,7 +2,7 @@ import { Activity } from '@/components';
 import { PastCountType } from '@/types';
 
 type ActivityCalendarProps = {
-  activities: PastCountType.PastCountType[];
+  activities: PastCountType.PastCountType[] | null;
 };
 
 export default function ActivityCalendar(props: ActivityCalendarProps) {
@@ -12,9 +12,7 @@ export default function ActivityCalendar(props: ActivityCalendarProps) {
       <span className="col-start-1 col-end-11 row-start-1 row-end-2 text-center text-2xl text-white">
         최근 1개월 활동
       </span>
-      {activities.map((activity) => (
-        <Activity key={activity.id} date={activity.date} count={activity.count} />
-      ))}
+      {activities?.map((activity) => <Activity key={activity.id} date={activity.date} count={activity.count} />)}
     </div>
   );
 }

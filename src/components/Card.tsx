@@ -12,7 +12,8 @@ type CardProps = {
   priority: FutureType.PriorityType;
   index: number;
   title: string;
-  futures: FutureType.FutureType[];
+  futures: FutureType.FutureType[] | null;
+  // eslint-disable-next-line react/require-default-props
   closeCreateBox?: () => void;
 };
 
@@ -91,10 +92,14 @@ export default function Card(props: CardProps) {
           />
         </div>
         <div className="col-start-1 col-end-3 flex flex-col gap-y-2 overflow-y-auto px-2 pb-4">
-          {futures.map((future) => {
-            if (!isVisible && future.checked) return null;
-            return <FutureContent key={future.id} future={future} checkColor={PriorityColor[priority].checkbox} />;
-          })}
+          {futures &&
+            futures.map((future) => {
+              if (future) {
+                if (!isVisible && future.checked) return null;
+                return <FutureContent key={future.id} future={future} priority={priority} />;
+              }
+              return null;
+            })}
         </div>
         {id && <FutureInput id={id} priority={priority} />}
       </div>
