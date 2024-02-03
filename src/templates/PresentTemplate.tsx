@@ -67,8 +67,8 @@ export default function PresentTemplate() {
     );
   };
   return (
-    <div className="h-full flex-col bg-base-200">
-      <form className="flex h-full flex-col" onSubmit={handleSubmit(onClickSave)}>
+    <div className="flex flex-1 flex-col bg-base-200">
+      <form className="flex h-full flex-1 flex-col" onSubmit={handleSubmit(onClickSave)}>
         <div className="mx-4 px-4 py-8">
           <input
             className="input input-bordered input-lg w-full text-3xl"
@@ -102,8 +102,9 @@ export default function PresentTemplate() {
             저장
           </button>
         </div>
-        <div className="flex-1 p-4">
+        <div className="flex max-h-full w-full flex-1 overflow-auto p-4">
           <MDEditor
+            className="flex w-full flex-1"
             height="100%"
             value={content}
             onChange={(value) => {

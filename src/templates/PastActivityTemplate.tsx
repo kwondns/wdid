@@ -15,7 +15,7 @@ export default function PastActivityTemplate() {
     initialData: activityDate === new Date().toLocaleDateString() ? initialData : undefined,
   });
   return (
-    <div className="mb-20 flex-1 rounded-2xl border-2 border-violet-600 bg-violet-700/60 p-1">
+    <div className="mb-10 rounded-2xl border-2 border-violet-600 bg-violet-700/60 p-1">
       {data?.length ? (
         data.map((activity, index) => <ActivityDocument key={activity.id} activity={activity} index={index} />)
       ) : (
