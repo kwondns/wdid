@@ -4,7 +4,6 @@ import { FutureType } from '@/types';
 export const getFuturesHigh = async () => {
   const { data, error } = await Supabase.supabase.from('future_high_view').select('*');
   Supabase.errorCheck(error);
-  console.log(data);
   return data;
 };
 export const getFuturesMiddle = async () => {
