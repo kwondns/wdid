@@ -1,13 +1,14 @@
 import { Card, CardContainer } from '@/components';
-import { FutureType } from '@/types';
+import { FutureBoxType, FutureType } from '@/types';
 
 type CardSetProps = {
-  futureBoxes: FutureType.FutureViewType;
+  futureBoxes: FutureBoxType.FutureBoxType[];
+  priority: FutureType.PriorityType;
 };
 export default function CardSet(props: CardSetProps) {
-  const { futureBoxes } = props;
+  const { futureBoxes, priority } = props;
   return (
-    <CardContainer priority={futureBoxes[0].priority} index={futureBoxes.length}>
+    <CardContainer priority={priority} index={futureBoxes.length}>
       {futureBoxes.map((box, index) => (
         <Card key={box.id} id={box.id} title={box.title} futures={box.futures} priority={box.priority} index={index} />
       ))}

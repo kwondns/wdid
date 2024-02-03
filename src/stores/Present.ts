@@ -46,7 +46,7 @@ export const StartTimeSelector = selector({
   key: 'startTimeSelector',
   get: ({ get }) => {
     const startTime = get(StartTimeAtom);
-    if (startTime) return startTime.toString();
+    if (startTime) return startTime.toISOString();
     return '';
   },
 });
@@ -59,7 +59,7 @@ export const EndTimeSelector = selector({
   key: 'endTimeSelector',
   get: ({ get }) => {
     const endTime = get(EndTimeAtom);
-    if (endTime) return endTime.toString();
+    if (endTime) return endTime.toISOString();
     return '';
   },
 });
@@ -80,5 +80,6 @@ export const DiffTimeSelector = selector({
       }
       return DateLib.fromDate(startTime, currentTime);
     }
+    return '';
   },
 });

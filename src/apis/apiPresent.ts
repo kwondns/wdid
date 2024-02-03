@@ -1,11 +1,16 @@
-import { FetchLib } from '@/libs';
+import { Supabase } from '@/libs';
 import { PresentType } from '@/types';
 
 export const getPresentOne = async () => {
-  const result = await FetchLib.fetchGet<PresentType.PresentType[]>('present');
-  return result[0];
+  const { data, error } = await Supabase.supabase.from('present').select('*');
+  Supabase.errorCheck(error);
+  return data?.[0];
 };
 
 export const patchPresent = async (payload: PresentType.PresentType) => {
-  await FetchLib.fetchPatch('present', payload);
+  const { error } = await Supabase.supabase
+    .from('present')
+    .update({ ...payload })
+    .eq('id', 1);
+  Supabase.errorCheck(error);
 };

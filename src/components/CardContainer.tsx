@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
 import Card from './Card';
+import { FutureType } from '@/types';
 
 type CardContainerProps = {
   children: React.ReactNode;
-  priority: 1 | 2 | 3;
+  priority: FutureType.PriorityType;
   index: number;
 };
 export default function CardContainer(props: CardContainerProps) {
@@ -14,7 +15,7 @@ export default function CardContainer(props: CardContainerProps) {
   const closeCreateBox = () => setIsAddBox(false);
   return (
     <div
-      className={`flex max-h-[500px] min-h-[500px] max-w-fit flex-1 overflow-x-auto overflow-y-clip p-20 ${priority === 3 && 'mb-14'}`}
+      className={`flex max-h-[500px] min-h-[500px] max-w-fit flex-1 overflow-x-auto overflow-y-clip px-12 pb-20 pt-10 ${priority === 3 ? 'mb-14' : ''}`}
     >
       {children}
       {isAddBox ? (
@@ -23,7 +24,7 @@ export default function CardContainer(props: CardContainerProps) {
         <button
           type="button"
           onClick={onClickCreateBox}
-          className="btn btn-circle btn-lg my-auto bg-blue-400/50 transition-all"
+          className="btn btn-circle btn-lg my-auto ml-6 bg-blue-400/50 transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

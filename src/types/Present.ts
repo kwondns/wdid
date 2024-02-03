@@ -1,6 +1,6 @@
 export type PresentType = {
-  startTime?: Date;
-  endTime?: Date;
+  startTime?: string;
+  endTime?: string;
   title?: string;
   content?: string;
 };

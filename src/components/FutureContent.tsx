@@ -3,16 +3,17 @@ import { useForm } from 'react-hook-form';
 
 import { FutureType } from '@/types';
 import { useFutures } from '@/hooks';
+import { PriorityColor } from '@/constants';
 
 type FutureContentProps = {
   future: FutureType.FutureType;
-  checkColor: string;
+  priority: FutureType.PriorityType;
 };
 type FormInputType = {
   content: string;
 };
 export default function FutureContent(props: FutureContentProps) {
-  const { future, checkColor } = props;
+  const { future, priority } = props;
   const { id, content, checked } = future;
   const { patchFuture, isPatching } = useFutures.useFuturePatch();
   const {
@@ -23,7 +24,7 @@ export default function FutureContent(props: FutureContentProps) {
 
   const onChangeCheck = (event: ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = event.currentTarget;
-    const payload = { id, checked };
+    const payload = { id, checked, priority };
     patchFuture(payload);
   };
   const [isInput, setIsInput] = useState<boolean>(false);
@@ -36,7 +37,7 @@ export default function FutureContent(props: FutureContentProps) {
 
   const onSubmitContent = (data: FormInputType) => {
     setIsInput(false);
-    const payload = { id, content: data.content };
+    const payload = { id, content: data.content, priority };
     patchFuture(payload);
   };
   return (
@@ -48,7 +49,7 @@ export default function FutureContent(props: FutureContentProps) {
           checked={checked}
           onChange={onChangeCheck}
           disabled={isPatching}
-          className={`${checkColor} checkbox border-2`}
+          className={`${PriorityColor[priority].checkbox} checkbox border-2`}
         />
       </label>
       {isInput ? (

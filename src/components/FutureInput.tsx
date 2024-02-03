@@ -2,17 +2,19 @@ import { KeyboardEvent, MouseEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useFutures } from '@/hooks';
+import { PriorityColor } from '@/constants';
+import { FutureType } from '@/types';
 
 type FutureInputProps = {
   id: string;
-  buttonColor: string;
+  priority: FutureType.PriorityType;
 };
 
 type FormInputType = {
   content: string;
 };
 export default function FutureInput(props: FutureInputProps) {
-  const { id, buttonColor } = props;
+  const { id, priority } = props;
   const [input, setInput] = useState(false);
   const {
     handleSubmit,
@@ -38,7 +40,7 @@ export default function FutureInput(props: FutureInputProps) {
     }
   }, [isSubmitSuccessful, reset]);
   const onSubmitCreate = (data: FormInputType) => {
-    createFuture({ box_id: id, content: data.content });
+    createFuture({ box_id: id, content: data.content, priority });
   };
   return (
     <form onSubmit={handleSubmit(onSubmitCreate)} className="relative col-start-1 col-end-3 px-2 pb-2">
@@ -58,7 +60,7 @@ export default function FutureInput(props: FutureInputProps) {
       <button
         type={input ? 'submit' : 'button'}
         onClick={onClickOpenInput}
-        className={`btn btn-circle ${buttonColor} btn-sm absolute inset-y-0 my-auto mt-1.5 ${input ? 'right-4' : 'left-4'} transition-all`}
+        className={`btn btn-circle ${PriorityColor[priority].btn} btn-sm absolute inset-y-0 my-auto mt-1.5 ${input ? 'right-4' : 'left-4'} transition-all`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

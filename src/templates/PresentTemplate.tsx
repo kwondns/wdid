@@ -32,8 +32,8 @@ export default function PresentTemplate() {
   };
 
   useEffect(() => {
-    if (data?.startTime) setStartTime(data.startTime);
-    if (data?.endTime) setEndTime(data.endTime);
+    if (data?.startTime) setStartTime(new Date(data.startTime));
+    if (data?.endTime) setEndTime(new Date(data.endTime));
     if (data?.title) setTitle(data.title);
     if (data?.content) setContent(data.content);
   }, []);
@@ -67,8 +67,8 @@ export default function PresentTemplate() {
     );
   };
   return (
-    <div className="flex min-h-screen flex-col bg-base-200">
-      <form onSubmit={handleSubmit(onClickSave)}>
+    <div className="h-full flex-col bg-base-200">
+      <form className="flex h-full flex-col" onSubmit={handleSubmit(onClickSave)}>
         <div className="mx-4 px-4 py-8">
           <input
             className="input input-bordered input-lg w-full text-3xl"
@@ -102,17 +102,18 @@ export default function PresentTemplate() {
             저장
           </button>
         </div>
-        <div className="max-h-[90vw] flex-1 p-4">
+        <div className="flex-1 p-4">
           <MDEditor
+            height="100%"
             value={content}
             onChange={(value) => {
               setContent(value as string);
             }}
             onPaste={async (event) => {
-              await MarkdownLib.onImagePasted(event.clipboardData, setContent);
+              await MarkdownLib.onImagePasted(event.clipboardData, setContent, startTimeString);
             }}
             onDrop={async (event) => {
-              await MarkdownLib.onImagePasted(event.dataTransfer, setContent);
+              await MarkdownLib.onImagePasted(event.dataTransfer, setContent, startTimeString);
             }}
             textareaProps={{
               placeholder: '꾸준히 작성하자',

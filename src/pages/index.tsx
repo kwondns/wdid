@@ -5,13 +5,15 @@ import { useEffect } from 'react';
 
 import { usePastCount, useFutures, usePast, usePresent } from '@/hooks';
 import { Layout, PastTemplate, PresentTemplate, FutureTemplate } from '@/templates';
-import { FutureType, PastCountType, PastType, PresentType } from '@/types';
+import { FutureBoxType, PastCountType, PastType, PresentType } from '@/types';
 import { LayoutStore } from '@/stores';
 import { FullContainer } from '@/components';
 import { LayoutTransition } from '@/constants';
 
 type LoaderType = {
-  Future: FutureType.FutureViewType[];
+  FutureHigh: FutureBoxType.FutureViewBoxType;
+  FutureMiddle: FutureBoxType.FutureViewBoxType;
+  FutureLow: FutureBoxType.FutureViewBoxType;
   PastCount: PastCountType.PastCountType[];
   Past: PastType.PastType[];
   Present: PresentType.PresentType;
@@ -39,24 +41,29 @@ export default function Index() {
 }
 
 export const indexLoader = (queryClient: QueryClient) => async (): Promise<LoaderType> => {
-  async function enableMocking() {
-    if (process.env.NODE_ENV !== 'development') {
-      return;
-    }
-    const { worker } = await import('../mocks/browser');
-    // eslint-disable-next-line consistent-return
-    return worker.start();
-  }
-  return enableMocking().then(async () => {
-    const queryFuture = useFutures.useFuturesAll();
-    const queryPastCount = usePastCount.usePastCountAll();
-    const queryPast = usePast.usePast(new Date().toLocaleDateString());
-    const queryPreset = usePresent.usePresent();
-    return {
-      Future: queryClient.getQueryData(queryFuture.queryKey) ?? (await queryClient.fetchQuery(queryFuture)),
-      PastCount: queryClient.getQueryData(queryPastCount.queryKey) ?? (await queryClient.fetchQuery(queryPastCount)),
-      Past: queryClient.getQueryData(queryPast.queryKey) ?? (await queryClient.fetchQuery(queryPast)),
-      Present: queryClient.getQueryData(queryPreset.queryKey) ?? (await queryClient.fetchQuery(queryPreset)),
-    };
-  });
+  // async function enableMocking() {
+  //   if (process.env.NODE_ENV !== 'development') {
+  //     return;
+  //   }
+  //   const { worker } = await import('../mocks/browser');
+  //   // eslint-disable-next-line consistent-return
+  //   return worker.start();
+  // }
+  // return enableMocking().then(async () => {
+  const queryFutureHigh = useFutures.useFuturesHigh();
+  const queryFutureMiddle = useFutures.useFuturesMiddle();
+  const queryFutureLow = useFutures.useFuturesLow();
+  const queryPastCount = usePastCount.usePastCountAll();
+  const queryPast = usePast.usePast(new Date().toLocaleDateString());
+  const queryPreset = usePresent.usePresent();
+  return {
+    FutureHigh: queryClient.getQueryData(queryFutureHigh.queryKey) ?? (await queryClient.fetchQuery(queryFutureHigh)),
+    FutureMiddle:
+      queryClient.getQueryData(queryFutureMiddle.queryKey) ?? (await queryClient.fetchQuery(queryFutureMiddle)),
+    FutureLow: queryClient.getQueryData(queryFutureLow.queryKey) ?? (await queryClient.fetchQuery(queryFutureLow)),
+    PastCount: queryClient.getQueryData(queryPastCount.queryKey) ?? (await queryClient.fetchQuery(queryPastCount)),
+    Past: queryClient.getQueryData(queryPast.queryKey) ?? (await queryClient.fetchQuery(queryPast)),
+    Present: queryClient.getQueryData(queryPreset.queryKey) ?? (await queryClient.fetchQuery(queryPreset)),
+  };
+  // });
 };
