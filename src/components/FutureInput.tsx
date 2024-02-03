@@ -60,7 +60,7 @@ export default function FutureInput(props: FutureInputProps) {
       <button
         type={input ? 'submit' : 'button'}
         onClick={onClickOpenInput}
-        className={`btn btn-circle ${buttonColor} btn-sm absolute inset-y-0 my-auto mt-1.5 ${input ? 'right-4' : 'left-4'} transition-all`}
+        className={`btn btn-circle ${PriorityColor[priority].btn} btn-sm absolute inset-y-0 my-auto mt-1.5 ${input ? 'right-4' : 'left-4'} transition-all`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

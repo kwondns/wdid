@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 
 import { FutureType } from '@/types';
 import { useFutures } from '@/hooks';
+import { PriorityColor } from '@/constants';
 
 type FutureContentProps = {
   future: FutureType.FutureType;
@@ -48,7 +49,7 @@ export default function FutureContent(props: FutureContentProps) {
           checked={checked}
           onChange={onChangeCheck}
           disabled={isPatching}
-          className={`${checkColor} checkbox border-2`}
+          className={`${PriorityColor[priority].checkbox} checkbox border-2`}
         />
       </label>
       {isInput ? (
