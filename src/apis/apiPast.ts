@@ -13,7 +13,6 @@ export const getPast = async (date: string) => {
 };
 
 export const createPast = async (payload: PastType.PastCreateType) => {
-  console.log(payload);
   const { error } = await Supabase.supabase.from('past').insert([payload]);
   Supabase.errorCheck(error);
 };
