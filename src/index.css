@@ -10,3 +10,11 @@ body .w-md-editor-text-input {
     font-size: 18px !important;
     line-height: 24px !important;
 }
+
+body .w-md-editor-area {
+    display:flex;
+}
+body .w-md-editor-text{
+    display:flex;
+    flex:1;
+}
