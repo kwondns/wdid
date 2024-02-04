@@ -6,15 +6,17 @@ html, body {
     overscroll-behavior-x: none;
 }
 body .w-md-editor-text-pre > code,
-body .w-md-editor-text-input {
+body .w-md-editor-text-input, body .wmde-markdown-color {
     font-size: 18px !important;
     line-height: 24px !important;
 }
 
 body .w-md-editor-area {
-    display:flex;
+    position: relative;
 }
 body .w-md-editor-text{
-    display:flex;
-    flex:1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
