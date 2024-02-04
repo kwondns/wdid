@@ -9,7 +9,7 @@ export default function Timer() {
   const endTime = useRecoilValue(PresentStore.EndTimeAtom);
   return (
     <div className="flex flex-col">
-      <span className="text-2xl text-rose-300 ">
+      <span className="text-rose-300 md:text-xl lg:text-2xl">
         {time.toLocaleString('ko-KR', { dateStyle: 'medium', timeStyle: 'short' })}
       </span>
       {startTime && (

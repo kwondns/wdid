@@ -15,11 +15,11 @@ export default function PastActivityTemplate() {
     initialData: activityDate === new Date().toLocaleDateString() ? initialData : undefined,
   });
   return (
-    <div className="mb-10 rounded-2xl border-2 border-violet-600 bg-violet-700/60 p-1">
+    <div className="mb-4 rounded-2xl border-2 border-violet-600 bg-violet-700/60 p-1 md:mb-10">
       {data?.length ? (
         data.map((activity, index) => <ActivityDocument key={activity.id} activity={activity} index={index} />)
       ) : (
-        <span className="animate-bounce text-center text-2xl text-white">내가 뭘 했더라?</span>
+        <span className="animate-bounce text-center text-white md:text-xl lg:text-2xl">내가 뭘 했더라?</span>
       )}
     </div>
   );

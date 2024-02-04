@@ -9,7 +9,7 @@ export default function PastCountTemplate() {
   const { PastCount: initialData } = useLoaderData() as Awaited<ReturnType<ReturnType<typeof indexLoader>>>;
   const { data } = useQuery({ ...usePastCount.usePastCountAll(), initialData });
   return (
-    <div className="row-start-2 row-end-3 self-center p-1">
+    <div className="self-center p-1">
       <ActivityCalendar activities={data} />
     </div>
   );
