@@ -10,3 +10,4 @@ export { default as Timer } from './Timer';
 export { default as Header } from './Header';
 export { default as CarouselContainer } from './CarouselContainer';
 export { default as FullContainer } from './FullContainer';
+export { default as Nav } from './Nav';
