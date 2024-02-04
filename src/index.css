@@ -4,7 +4,21 @@
 
 html, body {
     overscroll-behavior-x: none;
+    height: var(--vh);
 }
+:root{
+    scroll-behavior: smooth;
+    height: var(--vh);
+}
+#root{
+    height: var(--vh);
+
+}
+body{
+    height: var(--vh);
+}
+
+
 body .w-md-editor-text-pre > code,
 body .w-md-editor-text-input, body .wmde-markdown-color {
     font-size: 18px !important;
