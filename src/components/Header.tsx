@@ -25,10 +25,18 @@ export default function Header() {
       <Timer />
       <Nav />
       <div className="gap-x-6">
-        <button className="btn btn-success px-12 text-2xl text-white" onClick={onClickStart} disabled={!!startTime}>
+        <button
+          className="btn btn-success text-white md:px-6 md:text-xl lg:px-12 lg:text-2xl"
+          onClick={onClickStart}
+          disabled={!!startTime}
+        >
           시작
         </button>
-        <button className="btn btn-error px-12 text-2xl text-white" onClick={onClickEnd} disabled={!!endTime}>
+        <button
+          className="btn btn-error text-white md:px-6 md:text-xl lg:px-12 lg:text-2xl"
+          onClick={onClickEnd}
+          disabled={!!endTime}
+        >
           종료
         </button>
       </div>
