@@ -27,7 +27,7 @@ export default function Card(props: CardProps) {
   const { createFutureBox, isCreatingBox } = useFutureBox.useFutureBoxCreate();
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const cardBaseStyle =
-    'card min-w-[400px] shadow-md shadow-slate-800 hover:shadow-lg has-[:focus]:shadow-lg focus:shadow-lg  hover:shadow-slate-600 has-[:focus]:shadow-slate-600 focus:shadow-slate-600  text-white transition-all overflow-hidden h-[380px] hover:scale-110 has-[:focus]:scale-110 focus:scale-125  hover:z-10 has-[:focus]:z-10 focus:z-10 border-b-[6px] border-l-2 border-r-[6px] border-t-2 border-slate-900';
+    'card min-w-[70vw] md:min-w-[400px] m-auto h-[260px] shadow-md shadow-slate-800 hover:shadow-lg has-[:focus]:shadow-lg focus:shadow-lg  hover:shadow-slate-600 has-[:focus]:shadow-slate-600 focus:shadow-slate-600  text-white transition-all overflow-hidden md:h-[380px] hover:scale-110 has-[:focus]:scale-110 focus:scale-125  hover:z-10 has-[:focus]:z-10 focus:z-10 border-b-[6px] border-l-2 border-r-[6px] border-t-2 border-slate-900';
   const zIndexStyle = `z-[${10 - index}]`;
   const leftStyle = `-left-${index * 8}`;
   const [isInput, setIsInput] = useState<boolean>(false);
@@ -61,7 +61,7 @@ export default function Card(props: CardProps) {
   };
   return (
     <div className={`${cardBaseStyle} ${PriorityColor[priority].bg} ${zIndexStyle} ${leftStyle}`}>
-      <div className="grid h-[380px] grid-cols-2 grid-rows-[auto_1fr_auto]">
+      <div className="grid h-[260px] grid-cols-2 grid-rows-[auto_1fr_auto] md:h-[380px]">
         <div className="col-start-1 col-end-3 flex items-center justify-between border-b-4 border-b-gray-500 px-6 py-2">
           {isInput || id === undefined ? (
             <form className="w-full" onSubmit={handleSubmit(onSubmitTitle)}>
@@ -80,7 +80,7 @@ export default function Card(props: CardProps) {
               />
             </form>
           ) : (
-            <span onDoubleClick={onDoubleClick} className="truncate text-2xl">
+            <span onDoubleClick={onDoubleClick} className="truncate md:text-xl lg:text-2xl">
               {title}
             </span>
           )}

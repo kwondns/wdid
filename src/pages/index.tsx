@@ -41,15 +41,6 @@ export default function Index() {
 }
 
 export const indexLoader = (queryClient: QueryClient) => async (): Promise<LoaderType> => {
-  // async function enableMocking() {
-  //   if (process.env.NODE_ENV !== 'development') {
-  //     return;
-  //   }
-  //   const { worker } = await import('../mocks/browser');
-  //   // eslint-disable-next-line consistent-return
-  //   return worker.start();
-  // }
-  // return enableMocking().then(async () => {
   const queryFutureHigh = useFutures.useFuturesHigh();
   const queryFutureMiddle = useFutures.useFuturesMiddle();
   const queryFutureLow = useFutures.useFuturesLow();
@@ -65,5 +56,4 @@ export const indexLoader = (queryClient: QueryClient) => async (): Promise<Loade
     Past: queryClient.getQueryData(queryPast.queryKey) ?? (await queryClient.fetchQuery(queryPast)),
     Present: queryClient.getQueryData(queryPreset.queryKey) ?? (await queryClient.fetchQuery(queryPreset)),
   };
-  // });
 };

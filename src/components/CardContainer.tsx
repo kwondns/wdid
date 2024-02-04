@@ -15,7 +15,7 @@ export default function CardContainer(props: CardContainerProps) {
   const closeCreateBox = () => setIsAddBox(false);
   return (
     <div
-      className={`flex max-h-[500px] min-h-[500px] max-w-fit flex-1 overflow-x-auto overflow-y-clip px-12 pb-20 pt-10 ${priority === 3 ? 'mb-14' : ''}`}
+      className={`flex max-h-[300px] min-h-[300px] max-w-fit flex-1 overflow-x-auto overflow-y-clip px-12 md:max-h-[500px] md:min-h-[500px] md:pb-20 md:pt-10 ${priority === 3 ? 'mb-10' : ''}`}
     >
       {children}
       {isAddBox ? (
