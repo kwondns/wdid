@@ -69,9 +69,9 @@ export default function PresentTemplate() {
   return (
     <div className="flex flex-1 flex-col bg-base-200">
       <form className="flex h-full flex-1 flex-col" onSubmit={handleSubmit(onClickSave)}>
-        <div className="mx-4 px-4 py-8">
+        <div className="mx-4 p-4 md:py-8">
           <input
-            className="input input-bordered input-lg w-full text-3xl"
+            className="input input-bordered input-md w-full text-xl md:input-lg md:text-2xl lg:text-3xl"
             id="title"
             type="text"
             placeholder="제목 입력"
@@ -79,16 +79,16 @@ export default function PresentTemplate() {
           />
           <input type="hidden" {...register('startTime', { required: true })} />
           <input type="hidden" {...register('endTime', { required: true })} />
-          <div className="flex justify-between gap-x-4 py-4">
-            <span className="flex-1 rounded-lg bg-success/50 p-2 text-lg text-white">{`시작시간 ${startTime ? DateLib.DateTime(startTime) : ''}`}</span>
-            <span className="flex-1 rounded-lg bg-error/50 p-2 text-lg text-white">{`종료시간 ${endTime ? DateLib.DateTime(endTime) : ''}`}</span>
-            <span className="flex-1 rounded-lg bg-warning/50 p-2 text-lg text-white">{`경과시간 ${diffTime || ''}`}</span>
+          <div className="flex flex-col justify-between gap-y-2 py-4 md:flex-row md:gap-x-4 md:gap-y-0">
+            <span className="flex-1 rounded-lg bg-success/50 p-1 text-base text-white md:p-2 md:text-lg">{`시작시간 ${startTime ? DateLib.DateTime(startTime) : ''}`}</span>
+            <span className="flex-1 rounded-lg bg-error/50 p-1 text-base text-white md:p-2 md:text-lg">{`종료시간 ${endTime ? DateLib.DateTime(endTime) : ''}`}</span>
+            <span className="flex-1 rounded-lg bg-warning/50 p-1 text-base text-white md:p-2 md:text-lg">{`경과시간 ${diffTime || ''}`}</span>
           </div>
         </div>
-        <div className="mx-4 flex justify-end gap-x-12 px-4">
+        <div className="mx-4 flex justify-end gap-x-4 px-4 md:gap-x-12">
           <button
             type="button"
-            className="btn btn-primary content-center p-4 text-2xl text-white"
+            className="btn btn-primary content-center p-2 text-white md:p-4 md:text-xl lg:text-2xl"
             onClick={onClickTempSave}
             disabled={isPatching}
           >
@@ -96,7 +96,7 @@ export default function PresentTemplate() {
           </button>
           <button
             type="submit"
-            className="btn btn-success content-center p-4 text-2xl text-white"
+            className="btn btn-success content-center p-2 text-white md:p-4 md:text-xl lg:text-2xl"
             disabled={isCreating}
           >
             저장

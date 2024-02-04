@@ -13,22 +13,22 @@ export default function FutureTemplate() {
   const { data: futureMiddle } = useQuery({ ...useFutures.useFuturesMiddle(), initialData: FutureMiddle && undefined });
   const { data: futureLow } = useQuery({ ...useFutures.useFuturesLow(), initialData: FutureLow && undefined });
   return (
-    <div className="col-start-2 col-end-3 row-start-1 row-end-4 flex max-h-screen flex-col overflow-y-auto">
-      {futureHigh ? (
+    <div className="flex max-h-screen flex-col gap-y-4 overflow-y-auto">
+      {futureHigh?.length ? (
         <CardSet futureBoxes={futureHigh} priority={1} />
       ) : (
         <CardContainer priority={1} index={0}>
           <span className="mr-4 p-4 text-2xl text-primary">우선순위 상급</span>
         </CardContainer>
       )}
-      {futureMiddle ? (
+      {futureMiddle?.length ? (
         <CardSet futureBoxes={futureMiddle} priority={2} />
       ) : (
         <CardContainer priority={2} index={0}>
           <span className="mr-4 p-4 text-2xl text-secondary">우선순위 중급</span>
         </CardContainer>
       )}
-      {futureLow ? (
+      {futureLow?.length ? (
         <CardSet futureBoxes={futureLow} priority={3} />
       ) : (
         <CardContainer priority={3} index={0}>
