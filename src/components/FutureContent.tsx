@@ -55,7 +55,7 @@ export default function FutureContent(props: FutureContentProps) {
       {isInput ? (
         <form onSubmit={handleSubmit(onSubmitContent)}>
           <input
-            className={`col-start-2 w-full p-2 text-lg ${errors.content?.message && 'input-error'}`}
+            className={`col-start-2 w-full p-2 md:text-lg ${errors.content?.message && 'input-error'}`}
             defaultValue={content}
             autoFocus
             id={id}
@@ -71,7 +71,7 @@ export default function FutureContent(props: FutureContentProps) {
       ) : (
         <span
           onDoubleClick={onDoubleClick}
-          className={`col-start-3 col-end-4 ml-5 origin-right truncate p-2 text-lg decoration-4 hover:text-xl ${checked && 'text-white/80 line-through decoration-gray-700'}`}
+          className={`col-start-3 col-end-4 ml-5 origin-right truncate p-2 decoration-4 md:text-lg md:hover:text-xl ${checked && 'text-white/80 line-through decoration-gray-700'}`}
         >
           {content}
         </span>
