@@ -1,9 +1,9 @@
 import { useRecoilState } from 'recoil';
-import MDEditor from '@uiw/react-md-editor';
 
 import { DateLib } from '@/libs';
 import { PastType } from '@/types';
 import { PastStore } from '@/stores';
+import { Markdown } from '@/components';
 
 type ActivityDocumentProps = {
   activity: PastType.PastType;
@@ -25,7 +25,7 @@ export default function ActivityDocument(props: ActivityDocumentProps) {
         <span className="text-sm">{DateLib.dateFormat(activity.startTime, activity.endTime)}</span>
       </div>
       <div className="collapse-content overflow-y-auto">
-        <MDEditor.Markdown source={activity.content} />
+        <Markdown source={activity.content} />
       </div>
     </div>
   );
