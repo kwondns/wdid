@@ -55,7 +55,7 @@ export default function FutureInput(props: FutureInputProps) {
           required: '입력해주세요',
           minLength: { value: 2, message: '최소 2글자 입력' },
         })}
-        className={`input input-bordered ${errors.content?.message ? 'input-error' : 'input-primary'} w-full max-w-full border-0 border-b-2 ${input ? 'scale-100' : 'scale-0'} transition`}
+        className={`input input-bordered text-rose-500 dark:text-white ${errors.content?.message ? 'input-error' : 'input-primary'} w-full max-w-full border-0 border-b-2 ${input ? 'scale-100' : 'scale-0'} transition`}
       />
       <button
         type={input ? 'submit' : 'button'}
