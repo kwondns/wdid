@@ -1,7 +1,8 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Index, { indexLoader } from 'pages';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+import { pastLoader, presentLoader, futureLoader, Layout } from '@/pages';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,12 +14,36 @@ const queryClient = new QueryClient({
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Index />,
-    loader: indexLoader(queryClient),
+    element: <Layout />,
     children: [
-      { path: 'past', element: null },
-      { path: 'present', element: null },
-      { path: 'future', element: null },
+      { index: true, element: <Navigate to="/past" replace /> },
+      {
+        path: 'past',
+        index: true,
+        lazy: async () => {
+          const Past = (await import('./pages/Past')).default;
+          return {
+            element: <Past />,
+          };
+        },
+        loader: pastLoader(queryClient),
+      },
+      {
+        path: 'present',
+        lazy: async () => {
+          const Present = (await import('./pages/Present')).default;
+          return { element: <Present /> };
+        },
+        loader: presentLoader(queryClient),
+      },
+      {
+        path: 'future',
+        lazy: async () => {
+          const Future = (await import('./pages/Future')).default;
+          return { element: <Future /> };
+        },
+        loader: futureLoader(queryClient),
+      },
     ],
   },
 ]);
