@@ -33,8 +33,8 @@ export default function PresentTemplate() {
   useEffect(() => {
     if (data?.startTime) setStartTime(new Date(data.startTime));
     if (data?.endTime) setEndTime(new Date(data.endTime));
-    if (data?.title) setTitle(data.title);
-    if (data?.content) setContent(data.content);
+    if (!title && data?.title) setTitle(data.title);
+    if (!content && data?.content) setContent(data.content);
   }, []);
   const { patchPresent, isPatching } = usePresent.usePresentPatch();
   const onClickTempSave = () => {
@@ -70,7 +70,7 @@ export default function PresentTemplate() {
       <form className="flex h-full flex-1 flex-col" onSubmit={handleSubmit(onClickSave)}>
         <div className="mx-4 p-4 md:py-8">
           <input
-            className="input input-bordered input-md w-full text-xl md:input-lg md:text-2xl lg:text-3xl"
+            className="input input-md input-bordered w-full text-xl md:input-lg md:text-2xl lg:text-3xl"
             id="title"
             type="text"
             placeholder="제목 입력"
