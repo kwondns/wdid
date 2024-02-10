@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { DateLib, MarkdownLib } from '@/libs';
 import { PresentStore } from '@/stores';
 import { usePast, usePresent } from '@/hooks';
-import { indexLoader } from '@/pages';
+import { presentLoader } from '@/pages';
 
 type FormInputType = {
   title: string;
@@ -16,9 +16,8 @@ type FormInputType = {
   endTime: string;
 };
 export default function PresentTemplate() {
-  const { Present: initialData } = useLoaderData() as Awaited<ReturnType<ReturnType<typeof indexLoader>>>;
-  const { data } = useQuery({ ...usePresent.usePresent(), initialData });
-
+  const initialData = useLoaderData() as Awaited<ReturnType<ReturnType<typeof presentLoader>>>;
+  const { data } = useQuery({ ...usePresent.usePresent(), initialData, gcTime: 0 });
   const [content, setContent] = useRecoilState(PresentStore.MarkdownAtom);
   const [startTime, setStartTime] = useRecoilState(PresentStore.StartTimeAtom);
   const [endTime, setEndTime] = useRecoilState(PresentStore.EndTimeAtom);

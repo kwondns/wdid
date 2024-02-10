@@ -3,11 +3,11 @@ import { useQuery } from '@tanstack/react-query';
 import { useFutures } from 'hooks';
 
 import { CardContainer, CardSet } from '@/components';
-import { indexLoader } from '@/pages';
+import { futureLoader } from '@/pages';
 
 export default function FutureTemplate() {
   const { FutureHigh, FutureMiddle, FutureLow } = useLoaderData() as Awaited<
-    ReturnType<ReturnType<typeof indexLoader>>
+    ReturnType<ReturnType<typeof futureLoader>>
   >;
   const { data: futureHigh } = useQuery({ ...useFutures.useFuturesHigh(), initialData: FutureHigh && undefined });
   const { data: futureMiddle } = useQuery({ ...useFutures.useFuturesMiddle(), initialData: FutureMiddle && undefined });
