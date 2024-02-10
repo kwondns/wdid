@@ -1,3 +1,7 @@
+import { visit } from 'unist-util-visit';
+import { Element } from 'hast';
+import { Plugin } from 'unified';
+
 import { Supabase } from '@/libs';
 
 async function fileUpload(startTime: string, file: File) {
@@ -55,4 +59,12 @@ export const onImagePasted = async (
       setMarkdown(insertedMarkdown);
     }),
   );
+};
+
+export const imgLazyLoading: Plugin = () => (tree) => {
+  visit(tree, 'element', (node: Element) => {
+    if (node.tagName === 'img' && node.properties) {
+      node.properties.loading = 'lazy';
+    }
+  });
 };

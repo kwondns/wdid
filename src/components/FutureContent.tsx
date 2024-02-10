@@ -55,7 +55,7 @@ export default function FutureContent(props: FutureContentProps) {
       {isInput ? (
         <form onSubmit={handleSubmit(onSubmitContent)}>
           <input
-            className={`col-start-2 w-full p-2 md:text-lg ${errors.content?.message && 'input-error'}`}
+            className={`col-start-2 w-full p-2 text-rose-500 md:text-lg dark:text-white ${errors.content?.message && 'input-error'}`}
             defaultValue={content}
             autoFocus
             id={id}

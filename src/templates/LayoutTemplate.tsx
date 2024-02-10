@@ -6,7 +6,7 @@ import { LayoutStore } from '@/stores';
 type LayoutProps = {
   children: React.ReactNode;
 };
-export default function Layout(props: LayoutProps) {
+export default function LayoutTemplate(props: LayoutProps) {
   const { children } = props;
   const isMobile = useRecoilValue(LayoutStore.MobileSelector);
   let mainHeight: string;
