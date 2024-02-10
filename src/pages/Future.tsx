@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { QueryClient } from '@tanstack/react-query';
 
 import { FullContainer } from '@/components';
@@ -12,12 +11,10 @@ type FutureLoaderType = {
   FutureLow: FutureBoxType.FutureViewBoxType;
 };
 
-export default function Future() {
+export function Future() {
   return (
     <FullContainer className="ml-[200vw]">
-      <Suspense>
-        <FutureTemplate />
-      </Suspense>
+      <FutureTemplate />
     </FullContainer>
   );
 }

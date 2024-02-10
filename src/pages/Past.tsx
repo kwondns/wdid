@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { QueryClient } from '@tanstack/react-query';
 
 import { FullContainer } from '@/components';
@@ -10,12 +9,10 @@ type PastLoaderType = {
   PastCount: PastCountType.PastCountType[];
   Past: PastType.PastType[];
 };
-export default function Past() {
+export function Past() {
   return (
     <FullContainer className="">
-      <Suspense>
-        <PastTemplate />
-      </Suspense>
+      <PastTemplate />
     </FullContainer>
   );
 }
