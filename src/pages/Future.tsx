@@ -25,10 +25,16 @@ export const futureLoader = (queryClient: QueryClient) => async (): Promise<Futu
   const queryFutureHigh = useFutures.useFuturesHigh();
   const queryFutureMiddle = useFutures.useFuturesMiddle();
   const queryFutureLow = useFutures.useFuturesLow();
+  const fetchFutureHigh: Promise<FutureBoxType.FutureViewBoxType> =
+    queryClient.getQueryData(queryFutureHigh.queryKey) ?? queryClient.fetchQuery(queryFutureHigh);
+  const fetchFutureMiddle: Promise<FutureBoxType.FutureViewBoxType> =
+    queryClient.getQueryData(queryFutureMiddle.queryKey) ?? queryClient.fetchQuery(queryFutureMiddle);
+  const fetchFutureLow: Promise<FutureBoxType.FutureViewBoxType> =
+    queryClient.getQueryData(queryFutureLow.queryKey) ?? queryClient.fetchQuery(queryFutureLow);
+  const [FutureHigh, FutureMiddle, FutureLow] = await Promise.all([fetchFutureHigh, fetchFutureMiddle, fetchFutureLow]);
   return {
-    FutureHigh: queryClient.getQueryData(queryFutureHigh.queryKey) ?? (await queryClient.fetchQuery(queryFutureHigh)),
-    FutureMiddle:
-      queryClient.getQueryData(queryFutureMiddle.queryKey) ?? (await queryClient.fetchQuery(queryFutureMiddle)),
-    FutureLow: queryClient.getQueryData(queryFutureLow.queryKey) ?? (await queryClient.fetchQuery(queryFutureLow)),
+    FutureHigh,
+    FutureMiddle,
+    FutureLow,
   };
 };

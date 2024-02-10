@@ -22,8 +22,10 @@ export default function Past() {
 export const pastLoader = (queryClient: QueryClient) => async (): Promise<PastLoaderType> => {
   const queryPastCount = usePastCount.usePastCountAll();
   const queryPast = usePast.usePast(new Date().toLocaleDateString());
-  return {
-    PastCount: queryClient.getQueryData(queryPastCount.queryKey) ?? (await queryClient.fetchQuery(queryPastCount)),
-    Past: queryClient.getQueryData(queryPast.queryKey) ?? (await queryClient.fetchQuery(queryPast)),
-  };
+  const fetchPastCount: Promise<PastCountType.PastCountType[]> =
+    queryClient.getQueryData(queryPastCount.queryKey) ?? queryClient.fetchQuery(queryPastCount);
+  const fetchPast: Promise<PastType.PastType[]> =
+    queryClient.getQueryData(queryPast.queryKey) ?? queryClient.fetchQuery(queryPast);
+  const [PastCount, Past] = await Promise.all([fetchPastCount, fetchPast]);
+  return { PastCount, Past };
 };
