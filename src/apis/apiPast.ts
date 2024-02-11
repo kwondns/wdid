@@ -19,7 +19,9 @@ export const createPast = async (payload: PastType.PastCreateType) => {
 };
 
 export const cleanStorage = async (startTime: string, content: string) => {
-  const bucketItems = await Supabase.supabase.storage.from(import.meta.env.VITE_SUPABASE_BUCKET_URL).list(startTime);
+  const bucketItems = await Supabase.supabase.storage
+    .from(import.meta.env.VITE_SUPABASE_BUCKET_URL)
+    .list(`${startTime}/`);
   const cleanTargets = bucketItems.data
     ?.filter((item) => !content.includes(item.name))
     .map((value) => `${startTime}/${value.name}`);
