@@ -18,13 +18,16 @@ export function usePastCreate() {
     onMutate: () => {
       toast('과거를 쓰는 중입니다...', { autoClose: false, toastId: 'past' });
     },
-    onSuccess: () => {
+    onSuccess: (_, variables) => {
       Promise.all([
         queryClient.invalidateQueries({ queryKey: ['past', new Date().toLocaleDateString()] }),
         queryClient.invalidateQueries({ queryKey: ['past', 'count'] }),
         queryClient.invalidateQueries({ queryKey: ['present'] }),
-      ]).then(() => {
+      ]).then(async () => {
         toast.update('past', { render: '과거에 담았습니다.', autoClose: 1500, type: 'success' });
+        const cleanLength = await apiPast.cleanStorage(variables.startTime, variables.content);
+        if (cleanLength)
+          toast.update('past', { render: `${cleanLength}개 스토리지 청소완료!`, type: 'success', autoClose: 1500 });
       });
     },
     onError: () => {
