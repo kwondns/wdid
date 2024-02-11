@@ -2,6 +2,7 @@ import { visit } from 'unist-util-visit';
 import { Element } from 'hast';
 import { Plugin } from 'unified';
 import { toast } from 'react-toastify';
+import { ClipboardEvent, DragEvent } from 'react';
 
 import { Supabase } from '@/libs';
 
@@ -44,6 +45,7 @@ const insertToTextArea = (intsertString: string) => {
 };
 
 export const onImagePasted = async (
+  event: ClipboardEvent<HTMLDivElement> | DragEvent<HTMLDivElement>,
   dataTransfer: DataTransfer,
   setMarkdown: (value: string) => void,
   startTime: string,
@@ -53,6 +55,7 @@ export const onImagePasted = async (
     const file = dataTransfer.files.item(index);
 
     if (file) {
+      event.preventDefault();
       files.push(file);
     }
   }

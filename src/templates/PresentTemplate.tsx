@@ -110,12 +110,10 @@ export default function PresentTemplate() {
               setContent(value as string);
             }}
             onPaste={async (event) => {
-              event.preventDefault();
-              await MarkdownLib.onImagePasted(event.clipboardData, setContent, startTimeString);
+              await MarkdownLib.onImagePasted(event, event.clipboardData, setContent, startTimeString);
             }}
             onDrop={async (event) => {
-              event.preventDefault();
-              await MarkdownLib.onImagePasted(event.dataTransfer, setContent, startTimeString);
+              await MarkdownLib.onImagePasted(event, event.dataTransfer, setContent, startTimeString);
             }}
             textareaProps={{
               placeholder: '꾸준히 작성하자',
