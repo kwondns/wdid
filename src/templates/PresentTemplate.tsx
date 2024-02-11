@@ -110,9 +110,11 @@ export default function PresentTemplate() {
               setContent(value as string);
             }}
             onPaste={async (event) => {
+              event.preventDefault();
               await MarkdownLib.onImagePasted(event.clipboardData, setContent, startTimeString);
             }}
             onDrop={async (event) => {
+              event.preventDefault();
               await MarkdownLib.onImagePasted(event.dataTransfer, setContent, startTimeString);
             }}
             textareaProps={{
