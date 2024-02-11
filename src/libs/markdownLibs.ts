@@ -8,7 +8,7 @@ import { Supabase } from '@/libs';
 
 async function fileUpload(startTime: string, file: File) {
   const filePath = `${startTime}/${new Date().toISOString()}_${file.name.replace(/[^a-zA-Z0-9_.]/g, '')}`;
-  toast('이미지 업로드 중...', { toastId: 'uploadImage' });
+  toast('이미지 업로드 중...', { toastId: 'uploadImage', autoClose: false });
   try {
     const { data, error } = await Supabase.supabase.storage
       .from(import.meta.env.VITE_SUPABASE_BUCKET_URL)
