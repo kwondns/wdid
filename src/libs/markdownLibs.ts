@@ -1,17 +1,26 @@
 import { visit } from 'unist-util-visit';
 import { Element } from 'hast';
 import { Plugin } from 'unified';
+import { toast } from 'react-toastify';
 
 import { Supabase } from '@/libs';
 
 async function fileUpload(startTime: string, file: File) {
-  const filePath = `${startTime}/${new Date().toISOString()}_${file.name}`;
-  const { data, error } = await Supabase.supabase.storage
-    .from(import.meta.env.VITE_SUPABASE_BUCKET_URL)
-    .upload(filePath, file);
-  Supabase.errorCheck(error);
-  return data?.path;
+  const filePath = `${startTime}/${new Date().toISOString()}_${file.name.replace(/[^a-zA-Z0-9_.]/g, '')}`;
+  toast('이미지 업로드 중...', { toastId: 'uploadImage' });
+  try {
+    const { data, error } = await Supabase.supabase.storage
+      .from(import.meta.env.VITE_SUPABASE_BUCKET_URL)
+      .upload(filePath, file);
+    await Supabase.errorCheck(error);
+    toast.update('uploadImage', { type: 'success', render: '업로드 완료!', autoClose: 1500 });
+    return data?.path;
+  } catch (error) {
+    toast.update('uploadImage', { type: 'error', render: '업로드 실패!', autoClose: 3000 });
+    return '';
+  }
 }
+
 const insertToTextArea = (intsertString: string) => {
   const textarea = document.querySelector('textarea');
   if (!textarea) {
