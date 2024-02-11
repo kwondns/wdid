@@ -1,5 +1,6 @@
 import { Supabase } from '@/libs';
 import { PastType } from '@/types';
+import { useAuth } from '@/hooks';
 
 export const getPast = async (date: string) => {
   const dateFormat = date.slice(0, -1).split('. ').join('/');
@@ -14,6 +15,8 @@ export const getPast = async (date: string) => {
 };
 
 export const createPast = async (payload: PastType.PastCreateType) => {
+  const result = await useAuth.useAuthVerify();
+  if (result) throw new Error('auth');
   const { error } = await Supabase.supabase.from('past').insert([payload]);
   await Supabase.errorCheck(error);
 };

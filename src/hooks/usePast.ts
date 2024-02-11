@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 import { apiPast } from '@/apis';
 import { PastType } from '@/types';
@@ -13,6 +14,7 @@ export function usePast(date: string) {
 
 export function usePastCreate() {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const { mutate: createPast, isPending: isCreating } = useMutation({
     mutationFn: (payload: PastType.PastCreateType) => apiPast.createPast(payload),
     onMutate: () => {
@@ -30,7 +32,11 @@ export function usePastCreate() {
           toast.update('past', { render: `${cleanLength}개 스토리지 청소완료!`, type: 'success', autoClose: 1500 });
       });
     },
-    onError: () => {
+    onError: (error) => {
+      if (error.message === 'auth') {
+        toast.update('past', { render: '인증이 필요합니다!', type: 'error', autoClose: 3000 });
+        navigate('/auth');
+      }
       toast.update('past', { render: '과거를 담는데 실패했습니다.', autoClose: 3000, type: 'error' });
     },
   });

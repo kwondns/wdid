@@ -1,45 +1,50 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 import { apiFutureBox } from '@/apis';
 import { FutureBoxType } from '@/types';
 
 export const useFutureBoxPatch = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const priority = {
+    1: () => queryClient.invalidateQueries({ queryKey: ['futures', 'high'] }),
+    2: () => queryClient.invalidateQueries({ queryKey: ['futures', 'middle'] }),
+    3: () => queryClient.invalidateQueries({ queryKey: ['futures', 'low'] }),
+  };
   const { mutate: patchFutureBox, isPending: isPatchingBox } = useMutation({
     mutationFn: (payload: FutureBoxType.FutureBoxPatchType) => apiFutureBox.patchFutureBox(payload),
     onMutate: () => {
       toast('미래 상자를 바꾸는 중...', { autoClose: false, toastId: 'futureBox' });
     },
     onSuccess: (_, variables) => {
-      switch (variables.priority) {
-        case 1: {
-          queryClient.invalidateQueries({ queryKey: ['futures', 'high'] });
-          break;
-        }
-        case 2: {
-          queryClient.invalidateQueries({ queryKey: ['futures', 'middle'] });
-          break;
-        }
-        default: {
-          queryClient.invalidateQueries({ queryKey: ['futures', 'low'] });
-        }
-      }
+      priority[variables.priority]();
       toast.update('futureBox', {
         render: `Lv${variables.priority}} 미래 상자 변경했습니다.`,
         autoClose: 1500,
         type: 'success',
       });
     },
-    onError: () => {
+    onError: (error) => {
+      if (error.message === 'auth') {
+        toast.update('futureBox', { render: '인증이 필요합니다!', type: 'error', autoClose: 3000 });
+        navigate('/auth');
+      }
       toast.update('futureBox', { render: '미래 상자 변경에 실패했습니다.', autoClose: 3000, type: 'error' });
-    }, // toast error
+    },
   });
   return { patchFutureBox, isPatchingBox };
 };
 
 export const useFutureBoxCreate = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  const priority = {
+    1: () => queryClient.invalidateQueries({ queryKey: ['futures', 'high'] }),
+    2: () => queryClient.invalidateQueries({ queryKey: ['futures', 'middle'] }),
+    3: () => queryClient.invalidateQueries({ queryKey: ['futures', 'low'] }),
+  };
   const {
     mutate: createFutureBox,
     isPending: isCreatingBox,
@@ -50,27 +55,18 @@ export const useFutureBoxCreate = () => {
       toast(`Lv${variables.priority} 미래 상자 생성 중...`, { autoClose: false, toastId: 'futureBoxCreate' });
     },
     onSuccess: (_, variables) => {
-      switch (variables.priority) {
-        case 1: {
-          queryClient.invalidateQueries({ queryKey: ['futures', 'high'] });
-          break;
-        }
-        case 2: {
-          queryClient.invalidateQueries({ queryKey: ['futures', 'middle'] });
-          break;
-        }
-        default:
-          {
-            queryClient.invalidateQueries({ queryKey: ['futures', 'low'] });
-          }
-          toast.update('futureBoxCreate', {
-            render: `Lv${variables.priority} 미래 상자 생성했습니다.`,
-            autoClose: 1500,
-            type: 'success',
-          });
-      }
+      priority[variables.priority]();
+      toast.update('futureBoxCreate', {
+        render: `Lv${variables.priority} 미래 상자 생성했습니다.`,
+        autoClose: 1500,
+        type: 'success',
+      });
     },
-    onError: () => {
+    onError: (error) => {
+      if (error.message === 'auth') {
+        toast.update('past', { render: '인증이 필요합니다!', type: 'error', autoClose: 3000 });
+        navigate('/auth');
+      }
       toast.update('futureBoxCreate', { render: '미래 상자 생성에 실패했습니다.', autoClose: 3000, type: 'error' });
     },
   });

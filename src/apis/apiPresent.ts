@@ -8,9 +8,11 @@ export const getPresentOne = async () => {
 };
 
 export const patchPresent = async (payload: PresentType.PresentType) => {
-  const { error } = await Supabase.supabase
+  const { data, error } = await Supabase.supabase
     .from('present')
     .update({ ...payload })
-    .eq('id', 1);
+    .eq('id', 1)
+    .select();
   await Supabase.errorCheck(error);
+  if (data?.length === 0) throw new Error();
 };
