@@ -9,13 +9,13 @@ export const getPast = async (date: string) => {
     .gte('startTime', new Date(dateFormat).toISOString())
     .lte('startTime', new Date(new Date(dateFormat).getTime() + 60 * 1000 * 60 * 24 - 1).toISOString())
     .order('created_at', { ascending: true });
-  Supabase.errorCheck(error);
+  await Supabase.errorCheck(error);
   return data;
 };
 
 export const createPast = async (payload: PastType.PastCreateType) => {
   const { error } = await Supabase.supabase.from('past').insert([payload]);
-  Supabase.errorCheck(error);
+  await Supabase.errorCheck(error);
 };
 
 export const cleanStorage = async (startTime: string, content: string) => {

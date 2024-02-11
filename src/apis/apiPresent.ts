@@ -3,7 +3,7 @@ import { PresentType } from '@/types';
 
 export const getPresentOne = async () => {
   const { data, error } = await Supabase.supabase.from('present').select('*');
-  Supabase.errorCheck(error);
+  await Supabase.errorCheck(error);
   return data?.[0];
 };
 
@@ -12,5 +12,5 @@ export const patchPresent = async (payload: PresentType.PresentType) => {
     .from('present')
     .update({ ...payload })
     .eq('id', 1);
-  Supabase.errorCheck(error);
+  await Supabase.errorCheck(error);
 };

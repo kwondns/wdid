@@ -6,7 +6,7 @@ export const getPastCountAll = async () => {
     .select('*')
     .order('date', { ascending: false })
     .limit(30);
-  Supabase.errorCheck(error);
+  await Supabase.errorCheck(error);
   if (data) return data.reverse();
   return null;
 };
