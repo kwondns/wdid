@@ -1,4 +1,4 @@
-import { createClient, PostgrestError } from '@supabase/supabase-js';
+import { AuthError, createClient, PostgrestError } from '@supabase/supabase-js';
 import { StorageError } from '@supabase/storage-js';
 
 import { SupabaseType } from '@/types';
@@ -9,6 +9,6 @@ export const supabase = createClient<SupabaseType.Database>(
   { db: { schema: 'timeline' } },
 );
 
-export const errorCheck = (error: PostgrestError | StorageError | null) => {
+export const errorCheck = async (error: PostgrestError | AuthError | StorageError | null) => {
   if (error) throw new Error(error.message);
 };

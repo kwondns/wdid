@@ -1,8 +1,6 @@
 import { FutureType } from '@/types';
 
-export type Json = string | number | boolean | { [key: string]: Json | undefined } | Json[];
-
-export interface Database {
+export type Database = {
   timeline: {
     Tables: {
       future: {
@@ -175,7 +173,7 @@ export interface Database {
           created_at: string;
           futures: FutureType.FutureType[] | null;
           id: string;
-          priority: 2;
+          priority: 3;
           title: string;
           updated_at: string;
         };
@@ -186,9 +184,19 @@ export interface Database {
           created_at: string;
           futures: FutureType.FutureType[] | null;
           id: string;
-          priority: 3;
+          priority: 2;
           title: string;
           updated_at: string;
+        };
+        Relationships: [];
+      };
+      past_count_view: {
+        Row: {
+          count: number;
+          date: string;
+          id: string;
+          titles: string[] | null;
+          titles_count: number;
         };
         Relationships: [];
       };
@@ -203,4 +211,4 @@ export interface Database {
       [_ in never]: never;
     };
   };
-}
+};

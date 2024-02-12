@@ -9,7 +9,7 @@ export default function Markdown(props: MarkdownProps) {
   const { source } = props;
   return (
     <MDEditor.Markdown
-      className="!bg-base-200 [&_img]:mx-auto [&_img]:!flex [&_img]:max-h-[500px] [&_ul]:list-disc"
+      className="!bg-base-200 [&_img]:mx-auto [&_img]:!flex [&_img]:max-h-[500px] [&_ol]:list-decimal [&_ul]:list-disc"
       source={source}
       rehypeRewrite={(node, _, parent) => {
         if ('tagName' in node && node.tagName && parent && 'tagName' in parent && parent.tagName) {

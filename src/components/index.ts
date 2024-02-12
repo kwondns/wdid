@@ -12,3 +12,4 @@ export { default as CarouselContainer } from './CarouselContainer';
 export { default as FullContainer } from './FullContainer';
 export { default as Nav } from './Nav';
 export { default as Markdown } from './Markdown';
+export { default as ActivityChart } from './ActivityChart';
