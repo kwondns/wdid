@@ -1,10 +1,10 @@
 import { RecoilRoot } from 'recoil';
 import { ToastContainer } from 'react-toastify';
+import { useEffect } from 'react';
 
 import Router from './Router';
 
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect } from 'react';
 
 function App() {
   useEffect(() => {
@@ -25,7 +25,6 @@ function App() {
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
         draggable
         pauseOnHover
         theme="dark"
