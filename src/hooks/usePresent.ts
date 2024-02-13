@@ -1,12 +1,14 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+import { useSetRecoilState } from 'recoil';
 
 import { apiPresent } from '@/apis';
 import { PresentType } from '@/types';
+import { Supabase } from '@/libs';
+import { PresentStore } from '@/stores';
 
 export const usePresent = () => ({ queryKey: ['present'], queryFn: apiPresent.getPresentOne });
 
-// TODO ERROR발생시 LocalStorage에 저장
 export const usePresentPatch = () => {
   const { mutate: patchPresent, isPending: isPatching } = useMutation({
     mutationFn: (payload: PresentType.PresentType) => apiPresent.patchPresent(payload),
@@ -25,4 +27,22 @@ export const usePresentPatch = () => {
     },
   });
   return { patchPresent, isPatching };
+};
+export const useCreateChannel = () => {
+  const queryClient = useQueryClient();
+  const setContent = useSetRecoilState(PresentStore.MarkdownAtom);
+  const setStartTime = useSetRecoilState(PresentStore.StartTimeAtom);
+  const setEndTime = useSetRecoilState(PresentStore.EndTimeAtom);
+  const setTitle = useSetRecoilState(PresentStore.TitleAtom);
+  Supabase.supabase
+    .channel('present')
+    .on('postgres_changes', { event: 'UPDATE', schema: 'timeline', table: 'present' }, (payload) => {
+      const { startTime, endTime, content, title } = payload.new as PresentType.PresentType;
+      queryClient.setQueryData(['present'], payload.new);
+      if (startTime) setStartTime(new Date(startTime));
+      if (endTime) setEndTime(new Date(endTime));
+      if (content) setContent(content);
+      if (title) setTitle(title);
+    })
+    .subscribe();
 };
