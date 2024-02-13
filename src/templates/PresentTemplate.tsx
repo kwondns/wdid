@@ -83,6 +83,13 @@ export default function PresentTemplate() {
           </div>
         </div>
         <div className="mx-4 flex justify-end gap-x-4 px-4 md:gap-x-12">
+          <div className="mr-10 flex items-center gap-x-1">
+            <kbd className="kbd">CMD</kbd>
+            <p>or</p>
+            <kbd className="kbd">CTRL</kbd>
+            <p>+</p>
+            <kbd className="kbd">S</kbd>
+          </div>
           <button
             type="button"
             className="btn btn-primary content-center p-2 text-white md:p-4 md:text-xl lg:text-2xl"
