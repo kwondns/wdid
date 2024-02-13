@@ -1,14 +1,11 @@
 import MDEditor from '@uiw/react-md-editor';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { ChangeEvent, useEffect } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import { ChangeEvent } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { DateLib, MarkdownLib } from '@/libs';
 import { PresentStore } from '@/stores';
 import { usePast, usePresent } from '@/hooks';
-import { presentLoader } from '@/pages';
 
 type FormInputType = {
   title: string;
@@ -16,8 +13,6 @@ type FormInputType = {
   endTime: string;
 };
 export default function PresentTemplate() {
-  const initialData = useLoaderData() as Awaited<ReturnType<ReturnType<typeof presentLoader>>>;
-  const { data } = useQuery({ ...usePresent.usePresent(), initialData, gcTime: 0 });
   const [content, setContent] = useRecoilState(PresentStore.MarkdownAtom);
   const [startTime, setStartTime] = useRecoilState(PresentStore.StartTimeAtom);
   const [endTime, setEndTime] = useRecoilState(PresentStore.EndTimeAtom);
@@ -30,12 +25,6 @@ export default function PresentTemplate() {
     setTitle(value);
   };
 
-  useEffect(() => {
-    if (data?.startTime) setStartTime(new Date(data.startTime));
-    if (data?.endTime) setEndTime(new Date(data.endTime));
-    if (!title && data?.title) setTitle(data.title);
-    if (!content && data?.content) setContent(data.content);
-  }, []);
   const { patchPresent, isPatching } = usePresent.usePresentPatch();
   const onClickTempSave = () => {
     patchPresent({ title, content });
