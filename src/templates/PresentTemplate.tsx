@@ -1,6 +1,6 @@
 import MDEditor from '@uiw/react-md-editor';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, KeyboardEvent } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { DateLib, MarkdownLib } from '@/libs';
@@ -54,6 +54,15 @@ export default function PresentTemplate() {
       },
     );
   };
+
+  const onSaveShortcut = (event: KeyboardEvent<HTMLDivElement>) => {
+    const { key } = event;
+    if ((event.metaKey || event.ctrlKey) && key === 's') {
+      event.preventDefault();
+      onClickTempSave();
+    }
+  };
+
   return (
     <div className="flex flex-1 flex-col bg-base-200">
       <form className="flex h-full flex-1 flex-col" onSubmit={handleSubmit(onClickSave)}>
@@ -74,6 +83,13 @@ export default function PresentTemplate() {
           </div>
         </div>
         <div className="mx-4 flex justify-end gap-x-4 px-4 md:gap-x-12">
+          <div className="mr-10 flex items-center gap-x-1">
+            <kbd className="kbd">CMD</kbd>
+            <p>or</p>
+            <kbd className="kbd">CTRL</kbd>
+            <p>+</p>
+            <kbd className="kbd">S</kbd>
+          </div>
           <button
             type="button"
             className="btn btn-primary content-center p-2 text-white md:p-4 md:text-xl lg:text-2xl"
@@ -107,6 +123,7 @@ export default function PresentTemplate() {
             textareaProps={{
               placeholder: '꾸준히 작성하자',
             }}
+            onKeyDown={onSaveShortcut}
           />
         </div>
       </form>
