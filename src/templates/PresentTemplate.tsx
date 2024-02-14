@@ -108,7 +108,7 @@ export default function PresentTemplate() {
         </div>
         <div className="flex max-h-full w-full flex-1 overflow-auto p-4">
           <MDEditor
-            className="flex w-full flex-1"
+            className="flex w-full flex-1 [&_img]:mx-auto [&_img]:!flex [&_img]:max-h-[500px] [&_ol]:list-decimal [&_ul]:list-disc"
             height="100%"
             value={content}
             onChange={(value) => {
