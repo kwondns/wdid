@@ -36,13 +36,14 @@ const router = createBrowserRouter([
       {
         path: 'past-calendar',
         async lazy() {
-          const { PastCalendar } = await import('./pages/PastCalendar');
+          const { PastCalendar, pastCalendarLoader } = await import('./pages/PastCalendar');
           return {
             Component: () => (
               <Suspense>
                 <PastCalendar />
               </Suspense>
             ),
+            loader: pastCalendarLoader(queryClient),
           };
         },
       },
