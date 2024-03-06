@@ -19,7 +19,9 @@ function CustomTooltip({ active, payload, label }: any) {
         {payload[0].payload.titles[0] !== null ? (
           <div className="mt-2 flex flex-col-reverse">
             {titles.map((title: string) => (
-              <p className=" text-2xl">{title}</p>
+              <p key={title} className=" text-2xl">
+                {title}
+              </p>
             ))}
           </div>
         ) : null}

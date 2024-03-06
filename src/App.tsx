@@ -29,6 +29,7 @@ function App() {
         pauseOnHover
         theme="dark"
         stacked
+        pauseOnFocusLoss={false}
       />
     </RecoilRoot>
   );
