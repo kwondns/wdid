@@ -66,7 +66,7 @@ export default function Card(props: CardProps) {
           {isInput || id === undefined ? (
             <form className="w-full" onSubmit={handleSubmit(onSubmitTitle)}>
               <input
-                className={`w-full text-xl  ${errors.title?.message && 'input-error'}`}
+                className={`w-full text-xl text-rose-500 dark:text-white  ${errors.title?.message && 'input-error'}`}
                 id={id}
                 autoFocus
                 defaultValue={title}
