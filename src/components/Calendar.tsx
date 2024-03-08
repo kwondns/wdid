@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { usePastCalendar } from '@/hooks';
 import { CalendarStore, PastStore } from '@/stores';
+import { DateLib } from '@/libs';
 
 export default function Calendar() {
   const today = new Date();
@@ -15,8 +16,7 @@ export default function Calendar() {
   const setAccordion = useSetRecoilState(PastStore.AccordionAtom);
   const navigate = useNavigate();
 
-  const makePreviousMonth = (date: Date) => new Date(date.getFullYear(), date.getMonth(), -firstDay + 1);
-  const prev = makePreviousMonth(current);
+  const prev = DateLib.makePreviousMonth(current, firstDay);
 
   const generateCalendar = (startDate: Date) => {
     const calArr = [];
