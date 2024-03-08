@@ -71,7 +71,7 @@ export default function FutureContent(props: FutureContentProps) {
       ) : (
         <span
           onDoubleClick={onDoubleClick}
-          className={`col-start-3 col-end-4 ml-5 origin-right truncate p-2 decoration-4 md:text-lg md:hover:text-xl ${checked && 'text-white/80 line-through decoration-gray-700'}`}
+          className={`col-start-3 col-end-4 ml-5 origin-right truncate p-2 decoration-4 md:text-lg md:hover:scale-110 ${checked && 'text-white/80 line-through decoration-gray-700'}`}
         >
           {content}
         </span>
