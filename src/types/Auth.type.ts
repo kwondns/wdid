@@ -1,4 +1,4 @@
-export type CredentialType = {
+export type AuthType = {
   email: string;
   password: string;
 };

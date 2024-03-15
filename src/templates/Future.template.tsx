@@ -1,17 +1,18 @@
 import { useLoaderData } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { useFutures } from 'hooks';
 
-import { CardContainer, CardSet } from '@/components';
-import { futureLoader } from '@/pages';
+import CardSet from '@/components/CardSet';
+import CardContainer from '@/components/CardContainer';
+import { useGetFutureHigh, useGetFutureLow, useGetFutureMiddle } from '@/hooks/useFutures';
+import { futureLoader } from '@/pages/Future';
 
 export default function FutureTemplate() {
   const { FutureHigh, FutureMiddle, FutureLow } = useLoaderData() as Awaited<
     ReturnType<ReturnType<typeof futureLoader>>
   >;
-  const { data: futureHigh } = useQuery({ ...useFutures.useFuturesHigh(), initialData: FutureHigh && undefined });
-  const { data: futureMiddle } = useQuery({ ...useFutures.useFuturesMiddle(), initialData: FutureMiddle && undefined });
-  const { data: futureLow } = useQuery({ ...useFutures.useFuturesLow(), initialData: FutureLow && undefined });
+  const { data: futureHigh } = useQuery({ ...useGetFutureHigh(), initialData: FutureHigh && undefined });
+  const { data: futureMiddle } = useQuery({ ...useGetFutureMiddle(), initialData: FutureMiddle && undefined });
+  const { data: futureLow } = useQuery({ ...useGetFutureLow(), initialData: FutureLow && undefined });
   return (
     <div className="flex max-h-screen flex-col gap-y-4 overflow-y-auto">
       {futureHigh?.length ? (

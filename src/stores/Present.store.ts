@@ -1,6 +1,6 @@
 import { atom, AtomEffect, selector } from 'recoil';
 
-import { DateLib } from '@/libs';
+import { fromDate } from '@/libs/date.lib';
 
 export const MarkdownAtom = atom({
   key: 'markdownAtom',
@@ -76,9 +76,9 @@ export const DiffTimeSelector = selector({
     const currentTime = get(CurrentTimeAtom);
     if (startTime) {
       if (endTime) {
-        return DateLib.fromDate(startTime, endTime);
+        return fromDate(startTime, endTime);
       }
-      return DateLib.fromDate(startTime, currentTime);
+      return fromDate(startTime, currentTime);
     }
     return '';
   },

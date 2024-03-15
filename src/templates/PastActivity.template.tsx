@@ -2,16 +2,16 @@ import { useLoaderData } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useRecoilValue } from 'recoil';
 
-import { pastLoader } from '@/pages';
-import { usePast } from '@/hooks';
-import { ActivityDocument } from '@/components';
-import { PastStore } from '@/stores';
+import { usePast } from '@/hooks/usePast';
+import { PastDateAtom } from '@/stores/Past.store';
+import { pastLoader } from '@/pages/Past';
+import ActivityDocument from '@/components/ActivityDocument';
 
 export default function PastActivityTemplate() {
   const { Past: initialData } = useLoaderData() as Awaited<ReturnType<ReturnType<typeof pastLoader>>>;
-  const activityDate = useRecoilValue(PastStore.PastDateAtom);
+  const activityDate = useRecoilValue(PastDateAtom);
   const { data } = useQuery({
-    ...usePast.usePast(activityDate),
+    ...usePast(activityDate),
     initialData: activityDate === new Date().toLocaleDateString() ? initialData : undefined,
   });
   return (
