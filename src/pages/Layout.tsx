@@ -23,7 +23,7 @@ export default function Layout() {
     if (data?.endTime) setEndTime(new Date(data.endTime));
     if (!title && data?.title) setTitle(data.title);
     if (!content && data?.content) setContent(data.content);
-  }, []);
+  }, [data]);
   const setLayout = useSetRecoilState(LayoutStore.LayoutAtom);
   useEffect(() => {
     setLayout(LayoutTransition[location]);

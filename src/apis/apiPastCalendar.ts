@@ -5,7 +5,7 @@ export const getPastCalendar = async (date: Date) => {
     .from('past_count_view')
     .select('*')
     .gt('date', date.toISOString())
-    .lt('date', new Date(date.getTime() + 60 * 1000 * 60 * 24 * 42).toISOString())
+    .lte('date', new Date(date.getTime() + 60 * 1000 * 60 * 24 * 42).toISOString())
     .order('date', { ascending: false })
     .limit(42);
   await Supabase.errorCheck(error);
