@@ -1,20 +1,33 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 
 import CardSet from '@/components/CardSet';
 import CardContainer from '@/components/CardContainer';
 import { useGetFutureHigh, useGetFutureLow, useGetFutureMiddle } from '@/hooks/useFutures';
-import { futureLoader } from '@/pages/Future';
+import { futureRecordLoader } from '@/pages/FutureRecord';
 
 export default function FutureTemplate() {
   const { FutureHigh, FutureMiddle, FutureLow } = useLoaderData() as Awaited<
-    ReturnType<ReturnType<typeof futureLoader>>
+    ReturnType<ReturnType<typeof futureRecordLoader>>
   >;
-  const { data: futureHigh } = useQuery({ ...useGetFutureHigh(), initialData: FutureHigh && undefined });
-  const { data: futureMiddle } = useQuery({ ...useGetFutureMiddle(), initialData: FutureMiddle && undefined });
-  const { data: futureLow } = useQuery({ ...useGetFutureLow(), initialData: FutureLow && undefined });
+
+  const route = useLocation();
+  const [isRecord, setIsRecord] = useState(false);
+  useEffect(() => {
+    if (route.pathname.includes('record')) setIsRecord(true);
+  }, []);
+
+  const { data: futureHigh } = useQuery({ ...useGetFutureHigh(isRecord), initialData: FutureHigh && undefined });
+  const { data: futureMiddle } = useQuery({ ...useGetFutureMiddle(isRecord), initialData: FutureMiddle && undefined });
+  const { data: futureLow } = useQuery({ ...useGetFutureLow(isRecord), initialData: FutureLow && undefined });
   return (
     <div className="flex max-h-screen flex-col gap-y-4 overflow-y-auto">
+      <Link className="w-screen px-6 pt-4" to={isRecord ? '/future' : '/future-record'}>
+        <button type="button" className="btn btn-warning w-full">
+          {isRecord ? '이전으로' : '기록 보기'}
+        </button>
+      </Link>
       {futureHigh?.length ? (
         <CardSet futureBoxes={futureHigh} priority={1} />
       ) : (

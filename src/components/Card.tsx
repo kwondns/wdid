@@ -1,9 +1,11 @@
-import { KeyboardEvent, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
+import PriorityColor from '@/constants/PriorityColor';
 import { FutureType, PriorityType } from '@/types/Future.type';
 import { useCreateFutureBox, useUpdateFutureBox } from '@/hooks/useFutures';
-import PriorityColor from '@/constants/PriorityColor';
 import FutureContent from '@/components/FutureContent';
 import FutureInput from '@/components/FutureInput';
 
@@ -13,7 +15,9 @@ type CardProps = {
   priority: PriorityType;
   index: number;
   title: string;
-  futures: FutureType[] | null;
+  future: FutureType[];
+  order: number;
+  checked: boolean;
   // eslint-disable-next-line react/require-default-props
   closeCreateBox?: () => void;
 };
@@ -22,13 +26,19 @@ type FormInputType = {
   title: string;
 };
 
-export default function Card(props: CardProps) {
-  const { priority, id, index, title, futures, closeCreateBox } = props;
+export default function FutureCard(props: CardProps) {
+  const { priority, id, index, title, future, closeCreateBox, checked, order } = props;
+  const { attributes, listeners, setNodeRef, transform } = useSortable({ id: order });
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition: transform ? 'transform 0ms' : undefined,
+  };
+
   const { updateFutureBox, isUpdating } = useUpdateFutureBox();
   const { createFutureBox, isCreating } = useCreateFutureBox();
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const cardBaseStyle =
-    'card min-w-[70vw] md:min-w-[400px] m-auto h-[260px] shadow-md shadow-slate-800 hover:shadow-lg has-[:focus]:shadow-lg focus:shadow-lg  hover:shadow-slate-600 has-[:focus]:shadow-slate-600 focus:shadow-slate-600  text-white transition-all overflow-hidden md:h-[380px] hover:scale-110 has-[:focus]:scale-110 focus:scale-125  hover:z-10 has-[:focus]:z-10 focus:z-10 border-b-[6px] border-l-2 border-r-[6px] border-t-2 border-slate-900';
+    'card min-w-[70vw] md:min-w-[400px] transition-all m-auto h-[260px] shadow-md shadow-slate-800 hover:shadow-lg has-[:focus]:shadow-lg focus:shadow-lg  hover:shadow-slate-600 has-[:focus]:shadow-slate-600 focus:shadow-slate-600 text-white overflow-hidden md:h-[380px] hover:scale-110 has-[:focus]:scale-110 focus:scale-125  hover:z-10 has-[:focus]:z-10 focus:z-10 border-b-[6px] border-l-2 border-r-[6px] border-t-2 border-slate-900';
   const zIndexStyle = `z-[${10 - index}]`;
   const leftStyle = `-left-${index * 8}`;
   const [isInput, setIsInput] = useState<boolean>(false);
@@ -47,6 +57,13 @@ export default function Card(props: CardProps) {
       }
     }
   };
+  const onChangeCheck = (event: ChangeEvent<HTMLInputElement>) => {
+    const { checked } = event.currentTarget;
+    if (id) {
+      const payload = { id, checked, priority };
+      updateFutureBox(payload);
+    }
+  };
   const onSubmitTitle = (data: FormInputType) => {
     if (id) {
       const payload = { id, title: data.title, priority };
@@ -60,8 +77,15 @@ export default function Card(props: CardProps) {
     }
     setIsInput(false);
   };
+
   return (
-    <div className={`${cardBaseStyle} ${PriorityColor[priority].bg} ${zIndexStyle} ${leftStyle}`}>
+    <div
+      className={`${cardBaseStyle} ${PriorityColor[priority].bg} ${zIndexStyle} ${leftStyle}`}
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+    >
       <div className="grid h-[260px] grid-cols-2 grid-rows-[auto_1fr_auto] md:h-[380px]">
         <div className="col-start-1 col-end-3 flex items-center justify-between border-b-4 border-b-gray-500 px-6 py-2">
           {isInput || id === undefined ? (
@@ -69,7 +93,6 @@ export default function Card(props: CardProps) {
               <input
                 className={`w-full text-xl text-rose-500 dark:text-white  ${errors.title?.message && 'input-error'}`}
                 id={id}
-                autoFocus
                 defaultValue={title}
                 onKeyDown={onPressEnter}
                 autoComplete="off"
@@ -86,6 +109,14 @@ export default function Card(props: CardProps) {
             </span>
           )}
           <input
+            id={id}
+            type="checkbox"
+            defaultChecked={checked}
+            onChange={onChangeCheck}
+            disabled={isUpdating}
+            className={`${PriorityColor[priority].checkbox} checkbox border-2`}
+          />
+          <input
             checked={isVisible}
             onChange={onChangeHidden}
             className={`${PriorityColor[priority].checkbox} checkbox rounded-full border-2`}
@@ -93,8 +124,8 @@ export default function Card(props: CardProps) {
           />
         </div>
         <div className="col-start-1 col-end-3 flex flex-col gap-y-2 overflow-y-auto px-2 pb-4">
-          {futures &&
-            futures.map((future) => {
+          {future &&
+            future.map((future) => {
               if (future) {
                 if (!isVisible && future.checked) return null;
                 return <FutureContent key={future.id} future={future} priority={priority} />;

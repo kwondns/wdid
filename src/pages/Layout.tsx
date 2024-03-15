@@ -13,7 +13,7 @@ import LayoutTemplate from '@/templates/Layout.template';
 export default function Layout() {
   const initialData = useLoaderData() as Awaited<ReturnType<ReturnType<typeof presentLoader>>>;
   const { data } = useQuery({ ...useGetPresent(), initialData, gcTime: 0 });
-  const location = useLocation().pathname.slice(1) as 'past' | 'present' | 'future';
+  const location = useLocation().pathname.slice(1) as 'past' | 'present' | 'future' | 'future-record';
   const setStartTime = useSetRecoilState(StartTimeAtom);
   const setEndTime = useSetRecoilState(EndTimeAtom);
   const [title, setTitle] = useRecoilState(TitleAtom);
