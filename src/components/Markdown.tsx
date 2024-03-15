@@ -1,6 +1,6 @@
 import MDEditor from '@uiw/react-md-editor';
 
-import { MarkdownLib } from '@/libs';
+import { imgLazyLoading } from '@/libs/markdown.lib';
 
 type MarkdownProps = {
   source: string;
@@ -18,7 +18,7 @@ export default function Markdown(props: MarkdownProps) {
           }
         }
       }}
-      rehypePlugins={[MarkdownLib.imgLazyLoading]}
+      rehypePlugins={[imgLazyLoading]}
     />
   );
 }

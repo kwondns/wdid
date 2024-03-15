@@ -1,6 +1,6 @@
 import { atom, AtomEffect, selector } from 'recoil';
 
-import { LayoutTransition } from '@/constants';
+import LayoutTransition from '@/constants/LayoutTransition';
 
 export const LayoutAtom = atom({ key: 'layoutAtom', default: LayoutTransition.past });
 

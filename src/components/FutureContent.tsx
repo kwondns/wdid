@@ -1,13 +1,13 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { FutureType } from '@/types';
-import { useFutures } from '@/hooks';
-import { PriorityColor } from '@/constants';
+import { FutureType, PriorityType } from '@/types/Future.type';
+import { useUpdateFuture } from '@/hooks/useFutures';
+import PriorityColor from '@/constants/PriorityColor';
 
 type FutureContentProps = {
-  future: FutureType.FutureType;
-  priority: FutureType.PriorityType;
+  future: FutureType;
+  priority: PriorityType;
 };
 type FormInputType = {
   content: string;
@@ -15,7 +15,7 @@ type FormInputType = {
 export default function FutureContent(props: FutureContentProps) {
   const { future, priority } = props;
   const { id, content, checked } = future;
-  const { patchFuture, isPatching } = useFutures.useFuturePatch();
+  const { updateFuture, isUpdating } = useUpdateFuture();
   const {
     handleSubmit,
     register,
@@ -25,7 +25,7 @@ export default function FutureContent(props: FutureContentProps) {
   const onChangeCheck = (event: ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = event.currentTarget;
     const payload = { id, checked, priority };
-    patchFuture(payload);
+    updateFuture(payload);
   };
   const [isInput, setIsInput] = useState<boolean>(false);
   const onDoubleClick = () => setIsInput(true);
@@ -38,7 +38,7 @@ export default function FutureContent(props: FutureContentProps) {
   const onSubmitContent = (data: FormInputType) => {
     setIsInput(false);
     const payload = { id, content: data.content, priority };
-    patchFuture(payload);
+    updateFuture(payload);
   };
   return (
     <div key={id} className="grid grid-cols-[auto_1fr_auto]">
@@ -48,7 +48,7 @@ export default function FutureContent(props: FutureContentProps) {
           type="checkbox"
           checked={checked}
           onChange={onChangeCheck}
-          disabled={isPatching}
+          disabled={isUpdating}
           className={`${PriorityColor[priority].checkbox} checkbox border-2`}
         />
       </label>
@@ -61,7 +61,7 @@ export default function FutureContent(props: FutureContentProps) {
             id={id}
             autoComplete="off"
             onKeyDown={onPressEnter}
-            disabled={isPatching}
+            disabled={isUpdating}
             {...register('content', {
               required: '입력해주세요',
               minLength: { value: 2, message: '최소 2글자 입력' },
@@ -71,7 +71,7 @@ export default function FutureContent(props: FutureContentProps) {
       ) : (
         <span
           onDoubleClick={onDoubleClick}
-          className={`col-start-3 col-end-4 ml-5 origin-right truncate p-2 decoration-4 md:text-lg md:hover:text-xl ${checked && 'text-white/80 line-through decoration-gray-700'}`}
+          className={`col-start-3 col-end-4 ml-5 origin-right truncate p-2 decoration-4 md:text-lg md:hover:scale-110 ${checked && 'text-white/80 line-through decoration-gray-700'}`}
         >
           {content}
         </span>

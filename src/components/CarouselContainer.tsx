@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil';
 import { useEffect, useRef, useState } from 'react';
 
-import { LayoutStore } from '@/stores';
+import { LayoutAtom } from '@/stores/Layout.store';
 
 type CarouselContainerProps = {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ export default function CarouselContainer(props: CarouselContainerProps) {
   const { children } = props;
   const [loading, setLoading] = useState(true);
   const divRef = useRef<HTMLDivElement | null>(null);
-  const transition = useRecoilValue(LayoutStore.LayoutAtom);
+  const transition = useRecoilValue(LayoutAtom);
   useEffect(() => {
     const preventTransitionWhileResize = () => {
       if (divRef.current) {

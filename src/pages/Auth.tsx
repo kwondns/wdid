@@ -1,26 +1,23 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
-import { CredentialType } from '@/types';
-import { useAuth } from '@/hooks';
-import { AuthStore } from '@/stores';
+import { AuthAtom } from '@/stores/Auth.store';
+import { useAuth } from '@/hooks/useAuth';
+import { AuthType } from '@/types/Auth.type';
 
 export function Auth() {
-  const { handleSubmit, register, resetField } = useForm<CredentialType.CredentialType>();
+  const { handleSubmit, register, resetField } = useForm<AuthType>();
   const navigate = useNavigate();
-  const [auth, setAuth] = useRecoilState(AuthStore.AuthAtom);
+  const { auth, isPending } = useAuth();
+  const credential = useRecoilValue(AuthAtom);
   useEffect(() => {
-    if (auth) navigate('/past');
-  }, [auth]);
-  const onSubmit = async (credential: CredentialType.CredentialType) => {
-    const result = await useAuth.useAuth(credential);
-    if (!result) resetField('password');
-    else {
-      setAuth(result);
-      navigate('/future');
-    }
+    if (credential) navigate('/past');
+  }, [credential]);
+  const onSubmit = async (data: AuthType) => {
+    auth(data);
+    resetField('password');
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -32,15 +29,9 @@ export function Auth() {
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <label className="label" htmlFor="email">
-                <span className="label-text">Email</span>
+                <span className="label-text">Username</span>
               </label>
-              <input
-                type="email"
-                placeholder="email"
-                className="input input-bordered"
-                required
-                {...register('email')}
-              />
+              <input placeholder="UserName" className="input input-bordered" required {...register('username')} />
             </div>
             <div className="form-control">
               <label className="label" htmlFor="password">
@@ -55,7 +46,7 @@ export function Auth() {
               />
             </div>
             <div className="form-control mt-6">
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary" disabled={isPending}>
                 Login
               </button>
             </div>

@@ -2,11 +2,11 @@ import { Bar, CartesianGrid, ComposedChart, Legend, Line, ResponsiveContainer, T
 import { useSetRecoilState } from 'recoil';
 import { CategoricalChartState } from 'recharts/types/chart/types';
 
-import { PastCountType } from '@/types';
-import { PastStore } from '@/stores';
+import { PastCountType } from '@/types/PastCount.type';
+import { AccordionAtom, PastDateAtom, PastDateCountAtom } from '@/stores/Past.store';
 
 type ActivityChartProps = {
-  activities: PastCountType.PastCountType[] | null;
+  activities: PastCountType[] | null;
 };
 function CustomTooltip({ active, payload, label }: any) {
   if (active && payload && payload.length) {
@@ -35,9 +35,9 @@ function CustomTooltip({ active, payload, label }: any) {
 export default function ActivityChart(props: ActivityChartProps) {
   const { activities } = props;
 
-  const setActivityDate = useSetRecoilState(PastStore.PastDateAtom);
-  const setPastDateCount = useSetRecoilState(PastStore.PastDateCountAtom);
-  const setAccordion = useSetRecoilState(PastStore.AccordionAtom);
+  const setActivityDate = useSetRecoilState(PastDateAtom);
+  const setPastDateCount = useSetRecoilState(PastDateCountAtom);
+  const setAccordion = useSetRecoilState(AccordionAtom);
 
   if (!activities) return <span>Error!</span>;
   const onClickChart = (event: CategoricalChartState) => {
@@ -65,7 +65,7 @@ export default function ActivityChart(props: ActivityChartProps) {
           <CartesianGrid stroke="#303030" />
           <XAxis dataKey="date" scale="band" />
           <YAxis orient="left" yAxisId={1} domain={['dataMin + 1', 'auto']} />
-          <YAxis orientation="right" yAxisId={2} domain={[1, 'dataMax + 2']} />
+          <YAxis orientation="right" yAxisId={2} domain={[0, 'dataMax + 2']} />
           <Tooltip content={<CustomTooltip />} />
           <Legend />
           <Bar name="Counts" dataKey="titles_count" yAxisId={2} barSize={10} fill="#bb6667" />

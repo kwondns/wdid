@@ -4,18 +4,14 @@ import { Plugin } from 'unified';
 import { toast } from 'react-toastify';
 import { ClipboardEvent, DragEvent } from 'react';
 
-import { Supabase } from '@/libs';
+import { FileUpload } from '@/libs/fetch.lib';
 
-async function fileUpload(startTime: string, file: File) {
-  const filePath = `${startTime}/${new Date().toISOString()}_${file.name.replace(/[^a-zA-Z0-9_.]/g, '')}`;
+async function fileUpload(file: File, target: string, num: number, accessToken: string, uri: string) {
   toast('이미지 업로드 중...', { toastId: 'uploadImage', autoClose: false });
   try {
-    const { data, error } = await Supabase.supabase.storage
-      .from(import.meta.env.VITE_SUPABASE_BUCKET_URL)
-      .upload(filePath, file);
-    await Supabase.errorCheck(error);
+    const uploadResult = await FileUpload(target, file, accessToken, uri, num);
     toast.update('uploadImage', { type: 'success', render: '업로드 완료!', autoClose: 1500 });
-    return data?.path;
+    return uploadResult;
   } catch (error) {
     toast.update('uploadImage', { type: 'error', render: '업로드 실패!', autoClose: 3000 });
     return '';
@@ -47,8 +43,10 @@ const insertToTextArea = (intsertString: string) => {
 export const onImagePasted = async (
   event: ClipboardEvent<HTMLDivElement> | DragEvent<HTMLDivElement>,
   dataTransfer: DataTransfer,
+  target: string,
+  accessToken: string,
+  uri: string,
   setMarkdown: (value: string) => void,
-  startTime: string,
 ) => {
   const files: File[] = [];
   for (let index = 0; index < dataTransfer.items.length; index += 1) {
@@ -59,18 +57,20 @@ export const onImagePasted = async (
       files.push(file);
     }
   }
-  await Promise.all(
+  let result: string[] = [];
+  await Promise.allSettled(
     files.map(async (file) => {
-      const url = await fileUpload(startTime, file);
-      const insertedMarkdown = insertToTextArea(
-        `![](${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/${import.meta.env.VITE_SUPABASE_BUCKET_URL}/${url})`,
-      );
-      if (!insertedMarkdown) {
-        return;
-      }
-      setMarkdown(insertedMarkdown);
+      const url = await fileUpload(file, target, files.length, accessToken, uri);
+      result = url;
     }),
   );
+  result.forEach((route: string) => {
+    const insertedMarkdown = insertToTextArea(`![](${import.meta.env.VITE_IMAGE_URL}/${route})`);
+    if (!insertedMarkdown) {
+      return;
+    }
+    setMarkdown(insertedMarkdown);
+  });
 };
 
 export const imgLazyLoading: Plugin = () => (tree) => {

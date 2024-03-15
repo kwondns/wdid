@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
 import Card from './Card';
-import { FutureType } from '@/types';
+import { PriorityType } from '@/types/Future.type';
 
 type CardContainerProps = {
   children: React.ReactNode;
-  priority: FutureType.PriorityType;
+  priority: PriorityType;
   index: number;
 };
 export default function CardContainer(props: CardContainerProps) {
@@ -19,7 +19,15 @@ export default function CardContainer(props: CardContainerProps) {
     >
       {children}
       {isAddBox ? (
-        <Card priority={priority} index={index} title="" futures={[]} closeCreateBox={closeCreateBox} />
+        <Card
+          priority={priority}
+          index={index}
+          title=""
+          future={[]}
+          closeCreateBox={closeCreateBox}
+          checked={false}
+          order={999}
+        />
       ) : (
         <button
           type="button"

@@ -2,16 +2,16 @@ import { useRecoilState } from 'recoil';
 import { useQueryClient } from '@tanstack/react-query';
 
 import Calendar from '../components/Calendar';
-import { CalendarStore } from '@/stores';
-import { usePastCalendar } from '@/hooks';
+import { CalendarAtom } from '@/stores/Past.store';
+import { usePastCalendar } from '@/hooks/usePast';
 
 export default function PastCalendarTemplate() {
   const today = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
-  const [current, setCurrent] = useRecoilState(CalendarStore.CalendarAtom);
+  const [current, setCurrent] = useRecoilState(CalendarAtom);
   const queryClient = useQueryClient();
   const onClickToday = () => setCurrent(new Date(new Date().getFullYear(), new Date().getMonth(), 1));
   const prefetch = (targetMonth: Date) => {
-    queryClient.prefetchQuery({ ...usePastCalendar.usePastCalendar(targetMonth) });
+    queryClient.prefetchQuery({ ...usePastCalendar(targetMonth) });
   };
 
   const makePreviousMonth = (date: Date) => new Date(date.getFullYear(), date.getMonth(), -date.getDay() + 1);

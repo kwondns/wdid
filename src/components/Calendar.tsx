@@ -3,20 +3,20 @@ import { useQuery } from '@tanstack/react-query';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
-import { usePastCalendar } from '@/hooks';
-import { CalendarStore, PastStore } from '@/stores';
+import { AccordionAtom, CalendarAtom, PastDateAtom, PastDateCountAtom } from '@/stores/Past.store';
+import { makePreviousMonth } from '@/libs/date.lib';
+import { usePastCalendar } from '@/hooks/usePast';
 
 export default function Calendar() {
   const today = new Date();
-  const current = useRecoilValue(CalendarStore.CalendarAtom);
+  const current = useRecoilValue(CalendarAtom);
   const firstDay = current.getDay();
-  const setActivityDate = useSetRecoilState(PastStore.PastDateAtom);
-  const setPastDateCount = useSetRecoilState(PastStore.PastDateCountAtom);
-  const setAccordion = useSetRecoilState(PastStore.AccordionAtom);
+  const setActivityDate = useSetRecoilState(PastDateAtom);
+  const setPastDateCount = useSetRecoilState(PastDateCountAtom);
+  const setAccordion = useSetRecoilState(AccordionAtom);
   const navigate = useNavigate();
 
-  const makePreviousMonth = (date: Date) => new Date(date.getFullYear(), date.getMonth(), -firstDay + 1);
-  const prev = makePreviousMonth(current);
+  const prev = makePreviousMonth(current, firstDay);
 
   const generateCalendar = (startDate: Date) => {
     const calArr = [];
@@ -31,7 +31,7 @@ export default function Calendar() {
     }
     return calArr;
   };
-  const { data } = useQuery({ ...usePastCalendar.usePastCalendar(prev) });
+  const { data } = useQuery({ ...usePastCalendar(prev) });
   const calendarArray = useMemo(() => generateCalendar(prev), [current]);
 
   const onClickTitle = (event: MouseEvent<HTMLSpanElement>) => {

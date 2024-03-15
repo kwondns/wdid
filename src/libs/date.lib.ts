@@ -24,3 +24,6 @@ export const dateFormat = (startDate: string | Date, endDate: string | Date) => 
 
 export const DateTime = (date: string | Date) =>
   new Date(date).toLocaleString('ko-KR', { dateStyle: 'short', timeStyle: 'short', hour12: false });
+
+export const makePreviousMonth = (date: Date, firstDay: number) =>
+  new Date(date.getFullYear(), date.getMonth(), -firstDay + 1);
