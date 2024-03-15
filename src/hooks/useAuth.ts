@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { PostFetch, RefreshFetch } from '@/libs/fetch.lib';
 import { AuthType } from '@/types/Auth.type';
-import { AuthAtom } from '@/stores/Auth.store';
+import { AuthAtom, RequireAuthAtom } from '@/stores/Auth.store';
 
 type AccessTokenType = {
   accessToken: string;
@@ -36,6 +36,7 @@ export const useAuth = () => {
 export const useRefresh = () => {
   const setAuth = useSetRecoilState(AuthAtom);
   const navigate = useNavigate();
+  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
   const { mutate: refreshToken } = useMutation({
     mutationFn: async () => RefreshFetch<AuthResponseType>(`admin/refresh`),
     onSuccess: async (data) => {
@@ -43,6 +44,7 @@ export const useRefresh = () => {
     },
     onError: (error) => {
       if (error.message === 'Expired Token') toast('인증이 만료되었습니다!', { type: 'error', autoClose: 2000 });
+      setRequireAuth(false);
       navigate('/auth');
     },
   });
