@@ -29,15 +29,9 @@ export function Auth() {
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <label className="label" htmlFor="email">
-                <span className="label-text">Email</span>
+                <span className="label-text">Username</span>
               </label>
-              <input
-                type="email"
-                placeholder="email"
-                className="input input-bordered"
-                required
-                {...register('email')}
-              />
+              <input placeholder="UserName" className="input input-bordered" required {...register('username')} />
             </div>
             <div className="form-control">
               <label className="label" htmlFor="password">

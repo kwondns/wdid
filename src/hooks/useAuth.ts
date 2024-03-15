@@ -32,7 +32,7 @@ export const useAuth = () => {
   });
   return { auth, isPending };
 };
-// TODO 인증 추가
+
 export const useRefresh = () => {
   const setAuth = useSetRecoilState(AuthAtom);
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ export const useRefresh = () => {
     },
     onError: (error) => {
       if (error.message === 'Expired Token') toast('인증이 만료되었습니다!', { type: 'error', autoClose: 2000 });
-      navigate('/');
+      navigate('/auth');
     },
   });
   return { refreshToken };

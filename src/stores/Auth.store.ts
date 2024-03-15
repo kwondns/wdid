@@ -17,3 +17,8 @@ export const AuthAtom = atom<string>({
   default: localStorage.getItem('accessToken') ?? '',
   effects: [AuthEffect('accessToken')],
 });
+
+export const RequireAuthAtom = atom<boolean>({
+  key: 'require_auth',
+  default: false,
+});

@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 
 import { GetFetch, PatchFetch, PostFetch } from '@/libs/fetch.lib';
 import {
@@ -11,7 +12,7 @@ import {
   FutureType,
   FutureUpdateType,
 } from '@/types/Future.type';
-import { AuthAtom } from '@/stores/Auth.store';
+import { AuthAtom, RequireAuthAtom } from '@/stores/Auth.store';
 
 export const useGetFutureHigh = (record = false) => ({
   queryKey: ['future', 'high', record],
@@ -29,10 +30,15 @@ export const useGetFutureLow = (record = false) => ({
 export const useCreateFuture = () => {
   const queryClient = useQueryClient();
   const accessToken = useRecoilValue(AuthAtom);
+  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
+  useEffect(() => {
+    setRequireAuth(true);
+  }, []);
+
   const priority = {
-    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high'] }),
-    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle'] }),
-    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low'] }),
+    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high', false] }),
+    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle', false] }),
+    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low', false] }),
   };
   const { mutate: createFuture, isPending: isCreating } = useMutation({
     mutationFn: async (payload: FutureCreateType) => {
@@ -48,6 +54,9 @@ export const useCreateFuture = () => {
     onError: async (error) => {
       toast.update('futureCreate', { render: error.message, autoClose: 3000, type: 'error' });
     },
+    onSettled: () => {
+      setRequireAuth(false);
+    },
   });
   return { createFuture, isCreating };
 };
@@ -55,10 +64,15 @@ export const useCreateFuture = () => {
 export const useUpdateFuture = () => {
   const accessToken = useRecoilValue(AuthAtom);
   const queryClient = useQueryClient();
+  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
+  useEffect(() => {
+    setRequireAuth(true);
+  }, []);
+
   const priority = {
-    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high'] }),
-    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle'] }),
-    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low'] }),
+    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high', false] }),
+    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle', false] }),
+    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low', false] }),
   };
   const { mutate: updateFuture, isPending: isUpdating } = useMutation({
     mutationFn: async (payload: FutureUpdateType) => {
@@ -74,6 +88,9 @@ export const useUpdateFuture = () => {
     onError: async (error) => {
       toast.update('futureUpdate', { render: error.message, autoClose: 3000, type: 'error' });
     },
+    onSettled: () => {
+      setRequireAuth(false);
+    },
   });
   return { updateFuture, isUpdating };
 };
@@ -81,10 +98,15 @@ export const useUpdateFuture = () => {
 export const useCreateFutureBox = () => {
   const accessToken = useRecoilValue(AuthAtom);
   const queryClient = useQueryClient();
+  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
+  useEffect(() => {
+    setRequireAuth(true);
+  }, []);
+
   const priority = {
-    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high'] }),
-    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle'] }),
-    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low'] }),
+    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high', false] }),
+    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle', false] }),
+    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low', false] }),
   };
   const { mutate: createFutureBox, isPending: isCreating } = useMutation({
     mutationFn: async (payload: FutureBoxCreateType) => {
@@ -100,16 +122,24 @@ export const useCreateFutureBox = () => {
     onError: async (error) => {
       toast.update('futureBoxCreate', { render: error.message, autoClose: 3000, type: 'error' });
     },
+    onSettled: () => {
+      setRequireAuth(false);
+    },
   });
   return { createFutureBox, isCreating };
 };
 export const useUpdateFutureBox = () => {
   const accessToken = useRecoilValue(AuthAtom);
   const queryClient = useQueryClient();
+  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
+  useEffect(() => {
+    setRequireAuth(true);
+  }, []);
+
   const priority = {
-    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high'] }),
-    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle'] }),
-    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low'] }),
+    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high', false] }),
+    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle', false] }),
+    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low', false] }),
   };
   const { mutate: updateFutureBox, isPending: isUpdating } = useMutation({
     mutationFn: async (payload: FutureBoxUpdateType) => {
@@ -125,6 +155,9 @@ export const useUpdateFutureBox = () => {
     onError: async (error) => {
       toast.update('futureUpdate', { render: error.message, autoClose: 3000, type: 'error' });
     },
+    onSettled: () => {
+      setRequireAuth(false);
+    },
   });
   return { updateFutureBox, isUpdating };
 };
@@ -132,10 +165,15 @@ export const useUpdateFutureBox = () => {
 export const useSwapFutureBox = () => {
   const accessToken = useRecoilValue(AuthAtom);
   const queryClient = useQueryClient();
+  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
+  useEffect(() => {
+    setRequireAuth(true);
+  }, []);
+
   const priority = {
-    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high'] }),
-    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle'] }),
-    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low'] }),
+    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high', false] }),
+    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle', false] }),
+    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low', false] }),
   };
 
   const { mutate: swapFutureBox } = useMutation({
@@ -160,6 +198,9 @@ export const useSwapFutureBox = () => {
     },
     onError: async (error) => {
       toast.update('futureUpdate', { render: error.message, autoClose: 3000, type: 'error' });
+    },
+    onSettled: () => {
+      setRequireAuth(false);
     },
   });
   return { swapFutureBox };

@@ -1,11 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useEffect } from 'react';
 
 import { GetFetch, PostFetch } from '@/libs/fetch.lib';
 import { PastCountType } from '@/types/PastCount.type';
 import { PastCreateType, PastType } from '@/types/Past.type';
-import { AuthAtom } from '@/stores/Auth.store';
+import { AuthAtom, RequireAuthAtom } from '@/stores/Auth.store';
 
 export function usePast(date: string) {
   return {
@@ -17,6 +18,11 @@ export function usePast(date: string) {
 export function usePastCreate() {
   const queryClient = useQueryClient();
   const accessToken = useRecoilValue(AuthAtom);
+  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
+  useEffect(() => {
+    setRequireAuth(true);
+  }, []);
+
   const { mutate: createPast, isPending: isCreating } = useMutation({
     mutationFn: (payload: PastCreateType) => PostFetch<PastCreateType, PastType>('time/past', payload, accessToken),
     onMutate: () => {
@@ -36,6 +42,9 @@ export function usePastCreate() {
     },
     onError: () => {
       toast.update('past', { render: '과거를 담는데 실패했습니다.', autoClose: 3000, type: 'error' });
+    },
+    onSettled: () => {
+      setRequireAuth(false);
     },
   });
   return { createPast, isCreating };
