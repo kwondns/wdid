@@ -65,7 +65,7 @@ export default function ActivityChart(props: ActivityChartProps) {
           <CartesianGrid stroke="#303030" />
           <XAxis dataKey="date" scale="band" />
           <YAxis orient="left" yAxisId={1} domain={['dataMin + 1', 'auto']} />
-          <YAxis orientation="right" yAxisId={2} domain={[1, 'dataMax + 2']} />
+          <YAxis orientation="right" yAxisId={2} domain={[0, 'dataMax + 2']} />
           <Tooltip content={<CustomTooltip />} />
           <Legend />
           <Bar name="Counts" dataKey="titles_count" yAxisId={2} barSize={10} fill="#bb6667" />
