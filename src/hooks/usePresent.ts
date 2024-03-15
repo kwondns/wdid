@@ -40,7 +40,7 @@ export const useUpdatePresent = () => {
       if (variables.startTime) render = '시작 완료';
       else if (variables.endTime) render = '종료 완료';
       else render = '기억 완료';
-      toast.update('presentPatch', { render, autoClose: 1500, type: 'success' });
+      toast.update('present', { render, autoClose: 1500, type: 'success' });
     },
     onSettled: () => {
       setRequireAuth(false);
