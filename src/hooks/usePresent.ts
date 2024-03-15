@@ -2,11 +2,12 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { io } from 'socket.io-client';
+import { useEffect } from 'react';
 
 import { PresentType } from '@/types/Present.type';
 import { EndTimeAtom, MarkdownAtom, StartTimeAtom, TitleAtom } from '@/stores/Present.store';
 import { GetFetch, PutFetch } from '@/libs/fetch.lib';
-import { AuthAtom } from '@/stores/Auth.store';
+import { AuthAtom, RequireAuthAtom } from '@/stores/Auth.store';
 
 export const useGetPresent = () => ({
   queryKey: ['present'],
@@ -15,6 +16,11 @@ export const useGetPresent = () => ({
 
 export const useUpdatePresent = () => {
   const accessToken = useRecoilValue(AuthAtom);
+  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
+  useEffect(() => {
+    setRequireAuth(true);
+  }, []);
+
   const { mutate: updatePresent, isPending: isUpdating } = useMutation({
     mutationFn: async (payload: PresentType) => {
       if (!payload.startTime) delete payload.startTime;
@@ -36,12 +42,15 @@ export const useUpdatePresent = () => {
       else render = '기억 완료';
       toast.update('presentPatch', { render, autoClose: 1500, type: 'success' });
     },
+    onSettled: () => {
+      setRequireAuth(false);
+    },
   });
   return { updatePresent, isUpdating };
 };
 
 export const useSocketPresent = () => {
-  const socket = io('ws://localhost:3000/present');
+  const socket = io(import.meta.env.VITE_WS_SERVER_URL);
   const queryClient = useQueryClient();
   const setContent = useSetRecoilState(MarkdownAtom);
   const setStartTime = useSetRecoilState(StartTimeAtom);
