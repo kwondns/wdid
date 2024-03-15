@@ -2,10 +2,11 @@ import { QueryClient } from '@tanstack/react-query';
 
 import FullContainer from '@/components/FullContainer';
 import PresentTemplate from '@/templates/Present.template';
-import { useGetPresent } from '@/hooks/usePresent';
+import { useGetPresent, useSocketPresent } from '@/hooks/usePresent';
 import { PresentType } from '@/types/Present.type';
 
 export function Present() {
+  useSocketPresent();
   return (
     <FullContainer className="ml-[100vw]">
       <PresentTemplate />

@@ -3,7 +3,7 @@ import { Outlet, useLoaderData, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-import { useGetPresent, useSocketPresent } from '@/hooks/usePresent';
+import { useGetPresent } from '@/hooks/usePresent';
 import { presentLoader } from '@/pages/Present';
 import { EndTimeAtom, MarkdownAtom, StartTimeAtom, TitleAtom } from '@/stores/Present.store';
 import { LayoutAtom } from '@/stores/Layout.store';
@@ -40,8 +40,8 @@ export default function Layout() {
   const setLayout = useSetRecoilState(LayoutAtom);
   useEffect(() => {
     setLayout(LayoutTransition[location]);
-  }, [location]);
-  useSocketPresent();
+  }, [location, setLayout]);
+
   return (
     <LayoutTemplate>
       <Outlet />
