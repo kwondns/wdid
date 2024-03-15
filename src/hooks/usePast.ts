@@ -1,22 +1,24 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
-import { apiPast } from '@/apis';
-import { PastType } from '@/types';
+import { GetFetch, PostFetch } from '@/libs/fetch.lib';
+import { PastCountType } from '@/types/PastCount.type';
+import { PastCreateType, PastType } from '@/types/Past.type';
+import { AuthAtom } from '@/stores/Auth.store';
 
 export function usePast(date: string) {
   return {
     queryKey: ['past', date],
-    queryFn: async () => apiPast.getPast(date),
+    queryFn: async () => GetFetch<PastType[]>(`time/past/${date}`),
   };
 }
 
 export function usePastCreate() {
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
+  const accessToken = useRecoilValue(AuthAtom);
   const { mutate: createPast, isPending: isCreating } = useMutation({
-    mutationFn: (payload: PastType.PastCreateType) => apiPast.createPast(payload),
+    mutationFn: (payload: PastCreateType) => PostFetch<PastCreateType, PastType>('time/past', payload, accessToken),
     onMutate: () => {
       toast('과거를 쓰는 중입니다...', { autoClose: false, toastId: 'past' });
     },
@@ -27,18 +29,22 @@ export function usePastCreate() {
         queryClient.invalidateQueries({ queryKey: ['present'] }),
       ]).then(async () => {
         toast.update('past', { render: '과거에 담았습니다.', autoClose: 1500, type: 'success' });
-        const cleanLength = await apiPast.cleanStorage(variables.startTime, variables.content);
+        const cleanLength = await GetFetch(`time/past/cleanup/${variables.startTime}`);
         if (cleanLength)
           toast.update('past', { render: `${cleanLength}개 스토리지 청소완료!`, type: 'success', autoClose: 1500 });
       });
     },
-    onError: (error) => {
-      if (error.message === 'auth') {
-        toast.update('past', { render: '인증이 필요합니다!', type: 'error', autoClose: 3000 });
-        navigate('/auth');
-      }
+    onError: () => {
       toast.update('past', { render: '과거를 담는데 실패했습니다.', autoClose: 3000, type: 'error' });
     },
   });
   return { createPast, isCreating };
 }
+export const usePastCalendar = (date: Date) => ({
+  queryKey: ['past', 'calendar', date],
+  queryFn: async () => GetFetch<PastCountType[]>(`time/past/calendar/${date}`),
+});
+export const usePastCountAll = () => ({
+  queryKey: ['past', 'count'],
+  queryFn: async () => GetFetch<PastCountType[]>('time/past/count'),
+});

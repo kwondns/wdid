@@ -2,11 +2,11 @@ import { Bar, CartesianGrid, ComposedChart, Legend, Line, ResponsiveContainer, T
 import { useSetRecoilState } from 'recoil';
 import { CategoricalChartState } from 'recharts/types/chart/types';
 
-import { PastCountType } from '@/types';
-import { PastStore } from '@/stores';
+import { PastCountType } from '@/types/PastCount.type';
+import { AccordionAtom, PastDateAtom, PastDateCountAtom } from '@/stores/Past.store';
 
 type ActivityChartProps = {
-  activities: PastCountType.PastCountType[] | null;
+  activities: PastCountType[] | null;
 };
 function CustomTooltip({ active, payload, label }: any) {
   if (active && payload && payload.length) {
@@ -35,9 +35,9 @@ function CustomTooltip({ active, payload, label }: any) {
 export default function ActivityChart(props: ActivityChartProps) {
   const { activities } = props;
 
-  const setActivityDate = useSetRecoilState(PastStore.PastDateAtom);
-  const setPastDateCount = useSetRecoilState(PastStore.PastDateCountAtom);
-  const setAccordion = useSetRecoilState(PastStore.AccordionAtom);
+  const setActivityDate = useSetRecoilState(PastDateAtom);
+  const setPastDateCount = useSetRecoilState(PastDateCountAtom);
+  const setAccordion = useSetRecoilState(AccordionAtom);
 
   if (!activities) return <span>Error!</span>;
   const onClickChart = (event: CategoricalChartState) => {

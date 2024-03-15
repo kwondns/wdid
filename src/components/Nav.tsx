@@ -1,11 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
-import { LayoutStore } from '@/stores';
+import { MobileSelector } from '@/stores/Layout.store';
 
 export default function Nav() {
   const { pathname } = useLocation();
-  const layout = useRecoilValue(LayoutStore.MobileSelector);
+  const layout = useRecoilValue(MobileSelector);
   const onClickPastItem = () => {
     const detail = document.querySelector('#past-detail');
     detail?.removeAttribute('open');

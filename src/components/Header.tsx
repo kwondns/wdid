@@ -1,23 +1,24 @@
 import { useRecoilState } from 'recoil';
 
-import { Nav, Timer } from '@/components';
-import { PresentStore } from '@/stores';
-import { usePresent } from '@/hooks';
+import { useUpdatePresent } from '@/hooks/usePresent';
+import { EndTimeAtom, StartTimeAtom } from '@/stores/Present.store';
+import Timer from '@/components/Timer';
+import Nav from '@/components/Nav';
 
 export default function Header() {
-  const [startTime, setStartTime] = useRecoilState(PresentStore.StartTimeAtom);
-  const [endTime, setEndTime] = useRecoilState(PresentStore.EndTimeAtom);
-  const { patchPresent } = usePresent.usePresentPatch();
+  const [startTime, setStartTime] = useRecoilState(StartTimeAtom);
+  const [endTime, setEndTime] = useRecoilState(EndTimeAtom);
+  const { updatePresent } = useUpdatePresent();
   const onClickStart = () => {
     if (startTime) return;
     const now = new Date();
-    patchPresent({ startTime: now.toISOString() });
+    updatePresent({ startTime: now.toISOString() });
     setStartTime(now);
   };
   const onClickEnd = () => {
     if (endTime) return;
     const now = new Date();
-    patchPresent({ endTime: now.toISOString() });
+    updatePresent({ endTime: now.toISOString() });
     setEndTime(now);
   };
   return (

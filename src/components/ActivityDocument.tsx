@@ -1,17 +1,17 @@
 import { useRecoilState } from 'recoil';
 
-import { DateLib } from '@/libs';
-import { PastType } from '@/types';
-import { PastStore } from '@/stores';
-import { Markdown } from '@/components';
+import { AccordionAtom } from '@/stores/Past.store';
+import { PastType } from '@/types/Past.type';
+import { dateFormat } from '@/libs/date.lib';
+import Markdown from '@/components/Markdown';
 
 type ActivityDocumentProps = {
-  activity: PastType.PastType;
+  activity: PastType;
   index: number;
 };
 export default function ActivityDocument(props: ActivityDocumentProps) {
   const { activity, index } = props;
-  const [accordion, setAccordion] = useRecoilState(PastStore.AccordionAtom);
+  const [accordion, setAccordion] = useRecoilState(AccordionAtom);
   const onClickAccordion = () => {
     if (accordion === index) {
       setAccordion(-1);
@@ -22,7 +22,7 @@ export default function ActivityDocument(props: ActivityDocumentProps) {
       <input type="radio" name={String(index)} checked={accordion === index} readOnly onClick={onClickAccordion} />
       <div className="collapse-title flex flex-col justify-between text-xl font-medium sm:flex-row sm:items-center">
         <span className="flex-1 truncate text-sm sm:text-base md:text-xl lg:text-2xl">{activity.title}</span>
-        <span className="text-sm">{DateLib.dateFormat(activity.startTime, activity.endTime)}</span>
+        <span className="text-sm">{dateFormat(activity.startTime, activity.endTime)}</span>
       </div>
       <div className="collapse-content overflow-y-auto">
         <Markdown source={activity.content} />

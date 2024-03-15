@@ -1,18 +1,19 @@
 import { KeyboardEvent, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { PriorityColor } from '@/constants';
-import { FutureType } from '@/types';
-import { FutureInput, FutureContent } from '@/components';
-import { useFutureBox } from '@/hooks';
+import { FutureType, PriorityType } from '@/types/Future.type';
+import { useCreateFutureBox, useUpdateFutureBox } from '@/hooks/useFutures';
+import PriorityColor from '@/constants/PriorityColor';
+import FutureContent from '@/components/FutureContent';
+import FutureInput from '@/components/FutureInput';
 
 type CardProps = {
   // eslint-disable-next-line react/require-default-props
   id?: string;
-  priority: FutureType.PriorityType;
+  priority: PriorityType;
   index: number;
   title: string;
-  futures: FutureType.FutureType[] | null;
+  futures: FutureType[] | null;
   // eslint-disable-next-line react/require-default-props
   closeCreateBox?: () => void;
 };
@@ -23,8 +24,8 @@ type FormInputType = {
 
 export default function Card(props: CardProps) {
   const { priority, id, index, title, futures, closeCreateBox } = props;
-  const { patchFutureBox, isPatchingBox } = useFutureBox.useFutureBoxPatch();
-  const { createFutureBox, isCreatingBox } = useFutureBox.useFutureBoxCreate();
+  const { updateFutureBox, isUpdating } = useUpdateFutureBox();
+  const { createFutureBox, isCreating } = useCreateFutureBox();
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const cardBaseStyle =
     'card min-w-[70vw] md:min-w-[400px] m-auto h-[260px] shadow-md shadow-slate-800 hover:shadow-lg has-[:focus]:shadow-lg focus:shadow-lg  hover:shadow-slate-600 has-[:focus]:shadow-slate-600 focus:shadow-slate-600  text-white transition-all overflow-hidden md:h-[380px] hover:scale-110 has-[:focus]:scale-110 focus:scale-125  hover:z-10 has-[:focus]:z-10 focus:z-10 border-b-[6px] border-l-2 border-r-[6px] border-t-2 border-slate-900';
@@ -49,7 +50,7 @@ export default function Card(props: CardProps) {
   const onSubmitTitle = (data: FormInputType) => {
     if (id) {
       const payload = { id, title: data.title, priority };
-      patchFutureBox(payload);
+      updateFutureBox(payload);
     } else {
       const payload = { title: data.title, priority };
       createFutureBox(payload);
@@ -72,7 +73,7 @@ export default function Card(props: CardProps) {
                 defaultValue={title}
                 onKeyDown={onPressEnter}
                 autoComplete="off"
-                disabled={isPatchingBox || isCreatingBox}
+                disabled={isUpdating || isCreating}
                 {...register('title', {
                   required: '입력해주세요',
                   minLength: { value: 2, message: '최소 2글자 입력' },

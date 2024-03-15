@@ -1,14 +1,14 @@
 import { QueryClient } from '@tanstack/react-query';
 
-import { FullContainer } from '@/components';
-import { FutureTemplate } from '@/templates';
-import { useFutures } from '@/hooks';
-import { FutureBoxType } from '@/types';
+import FullContainer from '@/components/FullContainer';
+import { useGetFutureHigh, useGetFutureLow, useGetFutureMiddle } from '@/hooks/useFutures';
+import FutureTemplate from '@/templates/Future.template';
+import { FutureBoxType } from '@/types/Future.type';
 
 type FutureLoaderType = {
-  FutureHigh: FutureBoxType.FutureViewBoxType;
-  FutureMiddle: FutureBoxType.FutureViewBoxType;
-  FutureLow: FutureBoxType.FutureViewBoxType;
+  FutureHigh: FutureBoxType[];
+  FutureMiddle: FutureBoxType[];
+  FutureLow: FutureBoxType[];
 };
 
 export function Future() {
@@ -19,14 +19,14 @@ export function Future() {
   );
 }
 export const futureLoader = (queryClient: QueryClient) => async (): Promise<FutureLoaderType> => {
-  const queryFutureHigh = useFutures.useFuturesHigh();
-  const queryFutureMiddle = useFutures.useFuturesMiddle();
-  const queryFutureLow = useFutures.useFuturesLow();
-  const fetchFutureHigh: Promise<FutureBoxType.FutureViewBoxType> =
+  const queryFutureHigh = useGetFutureHigh();
+  const queryFutureMiddle = useGetFutureMiddle();
+  const queryFutureLow = useGetFutureLow();
+  const fetchFutureHigh: Promise<FutureBoxType[]> =
     queryClient.getQueryData(queryFutureHigh.queryKey) ?? queryClient.fetchQuery(queryFutureHigh);
-  const fetchFutureMiddle: Promise<FutureBoxType.FutureViewBoxType> =
+  const fetchFutureMiddle: Promise<FutureBoxType[]> =
     queryClient.getQueryData(queryFutureMiddle.queryKey) ?? queryClient.fetchQuery(queryFutureMiddle);
-  const fetchFutureLow: Promise<FutureBoxType.FutureViewBoxType> =
+  const fetchFutureLow: Promise<FutureBoxType[]> =
     queryClient.getQueryData(queryFutureLow.queryKey) ?? queryClient.fetchQuery(queryFutureLow);
   const [FutureHigh, FutureMiddle, FutureLow] = await Promise.all([fetchFutureHigh, fetchFutureMiddle, fetchFutureLow]);
   return {

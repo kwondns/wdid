@@ -1,13 +1,13 @@
 import { KeyboardEvent, MouseEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { useFutures } from '@/hooks';
-import { PriorityColor } from '@/constants';
-import { FutureType } from '@/types';
+import { PriorityType } from '@/types/Future.type';
+import { useCreateFuture } from '@/hooks/useFutures';
+import PriorityColor from '@/constants/PriorityColor';
 
 type FutureInputProps = {
   id: string;
-  priority: FutureType.PriorityType;
+  priority: PriorityType;
 };
 
 type FormInputType = {
@@ -23,7 +23,7 @@ export default function FutureInput(props: FutureInputProps) {
     reset,
   } = useForm<FormInputType>();
 
-  const { createFuture, isCreating } = useFutures.useFutureCreate();
+  const { createFuture, isCreating } = useCreateFuture();
   const onClickOpenInput = (event: MouseEvent<HTMLButtonElement>) => {
     if (!input) {
       event.preventDefault();
@@ -40,7 +40,7 @@ export default function FutureInput(props: FutureInputProps) {
     }
   }, [isSubmitSuccessful, reset]);
   const onSubmitCreate = (data: FormInputType) => {
-    createFuture({ box_id: id, content: data.content, priority });
+    createFuture({ boxId: id, content: data.content, priority, checked: false });
   };
   return (
     <form onSubmit={handleSubmit(onSubmitCreate)} className="relative col-start-1 col-end-3 px-2 pb-2">
