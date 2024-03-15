@@ -1,7 +1,8 @@
 import { useRecoilValue } from 'recoil';
 
-import { PastCountTemplate, PastActivityTemplate } from '@/templates';
-import { PastStore } from '@/stores';
+import { PastDateAtom, PastDateCountAtom } from '@/stores/Past.store';
+import PastCountTemplate from '@/templates/PastCount.template';
+import PastActivityTemplate from '@/templates/PastActivity.template';
 
 const calcCount = (count: number) => {
   if (count < 60) return `${count}분`;
@@ -9,8 +10,8 @@ const calcCount = (count: number) => {
   return `${Math.floor(count / 60)}시간 ${count % 60}분`;
 };
 export default function PastTemplate() {
-  const activityDate = useRecoilValue(PastStore.PastDateAtom);
-  const pastDateCount = useRecoilValue(PastStore.PastDateCountAtom);
+  const activityDate = useRecoilValue(PastDateAtom);
+  const pastDateCount = useRecoilValue(PastDateCountAtom);
   return (
     <div className="flex max-h-screen w-full flex-col gap-y-2 overflow-y-auto p-2">
       <PastCountTemplate />

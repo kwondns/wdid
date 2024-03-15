@@ -11,17 +11,17 @@ type FutureLoaderType = {
   FutureLow: FutureBoxType[];
 };
 
-export function Future() {
+export function FutureRecord() {
   return (
-    <FullContainer className="ml-[200vw]">
+    <FullContainer className="ml-[300vw]">
       <FutureTemplate />
     </FullContainer>
   );
 }
-export const futureLoader = (queryClient: QueryClient) => async (): Promise<FutureLoaderType> => {
-  const queryFutureHigh = useGetFutureHigh();
-  const queryFutureMiddle = useGetFutureMiddle();
-  const queryFutureLow = useGetFutureLow();
+export const futureRecordLoader = (queryClient: QueryClient) => async (): Promise<FutureLoaderType> => {
+  const queryFutureHigh = useGetFutureHigh(true);
+  const queryFutureMiddle = useGetFutureMiddle(true);
+  const queryFutureLow = useGetFutureLow(true);
   const fetchFutureHigh: Promise<FutureBoxType[]> =
     queryClient.getQueryData(queryFutureHigh.queryKey) ?? queryClient.fetchQuery(queryFutureHigh);
   const fetchFutureMiddle: Promise<FutureBoxType[]> =

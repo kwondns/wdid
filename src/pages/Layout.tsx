@@ -1,22 +1,35 @@
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { Outlet, useLoaderData, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-import { LayoutTemplate } from '@/templates';
-import { LayoutStore, PresentStore } from '@/stores';
-import { presentLoader } from '@/pages';
-import { LayoutTransition } from '@/constants';
-import { usePresent } from '@/hooks';
+import { useGetPresent, useSocketPresent } from '@/hooks/usePresent';
+import { presentLoader } from '@/pages/Present';
+import { EndTimeAtom, MarkdownAtom, StartTimeAtom, TitleAtom } from '@/stores/Present.store';
+import { LayoutAtom } from '@/stores/Layout.store';
+import LayoutTransition from '@/constants/LayoutTransition';
+import LayoutTemplate from '@/templates/Layout.template';
+import { AuthAtom, RequireAuthAtom } from '@/stores/Auth.store';
+import { useRefresh } from '@/hooks/useAuth';
+import isTokenExpired from '@/libs/token.lib';
 
 export default function Layout() {
   const initialData = useLoaderData() as Awaited<ReturnType<ReturnType<typeof presentLoader>>>;
-  const { data } = useQuery({ ...usePresent.usePresent(), initialData, gcTime: 0 });
-  const location = useLocation().pathname.slice(1) as 'past' | 'present' | 'future';
-  const setStartTime = useSetRecoilState(PresentStore.StartTimeAtom);
-  const setEndTime = useSetRecoilState(PresentStore.EndTimeAtom);
-  const [title, setTitle] = useRecoilState(PresentStore.TitleAtom);
-  const [content, setContent] = useRecoilState(PresentStore.MarkdownAtom);
+  const { data } = useQuery({ ...useGetPresent(), initialData, gcTime: 0 });
+  const location = useLocation().pathname.slice(1) as 'past' | 'present' | 'future' | 'future-record';
+  const setStartTime = useSetRecoilState(StartTimeAtom);
+  const setEndTime = useSetRecoilState(EndTimeAtom);
+  const [title, setTitle] = useRecoilState(TitleAtom);
+  const [content, setContent] = useRecoilState(MarkdownAtom);
+
+  const requireAuth = useRecoilValue(RequireAuthAtom);
+  const accessToken = useRecoilValue(AuthAtom);
+  const { refreshToken } = useRefresh();
+  useEffect(() => {
+    if ((requireAuth && isTokenExpired(accessToken)) || !accessToken) {
+      refreshToken();
+    }
+  }, [accessToken, refreshToken, requireAuth]);
 
   useEffect(() => {
     if (data?.startTime) setStartTime(new Date(data.startTime));
@@ -24,11 +37,11 @@ export default function Layout() {
     if (!title && data?.title) setTitle(data.title);
     if (!content && data?.content) setContent(data.content);
   }, [data]);
-  const setLayout = useSetRecoilState(LayoutStore.LayoutAtom);
+  const setLayout = useSetRecoilState(LayoutAtom);
   useEffect(() => {
     setLayout(LayoutTransition[location]);
   }, [location]);
-  usePresent.useCreateChannel();
+  useSocketPresent();
   return (
     <LayoutTemplate>
       <Outlet />

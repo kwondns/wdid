@@ -75,6 +75,20 @@ const router = createBrowserRouter([
           };
         },
       },
+      {
+        path: 'future-record',
+        async lazy() {
+          const { FutureRecord, futureRecordLoader } = await import('./pages/FutureRecord');
+          return {
+            Component: () => (
+              <Suspense>
+                <FutureRecord />
+              </Suspense>
+            ),
+            loader: futureRecordLoader(queryClient),
+          };
+        },
+      },
     ],
   },
   {

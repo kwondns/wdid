@@ -1,26 +1,50 @@
+import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+import { useSetRecoilState } from 'recoil';
+import { useNavigate } from 'react-router-dom';
 
-import { Supabase } from '@/libs';
-import { CredentialType } from '@/types';
+import { PostFetch, RefreshFetch } from '@/libs/fetch.lib';
+import { AuthType } from '@/types/Auth.type';
+import { AuthAtom } from '@/stores/Auth.store';
 
-export const useAuth = async (credential: CredentialType.CredentialType) => {
-  try {
-    toast('인증 진행 중...', { toastId: 'auth', autoClose: false });
-    const { data, error } = await Supabase.supabase.auth.signInWithPassword(credential);
-    await Supabase.errorCheck(error);
-    toast.update('auth', { render: '인증 성공!', type: 'success', autoClose: 1500 });
-    return data;
-  } catch (error) {
-    toast.update('auth', { render: '인증 실패!', type: 'error', autoClose: 3000 });
-    return null;
-  }
+type AccessTokenType = {
+  accessToken: string;
 };
 
-export const useAuthVerify = async () => {
-  const { data, error } = await Supabase.supabase.auth.getSession();
-  if (!data.session?.user) {
-    return true;
-  }
-  await Supabase.errorCheck(error);
-  return false;
+type AuthResponseType = AccessTokenType & {
+  username: string;
+};
+
+export const useAuth = () => {
+  const setAuth = useSetRecoilState(AuthAtom);
+  const { mutate: auth, isPending } = useMutation({
+    mutationFn: async (payload: AuthType) => PostFetch<AuthType, AuthResponseType>('admin/signin', payload),
+    onMutate: async () => {
+      toast('로그인...', { autoClose: false, toastId: 'auth' });
+    },
+    onError: (error) => {
+      toast.update('auth', { render: error.message, autoClose: 3000, type: 'error' });
+    },
+    onSuccess: (data) => {
+      toast.update('auth', { render: '인증되었습니다!', autoClose: 1500, type: 'success' });
+      setAuth(data.accessToken);
+    },
+  });
+  return { auth, isPending };
+};
+
+export const useRefresh = () => {
+  const setAuth = useSetRecoilState(AuthAtom);
+  const navigate = useNavigate();
+  const { mutate: refreshToken } = useMutation({
+    mutationFn: async () => RefreshFetch<AuthResponseType>(`admin/refresh`),
+    onSuccess: async (data) => {
+      setAuth(data.accessToken);
+    },
+    onError: (error) => {
+      if (error.message === 'Expired Token') toast('인증이 만료되었습니다!', { type: 'error', autoClose: 2000 });
+      navigate('/auth');
+    },
+  });
+  return { refreshToken };
 };

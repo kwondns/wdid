@@ -14,3 +14,7 @@ export const AccordionAtom = atom({
   key: 'accordionAtom',
   default: 0,
 });
+export const CalendarAtom = atom({
+  key: 'calendarAtom',
+  default: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+});

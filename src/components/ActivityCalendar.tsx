@@ -1,8 +1,8 @@
-import { Activity } from '@/components';
-import { PastCountType } from '@/types';
+import { PastCountType } from '@/types/PastCount.type';
+import Activity from '@/components/Activity';
 
 type ActivityCalendarProps = {
-  activities: PastCountType.PastCountType[] | null;
+  activities: PastCountType[] | undefined;
 };
 
 export default function ActivityCalendar(props: ActivityCalendarProps) {

@@ -1,14 +1,15 @@
 import { useRecoilValue } from 'recoil';
 
-import { Header, CarouselContainer } from '@/components';
-import { LayoutStore } from '@/stores';
+import { MobileSelector } from '@/stores/Layout.store';
+import Header from '@/components/Header';
+import CarouselContainer from '@/components/CarouselContainer';
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 export default function LayoutTemplate(props: LayoutProps) {
   const { children } = props;
-  const isMobile = useRecoilValue(LayoutStore.MobileSelector);
+  const isMobile = useRecoilValue(MobileSelector);
   let mainHeight: string;
   if (isMobile === 'mobile') mainHeight = 'h-[calc(var(--vh)-128px)]';
   else mainHeight = 'h-[calc(var(--vh)-64px)]';
