@@ -43,9 +43,12 @@ export const useRefresh = () => {
       setAuth(data.accessToken);
     },
     onError: (error) => {
-      if (error.message === 'Expired Token') toast('인증이 만료되었습니다!', { type: 'error', autoClose: 2000 });
       setRequireAuth(false);
-      navigate('/auth');
+      try {
+        if (error.message === 'Expired Token') toast('인증이 만료되었습니다!', { type: 'error', autoClose: 2000 });
+      } finally {
+        navigate('/auth');
+      }
     },
   });
   return { refreshToken };
