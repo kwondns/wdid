@@ -26,7 +26,7 @@ export default function Layout() {
   const accessToken = useRecoilValue(AuthAtom);
   const { refreshToken } = useRefresh();
   useEffect(() => {
-    if ((requireAuth && isTokenExpired(accessToken)) || !accessToken) {
+    if (requireAuth && (isTokenExpired(accessToken) || !accessToken)) {
       refreshToken();
     }
   }, [accessToken, refreshToken, requireAuth]);
