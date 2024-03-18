@@ -63,7 +63,7 @@ export default function ActivityChart(props: ActivityChartProps) {
           onClick={onClickChart}
         >
           <CartesianGrid stroke="#303030" />
-          <XAxis dataKey="date" scale="band" />
+          <XAxis dataKey="date" />
           <YAxis orient="left" yAxisId={1} domain={['dataMin + 1', 'auto']} />
           <YAxis orientation="right" yAxisId={2} domain={[0, 'dataMax + 2']} />
           <Tooltip content={<CustomTooltip />} />
