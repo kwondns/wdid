@@ -17,6 +17,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <span>잘못된 요청입니다.</span>,
     children: [
       { index: true, element: <Navigate to="/past" replace /> },
       {
