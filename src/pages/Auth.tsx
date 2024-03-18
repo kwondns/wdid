@@ -1,24 +1,19 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { AuthAtom, RequireAuthAtom } from '@/stores/Auth.store';
 import { useAuth } from '@/hooks/useAuth';
 import { AuthType } from '@/types/Auth.type';
+import isTokenExpired from '@/libs/token.lib';
 
 export function Auth() {
   const { handleSubmit, register, resetField } = useForm<AuthType>();
   const navigate = useNavigate();
-  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
   const { auth, isPending } = useAuth();
-  const credential = useRecoilValue(AuthAtom);
   useEffect(() => {
-    setRequireAuth(false);
+    if (!isTokenExpired(localStorage.getItem('accessToken') as string) && localStorage.getItem('accessToken'))
+      navigate('/past');
   }, []);
-  useEffect(() => {
-    if (credential) navigate('/past');
-  }, [credential]);
   const onSubmit = async (data: AuthType) => {
     auth(data);
     resetField('password');

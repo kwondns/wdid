@@ -1,13 +1,11 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { io } from 'socket.io-client';
-import { useEffect } from 'react';
 
 import { PresentType } from '@/types/Present.type';
 import { EndTimeAtom, MarkdownAtom, StartTimeAtom, TitleAtom } from '@/stores/Present.store';
 import { GetFetch, PutFetch } from '@/libs/fetch.lib';
-import { AuthAtom, RequireAuthAtom } from '@/stores/Auth.store';
 
 export const useGetPresent = () => ({
   queryKey: ['present'],
@@ -15,19 +13,13 @@ export const useGetPresent = () => ({
 });
 
 export const useUpdatePresent = () => {
-  const accessToken = useRecoilValue(AuthAtom);
-  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
-  useEffect(() => {
-    setRequireAuth(true);
-  }, []);
-
   const { mutate: updatePresent, isPending: isUpdating } = useMutation({
     mutationFn: async (payload: PresentType) => {
       if (!payload.startTime) delete payload.startTime;
       if (!payload.endTime) delete payload.endTime;
       if (!payload.title) delete payload.title;
       if (!payload.content) delete payload.content;
-      await PutFetch<PresentType, PresentType>(`time/present`, payload, accessToken);
+      return PutFetch<PresentType, PresentType>(`time/present`, payload);
     },
     onMutate: () => {
       toast('현재 수정중...', { autoClose: false, toastId: 'present' });
@@ -41,9 +33,6 @@ export const useUpdatePresent = () => {
       else if (variables.endTime) render = '종료 완료';
       else render = '기억 완료';
       toast.update('present', { render, autoClose: 1500, type: 'success' });
-    },
-    onSettled: () => {
-      setRequireAuth(false);
     },
   });
   return { updatePresent, isUpdating };

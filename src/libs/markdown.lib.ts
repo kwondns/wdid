@@ -6,10 +6,10 @@ import { ClipboardEvent, DragEvent } from 'react';
 
 import { FileUpload } from '@/libs/fetch.lib';
 
-async function fileUpload(file: File, target: string, num: number, accessToken: string, uri: string) {
+async function fileUpload(file: File, target: string, num: number, uri: string) {
   toast('이미지 업로드 중...', { toastId: 'uploadImage', autoClose: false });
   try {
-    const uploadResult = await FileUpload(target, file, accessToken, uri, num);
+    const uploadResult = await FileUpload(target, file, uri, num);
     toast.update('uploadImage', { type: 'success', render: '업로드 완료!', autoClose: 1500 });
     return uploadResult;
   } catch (error) {
@@ -44,7 +44,6 @@ export const onImagePasted = async (
   event: ClipboardEvent<HTMLDivElement> | DragEvent<HTMLDivElement>,
   dataTransfer: DataTransfer,
   target: string,
-  accessToken: string,
   uri: string,
   setMarkdown: (value: string) => void,
 ) => {
@@ -60,7 +59,7 @@ export const onImagePasted = async (
   let result: string[] = [];
   await Promise.allSettled(
     files.map(async (file) => {
-      const url = await fileUpload(file, target, files.length, accessToken, uri);
+      const url = await fileUpload(file, target, files.length, uri);
       result = url;
     }),
   );

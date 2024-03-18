@@ -16,7 +16,6 @@ import { useUpdatePresent } from '@/hooks/usePresent';
 import { usePastCreate } from '@/hooks/usePast';
 import { DateTime } from '@/libs/date.lib';
 import { onImagePasted } from '@/libs/markdown.lib';
-import { AuthAtom } from '@/stores/Auth.store';
 
 type FormInputType = {
   title: string;
@@ -24,7 +23,6 @@ type FormInputType = {
   endTime: string;
 };
 export default function PresentTemplate() {
-  const accessToken = useRecoilValue(AuthAtom);
   const [content, setContent] = useRecoilState(MarkdownAtom);
   const [startTime, setStartTime] = useRecoilState(StartTimeAtom);
   const [endTime, setEndTime] = useRecoilState(EndTimeAtom);
@@ -127,10 +125,10 @@ export default function PresentTemplate() {
               setContent(value as string);
             }}
             onPaste={async (event) => {
-              await onImagePasted(event, event.clipboardData, 'time', accessToken, startTimeString, setContent);
+              await onImagePasted(event, event.clipboardData, 'time', startTimeString, setContent);
             }}
             onDrop={async (event) => {
-              await onImagePasted(event, event.dataTransfer, 'time', accessToken, startTimeString, setContent);
+              await onImagePasted(event, event.dataTransfer, 'time', startTimeString, setContent);
             }}
             textareaProps={{
               placeholder: '꾸준히 작성하자',

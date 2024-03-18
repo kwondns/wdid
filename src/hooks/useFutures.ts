@@ -1,7 +1,5 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
-import { useEffect } from 'react';
 
 import { GetFetch, PatchFetch, PostFetch } from '@/libs/fetch.lib';
 import {
@@ -12,7 +10,6 @@ import {
   FutureType,
   FutureUpdateType,
 } from '@/types/Future.type';
-import { AuthAtom, RequireAuthAtom } from '@/stores/Auth.store';
 
 export const useGetFutureHigh = (record = false) => ({
   queryKey: ['future', 'high', record],
@@ -27,154 +24,97 @@ export const useGetFutureLow = (record = false) => ({
   queryFn: async () => GetFetch<FutureBoxType[]>(`time/future/3${record ? '/record' : ''}`),
 });
 
+const priority = (queryClient: QueryClient) => ({
+  1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high', false] }),
+  2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle', false] }),
+  3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low', false] }),
+});
+
 export const useCreateFuture = () => {
   const queryClient = useQueryClient();
-  const accessToken = useRecoilValue(AuthAtom);
-  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
-  useEffect(() => {
-    setRequireAuth(true);
-  }, []);
 
-  const priority = {
-    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high', false] }),
-    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle', false] }),
-    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low', false] }),
-  };
   const { mutate: createFuture, isPending: isCreating } = useMutation({
     mutationFn: async (payload: FutureCreateType) => {
-      await PostFetch<FutureCreateType, FutureType>('time/future', payload, accessToken);
+      await PostFetch<FutureCreateType, FutureType>('time/future', payload);
     },
     onMutate: () => {
       toast('미래를 만드는 중...', { autoClose: false, toastId: 'futureCreate' });
     },
     onSuccess: (_, variables) => {
-      priority[variables.priority]();
+      priority(queryClient)[variables.priority]();
       toast.update('futureCreate', { render: '미래를 만들었습니다.', autoClose: 1500, type: 'success' });
     },
     onError: async (error) => {
       toast.update('futureCreate', { render: error.message, autoClose: 3000, type: 'error' });
-    },
-    onSettled: () => {
-      setRequireAuth(false);
     },
   });
   return { createFuture, isCreating };
 };
 
 export const useUpdateFuture = () => {
-  const accessToken = useRecoilValue(AuthAtom);
   const queryClient = useQueryClient();
-  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
-  useEffect(() => {
-    setRequireAuth(true);
-  }, []);
 
-  const priority = {
-    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high', false] }),
-    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle', false] }),
-    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low', false] }),
-  };
   const { mutate: updateFuture, isPending: isUpdating } = useMutation({
     mutationFn: async (payload: FutureUpdateType) => {
-      await PatchFetch<FutureUpdateType, FutureType>('time/future', payload, accessToken);
+      await PatchFetch<FutureUpdateType, FutureType>('time/future', payload);
     },
     onMutate: () => {
       toast('미래를 바꾸는 중...', { autoClose: false, toastId: 'futureUpdate' });
     },
     onSuccess: (_, variables) => {
-      priority[variables.priority]();
+      priority(queryClient)[variables.priority]();
       toast.update('futureUpdate', { render: '미래를 변경했습니다.', autoClose: 1500, type: 'success' });
     },
     onError: async (error) => {
       toast.update('futureUpdate', { render: error.message, autoClose: 3000, type: 'error' });
-    },
-    onSettled: () => {
-      setRequireAuth(false);
     },
   });
   return { updateFuture, isUpdating };
 };
 
 export const useCreateFutureBox = () => {
-  const accessToken = useRecoilValue(AuthAtom);
   const queryClient = useQueryClient();
-  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
-  useEffect(() => {
-    setRequireAuth(true);
-  }, []);
 
-  const priority = {
-    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high', false] }),
-    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle', false] }),
-    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low', false] }),
-  };
   const { mutate: createFutureBox, isPending: isCreating } = useMutation({
     mutationFn: async (payload: FutureBoxCreateType) => {
-      await PostFetch<FutureBoxCreateType, FutureBoxType>('time/future/box', payload, accessToken);
+      await PostFetch<FutureBoxCreateType, FutureBoxType>('time/future/box', payload);
     },
     onMutate: () => {
       toast('미래상자를 만드는 중...', { autoClose: false, toastId: 'futureBoxCreate' });
     },
     onSuccess: (_, variables) => {
-      priority[variables.priority]();
+      priority(queryClient)[variables.priority]();
       toast.update('futureBoxCreate', { render: '미래상자를 만들었습니다.', autoClose: 1500, type: 'success' });
     },
     onError: async (error) => {
       toast.update('futureBoxCreate', { render: error.message, autoClose: 3000, type: 'error' });
     },
-    onSettled: () => {
-      setRequireAuth(false);
-    },
   });
   return { createFutureBox, isCreating };
 };
 export const useUpdateFutureBox = () => {
-  const accessToken = useRecoilValue(AuthAtom);
   const queryClient = useQueryClient();
-  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
-  useEffect(() => {
-    setRequireAuth(true);
-  }, []);
 
-  const priority = {
-    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high', false] }),
-    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle', false] }),
-    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low', false] }),
-  };
   const { mutate: updateFutureBox, isPending: isUpdating } = useMutation({
     mutationFn: async (payload: FutureBoxUpdateType) => {
-      await PatchFetch<FutureBoxUpdateType, FutureBoxType>('time/future/box', payload, accessToken);
+      await PatchFetch<FutureBoxUpdateType, FutureBoxType>('time/future/box', payload);
     },
     onMutate: () => {
       toast('미래상자를 바꾸는 중...', { autoClose: false, toastId: 'futureUpdate' });
     },
     onSuccess: (_, variables) => {
-      priority[variables.priority]();
+      priority(queryClient)[variables.priority]();
       toast.update('futureUpdate', { render: '미래상자를 변경했습니다.', autoClose: 1500, type: 'success' });
     },
     onError: async (error) => {
       toast.update('futureUpdate', { render: error.message, autoClose: 3000, type: 'error' });
-    },
-    onSettled: () => {
-      setRequireAuth(false);
     },
   });
   return { updateFutureBox, isUpdating };
 };
 
 export const useSwapFutureBox = () => {
-  const accessToken = useRecoilValue(AuthAtom);
   const queryClient = useQueryClient();
-  const setRequireAuth = useSetRecoilState(RequireAuthAtom);
-  useEffect(() => {
-    setRequireAuth(true);
-  }, []);
-
-  const priority = {
-    1: () => queryClient.invalidateQueries({ queryKey: ['future', 'high', false] }),
-    2: () => queryClient.invalidateQueries({ queryKey: ['future', 'middle', false] }),
-    3: () => queryClient.invalidateQueries({ queryKey: ['future', 'low', false] }),
-  };
 
   const { mutate: swapFutureBox } = useMutation({
     mutationFn: async (payload: [FutureBoxType, FutureBoxType]) => {
@@ -182,8 +122,8 @@ export const useSwapFutureBox = () => {
       const activePayload = { id: active.id, order: over.order, priority: active.priority };
       const overPayload = { id: over.id, order: active.order, priority: over.priority };
       await Promise.all([
-        PatchFetch<FutureBoxUpdateType, FutureBoxType>('time/future/box', activePayload, accessToken),
-        PatchFetch<FutureBoxUpdateType, FutureBoxType>('time/future/box', overPayload, accessToken),
+        PatchFetch<FutureBoxUpdateType, FutureBoxType>('time/future/box', activePayload),
+        PatchFetch<FutureBoxUpdateType, FutureBoxType>('time/future/box', overPayload),
       ]);
     },
     onMutate: () => {
@@ -191,16 +131,13 @@ export const useSwapFutureBox = () => {
     },
     onSuccess: (_, variables) => {
       if (variables[0].priority !== variables[1].priority) {
-        priority[variables[0].priority]();
-        priority[variables[1].priority]();
-      } else priority[variables[0].priority]();
+        priority(queryClient)[variables[0].priority]();
+        priority(queryClient)[variables[1].priority]();
+      } else priority(queryClient)[variables[0].priority]();
       toast.update('futureUpdate', { render: '미래상자를 변경했습니다.', autoClose: 1500, type: 'success' });
     },
     onError: async (error) => {
       toast.update('futureUpdate', { render: error.message, autoClose: 3000, type: 'error' });
-    },
-    onSettled: () => {
-      setRequireAuth(false);
     },
   });
   return { swapFutureBox };

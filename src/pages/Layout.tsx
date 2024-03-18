@@ -1,5 +1,5 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { Outlet, useLoaderData, useLocation } from 'react-router-dom';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { Outlet, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
@@ -9,9 +9,7 @@ import { EndTimeAtom, MarkdownAtom, StartTimeAtom, TitleAtom } from '@/stores/Pr
 import { LayoutAtom } from '@/stores/Layout.store';
 import LayoutTransition from '@/constants/LayoutTransition';
 import LayoutTemplate from '@/templates/Layout.template';
-import { AuthAtom, RequireAuthAtom } from '@/stores/Auth.store';
-import { useRefresh } from '@/hooks/useAuth';
-import isTokenExpired from '@/libs/token.lib';
+import { setUpInterceptor } from '@/libs/fetch.lib';
 
 export default function Layout() {
   const initialData = useLoaderData() as Awaited<ReturnType<ReturnType<typeof presentLoader>>>;
@@ -21,15 +19,10 @@ export default function Layout() {
   const setEndTime = useSetRecoilState(EndTimeAtom);
   const [title, setTitle] = useRecoilState(TitleAtom);
   const [content, setContent] = useRecoilState(MarkdownAtom);
-
-  const requireAuth = useRecoilValue(RequireAuthAtom);
-  const accessToken = useRecoilValue(AuthAtom);
-  const { refreshToken } = useRefresh();
+  const navigate = useNavigate();
   useEffect(() => {
-    if (requireAuth && (isTokenExpired(accessToken) || !accessToken)) {
-      refreshToken();
-    }
-  }, [accessToken, refreshToken, requireAuth]);
+    setUpInterceptor(navigate);
+  }, [navigate]);
 
   useEffect(() => {
     if (data?.startTime) setStartTime(new Date(data.startTime));
