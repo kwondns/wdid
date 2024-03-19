@@ -11,8 +11,7 @@ export const axiosAPI = axios.create({
 export const setUpInterceptor = (redirection: NavigateFunction) =>
   axiosAPI.interceptors.request.use(async (config) => {
     if (config.method && ['POST', 'PUT', 'DELETE', 'PATCH'].includes(config.method.toUpperCase())) {
-      const accessToken = localStorage.getItem('accessToken');
-      console.log(isTokenExpired(config.headers.Authorization as string));
+      let accessToken = localStorage.getItem('accessToken');
       if (!accessToken || isTokenExpired(accessToken)) {
         try {
           const response = await axios.post<{ accessToken: string }>(
@@ -20,16 +19,16 @@ export const setUpInterceptor = (redirection: NavigateFunction) =>
             {},
             { withCredentials: true },
           );
-          config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+          accessToken = `Bearer ${response.data.accessToken}`;
           localStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`);
         } catch (error) {
           if (error instanceof AxiosError && error.response?.status === 401) {
             redirection('/auth');
-            throw new Error('인증이 만료되었습니다!');
+            return Promise.reject(error);
           }
         }
       }
-      config.headers.Authorization = accessToken;
+      if (accessToken) config.headers.Authorization = accessToken;
     }
     return config;
   });
