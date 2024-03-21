@@ -26,6 +26,7 @@ export default function Header() {
       <Timer />
       <Nav />
       <div className="gap-x-6">
+        <img src="/assets/Timeline-Logo.svg" />
         <button
           className="btn btn-success text-white md:px-6 md:text-xl lg:px-12 lg:text-2xl"
           onClick={onClickStart}
