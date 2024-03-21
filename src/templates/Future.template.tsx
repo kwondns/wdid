@@ -24,7 +24,7 @@ export default function FutureTemplate() {
   return (
     <div className="flex max-h-screen flex-col gap-y-4 overflow-y-auto">
       <Link className="w-screen px-6 pt-4" to={isRecord ? '/future' : '/future-record'}>
-        <button type="button" className="btn btn-warning w-full">
+        <button type="button" className="btn w-full bg-base-300">
           {isRecord ? '이전으로' : '기록 보기'}
         </button>
       </Link>
