@@ -22,7 +22,7 @@ export function Auth() {
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex w-full flex-col">
         <div className="text-center lg:text-left">
-          <img src="/assets/Timeline-logo.svg" alt="logo" />
+          <img src="/assets/Timeline-Logo.svg" alt="logo" />
         </div>
         <div className="card w-full max-w-sm flex-1 bg-base-100 shadow-2xl">
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
