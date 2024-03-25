@@ -28,6 +28,7 @@ export const setUpInterceptor = (redirection: NavigateFunction) =>
           }
         }
       }
+      // eslint-disable-next-line no-param-reassign
       if (accessToken) config.headers.Authorization = accessToken;
     }
     return config;
@@ -51,7 +52,7 @@ axiosAPI.interceptors.response.use(
 
 export const PostFetch = async <B, R>(url: string, body: B, isAuth?: boolean): Promise<R> => {
   if (isAuth) {
-    return axios.post(`${import.meta.env.VITE_API_SERVER_URL}/${url}`, body);
+    return axios.post(`${import.meta.env.VITE_API_SERVER_URL}/${url}`, body, { withCredentials: true });
   }
   const result = await axiosAPI.post<R>(url, body);
   return result.data;
