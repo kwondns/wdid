@@ -26,8 +26,8 @@ export default function Header() {
       <Timer />
       <Nav />
       <div className="gap-x-6">
-        <img src="/assets/Timeline-Logo.svg" />
         <button
+          type="button"
           className="btn btn-success text-white md:px-6 md:text-xl lg:px-12 lg:text-2xl"
           onClick={onClickStart}
           disabled={!!startTime}
@@ -35,6 +35,7 @@ export default function Header() {
           시작
         </button>
         <button
+          type="button"
           className="btn btn-error text-white md:px-6 md:text-xl lg:px-12 lg:text-2xl"
           onClick={onClickEnd}
           disabled={!!endTime}
